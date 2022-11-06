@@ -26,6 +26,8 @@ class AuthController extends Controller
         }
     }
 
+
+
     public function loginView()
     {
         if (Auth::check()) {
