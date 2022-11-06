@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProdukController;
+use App\Models\Produk;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +21,9 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/index', function () {
-    return view('pages.index');
+    return view('pages.index', [
+        "products" => Produk::all()
+    ]);
 })->name('index');
 
 
@@ -37,3 +41,5 @@ Route::get('/login', function () {
 })->name("login");
 
 Route::post('/action-login', [AuthController::class, 'actionLogin']);
+
+Route::get('/show/{id}', [ProdukController::class, 'show'])->name('show');

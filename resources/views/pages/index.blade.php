@@ -165,150 +165,26 @@
             </div>
           </div>
           <div class="row">
-            <div
-              class="col-6 col-md-4 col-lg-3"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              <a href="/details.html" class="component-products d-block">
-                <div class="products-thumbnail">
-                  <div
-                    class="products-image"
-                    style="
-                      background-image: url('/images/products-apple-watch.jpg');
-                    "
-                  ></div>
-                </div>
-                <div class="products-text">Apple Watch 4</div>
-                <div class="products-price">$890</div>
-              </a>
-            </div>
-            <div
-              class="col-6 col-md-4 col-lg-3"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <a href="/details.html" class="component-products d-block">
-                <div class="products-thumbnail">
-                  <div
-                    class="products-image"
-                    style="
-                      background-image: url('/images/products-orange-bogotta.jpg');
-                    "
-                  ></div>
-                </div>
-                <div class="products-text">Orange Bogotta</div>
-                <div class="products-price">$94,509</div>
-              </a>
-            </div>
-            <div
-              class="col-6 col-md-4 col-lg-3"
-              data-aos="fade-up"
-              data-aos-delay="300"
-            >
-              <a href="/details.html" class="component-products d-block">
-                <div class="products-thumbnail">
-                  <div
-                    class="products-image"
-                    style="
-                      background-image: url('/images/products-sofa-ternyaman.jpg');
-                    "
-                  ></div>
-                </div>
-                <div class="products-text">Sofa Ternyaman</div>
-                <div class="products-price">$1,409</div>
-              </a>
-            </div>
-            <div
-              class="col-6 col-md-4 col-lg-3"
-              data-aos="fade-up"
-              data-aos-delay="400"
-            >
-              <a href="/details.html" class="component-products d-block">
-                <div class="products-thumbnail">
-                  <div
-                    class="products-image"
-                    style="
-                      background-image: url('/images/products-bubuk-maketti.jpg');
-                    "
-                  ></div>
-                </div>
-                <div class="products-text">Bubuk Maketti</div>
-                <div class="products-price">$225</div>
-              </a>
-            </div>
-            <div
-              class="col-6 col-md-4 col-lg-3"
-              data-aos="fade-up"
-              data-aos-delay="500"
-            >
-              <a href="/details.html" class="component-products d-block">
-                <div class="products-thumbnail">
-                  <div
-                    class="products-image"
-                    style="
-                      background-image: url('/images/products-tatakan-gelas.jpg');
-                    "
-                  ></div>
-                </div>
-                <div class="products-text">Tatakan Gelas</div>
-                <div class="products-price">$45,184</div>
-              </a>
-            </div>
-            <div
-              class="col-6 col-md-4 col-lg-3"
-              data-aos="fade-up"
-              data-aos-delay="600"
-            >
-              <a href="/details.html" class="component-products d-block">
-                <div class="products-thumbnail">
-                  <div
-                    class="products-image"
-                    style="
-                      background-image: url('/images/products-mavic-kawe.jpg');
-                    "
-                  ></div>
-                </div>
-                <div class="products-text">Mavic Kawe</div>
-                <div class="products-price">$503</div>
-              </a>
-            </div>
-            <div
-              class="col-6 col-md-4 col-lg-3"
-              data-aos="fade-up"
-              data-aos-delay="700"
-            >
-              <a href="/details.html" class="component-products d-block">
-                <div class="products-thumbnail">
-                  <div
-                    class="products-image"
-                    style="
-                      background-image: url('/images/products-black-edition-nike.jpg');
-                    "
-                  ></div>
-                </div>
-                <div class="products-text">Black Edition Nike</div>
-                <div class="products-price">$70,482</div>
-              </a>
-            </div>
+            @foreach($products as $product)
             <div
               class="col-6 col-md-4 col-lg-3"
               data-aos="fade-up"
               data-aos-delay="800"
             >
-              <a href="/details.html" class="component-products d-block">
+              <a href="/show/{{ $product->id }}" class="component-products d-block">
                 <div class="products-thumbnail">
                   <div
                     class="products-image"
                     style="
-                      background-image: url('/images/products-monkey-toys.jpg');
+                      background-image: url('/images/{{ $product->gambar }}');
                     "
                   ></div>
                 </div>
-                <div class="products-text">Monkey Toys</div>
-                <div class="products-price">$783</div>
+                <div class="products-text">{{ $product->nama }}</div>
+                <div class="products-price">{{ $product->harga }}</div>
               </a>
             </div>
+            @endforeach
           </div>
         </div>
       </section>
