@@ -18,9 +18,10 @@ Route::get('/', function () {
     return view('pages.home');
 })->name('home');
 
-Route::get('/login', function () {
-    return view('pages.login');
-})->name('login');
+Route::get('/index', function () {
+    return view('pages.index');
+})->name('index');
+
 
 Route::get('/register', function () {
     return view('pages.register');
@@ -31,11 +32,8 @@ Route::post(
     [AuthController::class, 'actionRegister']
 );
 
-Route::get('/login', [
-    AuthController::class,
-    'loginView'
-])->name("login");
+Route::get('/login', function () {
+    return view('pages.login');
+})->name("login");
 
 Route::post('/action-login', [AuthController::class, 'actionLogin']);
-
-Route::get('/logout', [AuthController::class, 'logout']);

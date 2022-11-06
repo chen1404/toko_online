@@ -17,24 +17,33 @@
               />
             </div>
             <div class="col-lg-5">
+               @if(session('error'))
+                                    <div class="alert alert-danger">
+                                        <b>Yeah!</b> {{session('error')}}
+                                    </div>
+                                    @endif
+                                    @if(session('username'))
+                                    <div class="alert alert-danger">
+                                        <b>Opps!</b> {{session('username')}}
+                                    </div>
+                                    @endif
               <h2>
                 Belanja kebutuhan utama, <br />
                 menjadi lebih mudah
               </h2>
-              <form action="" class="mt-3">
+              <form action="{{ url('/action-login')}}" method="POST" class="mt-3">
+                @csrf
                 <div class="form-group">
                   <label>Email Address</label>
-                  <input type="email" class="form-control w-75" />
+                  <input type="email" class="form-control w-75" name="email"/>
                 </div>
                 <div class="form-group">
                   <label>Password</label>
-                  <input type="password" class="form-control w-75" />
+                  <input type="password" class="form-control w-75" name="password"/>
                 </div>
-                <a
-                  href="/register.html"
-                  class="btn btn-success btn-block w-75 mt-4"
-                  >Sign In to My Account</a
-                >
+                
+                <button type="submit" class="btn btn-success btn-block w-75 mt-4">Sign In to My Account</button>
+            
                 <a
                   href="{{ route('register') }}"
                   class="btn btn-signup btn-block w-75 mt-4"

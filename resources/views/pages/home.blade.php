@@ -124,14 +124,16 @@
 
       <section class="container">
         <div class="d-flex justify-content-center">
-          <div class="card shadow" style="width: 18rem; margin-right: 15px;">
-            <img src="img/logo/pembeli.png" class="card-img-top" alt="...">
+          <div class="card shadow" style="width: 18rem; margin-right: 15px;" onclick="window.location='{{ route('login') }}'">
+            <img src="img/logo/pembeli.png" class="card-img-top" alt="..." a href="{{ route('login') }}"></a>>
+            
             <div class="card-body">
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
           </div>
           <div class="card shadow" style="width: 18rem;">
             <img src="img/logo/penjual.png" class="card-img-top" alt="...">
+            <a href=""></a>
             <div class="card-body">
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
