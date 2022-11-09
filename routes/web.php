@@ -24,7 +24,12 @@ Route::get('/index', function () {
     return view('pages.index', [
         "products" => Produk::all()
     ]);
-})->name('index');
+})->name('index')->middleware('auth');
+
+Route::get('/penjual/home/{id}', function ($id) {
+
+    return view('penjual.home',  ["products" => Produk::all()->where('penjual_id', $id)]);
+})->name('penjual.home')->middleware('auth');
 
 
 Route::get('/register', function () {
@@ -41,5 +46,10 @@ Route::get('/login', function () {
 })->name("login");
 
 Route::post('/action-login', [AuthController::class, 'actionLogin']);
+
+Route::get('/logout', [AuthController::class, 'logout']);
+
+Route::get('/penjual/create/{id}', [ProdukController::class, 'create'])->name('penjual.create')->middleware('auth');
+Route::post('/penjual/store', [ProdukController::class, 'store'])->name('penjual.store')->middleware('auth');
 
 Route::get('/show/{id}', [ProdukController::class, 'show'])->name('show');

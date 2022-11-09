@@ -19,7 +19,9 @@ return new class extends Migration
             $table->string('harga');
             $table->string('gambar');
             $table->string('deskripsi');
+            $table->foreignId('penjual_id');
             $table->timestamps();
+            $table->foreign('penjual_id')->references('id')->on('users');
         });
     }
 
