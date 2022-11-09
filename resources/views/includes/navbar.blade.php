@@ -29,11 +29,14 @@
               <a href="/register.html" class="nav-link">Sign Up</a>
             </li>
             <li class="nav-item">
-              <a
+              <a href="{{ Auth::user() ? '/logout' : '/login' }}" class="nav-link active" aria-current="page">
+                  {{ Auth::user() ? 'Logout' : 'Login' }}
+              </a>
+              {{-- <a
                 href="/login.html"
                 class="btn btn-success nav-link px-4 text-white"
                 >Sign in</a
-              >
+              > --}}
             </li>
           </ul>
         </div>

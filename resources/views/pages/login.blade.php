@@ -18,15 +18,15 @@
             </div>
             <div class="col-lg-5">
                @if(session('error'))
-                                    <div class="alert alert-danger">
-                                        <b>Yeah!</b> {{session('error')}}
-                                    </div>
-                                    @endif
-                                    @if(session('username'))
-                                    <div class="alert alert-danger">
-                                        <b>Opps!</b> {{session('username')}}
-                                    </div>
-                                    @endif
+                  <div class="alert alert-danger">
+                      <b>Yeah!</b> {{session('error')}}
+                  </div>
+                @endif
+                @if(session('username'))
+                  <div class="alert alert-danger">
+                      <b>Opps!</b> {{session('username')}}
+                  </div>
+                @endif
               <h2>
                 Belanja kebutuhan utama, <br />
                 menjadi lebih mudah

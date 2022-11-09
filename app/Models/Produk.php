@@ -9,6 +9,9 @@ class Produk extends Model
 {
     use HasFactory;
     
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
     protected $table = 'produks';
-    protected $fillable = ['nama', 'harga', 'gambar', 'deskripsi'];
+    protected $fillable = ['nama', 'harga', 'gambar', 'deskripsi', 'penjual_id'];
 }

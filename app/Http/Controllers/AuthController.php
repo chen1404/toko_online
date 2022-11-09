@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Produk;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,6 +14,7 @@ class AuthController extends Controller
     {
         if ($request->password == $request->confirm_password) {
             User::create([
+                'role' => $request->role,
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
@@ -45,7 +47,14 @@ class AuthController extends Controller
         ];
 
         if (Auth::Attempt($data)) {
-            return redirect('index');
+            $role = Auth::user()->role;
+            $id = Auth::user()->id;
+
+            if($role == 'pembeli') {
+                return redirect('index');
+            } else {
+                return redirect("/penjual/home/$id");
+            }
         } else {
             session()->flash('error', 'Email atau Password Salah');
 

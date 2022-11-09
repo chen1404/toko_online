@@ -24,7 +24,7 @@
                 Memulai untuk jual beli <br />
                 dengan cara terbaru
               </h2>
-              <form action="{{url('/action-register')}}" method="POST" class="mt-3" >
+              <form action="{{ url('/action-register') }}" method="POST" class="mt-3" >
                 @csrf
                 <div class="form-group">
                   <label>Nama</label>
@@ -65,7 +65,8 @@
                   />
                 </div>
                 
-              
+                <input type="text" name="role" id="" value="penjual" hidden>
+                
                 <button type="submit" class="btn btn-success btn-block mt-4"
                   >Sign Up Now</button>
                 
