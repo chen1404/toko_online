@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Produk;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProdukController extends Controller
 {
-    public function create($id) {
+    public function create() {
+        $id = Auth::user()->id;
         return view('penjual.create', ["id" => $id]);
     }
 
@@ -22,7 +24,7 @@ class ProdukController extends Controller
 
         Produk::create($validateData);
 
-        return redirect('/penjual/home/{penjual_id}')->with('success', 'Produk berhasil ditambahkan');
+        return redirect('/penjual/home')->with('success', 'Produk berhasil ditambahkan');
     }
     
     public function show(Produk $id) {

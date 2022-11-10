@@ -28,8 +28,6 @@ class AuthController extends Controller
         }
     }
 
-
-
     public function loginView()
     {
         if (Auth::check()) {
@@ -48,12 +46,12 @@ class AuthController extends Controller
 
         if (Auth::Attempt($data)) {
             $role = Auth::user()->role;
-            $id = Auth::user()->id;
+            // $id = Auth::user()->id;
 
             if($role == 'pembeli') {
                 return redirect('index');
             } else {
-                return redirect("/penjual/home/$id");
+                return redirect("/penjual/home");
             }
         } else {
             session()->flash('error', 'Email atau Password Salah');

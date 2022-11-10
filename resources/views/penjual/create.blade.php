@@ -27,7 +27,7 @@
                 <h3><strong>CREATE DATA</strong></h3>
                 <hr>
                 <div class="btn-success">
-                    <a class="text-dark btn btn-success text-white" href="/"><i class="fa-sharp fa-solid fa-arrow-left"></i> Back</a>
+                    <a class="text-dark btn btn-success text-white" href="{{ route('penjual.home') }}"><i class="fa-sharp fa-solid fa-arrow-left"></i> Back</a>
                 </div>
                 <div class="mb-3">
                     <label for="nama" class="form-label">Nama Produk</label>

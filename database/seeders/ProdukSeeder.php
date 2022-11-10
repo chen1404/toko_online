@@ -77,7 +77,6 @@ class ProdukSeeder extends Seeder
             ],
         ];
         
-        $this->call([UserSeeder::class]);
         foreach($produks as $produk) {
             \App\Models\Produk::firstOrCreate($produk);
         }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProdukController;
 use App\Models\Produk;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,9 +17,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/home', function () {
     return view('pages.home');
 })->name('home');
+
+Route::get('/', function () {
+    return view('pages.login');
+})->name('login');
 
 Route::get('/index', function () {
     return view('pages.index', [
@@ -26,8 +31,8 @@ Route::get('/index', function () {
     ]);
 })->name('index')->middleware('auth');
 
-Route::get('/penjual/home/{id}', function ($id) {
-
+Route::get('/penjual/home', function () {
+    $id = Auth::user()->id;
     return view('penjual.home',  ["products" => Produk::all()->where('penjual_id', $id)]);
 })->name('penjual.home')->middleware('auth');
 
@@ -49,7 +54,7 @@ Route::post('/action-login', [AuthController::class, 'actionLogin']);
 
 Route::get('/logout', [AuthController::class, 'logout']);
 
-Route::get('/penjual/create/{id}', [ProdukController::class, 'create'])->name('penjual.create')->middleware('auth');
+Route::get('/penjual/create', [ProdukController::class, 'create'])->name('penjual.create')->middleware('auth');
 Route::post('/penjual/store', [ProdukController::class, 'store'])->name('penjual.store')->middleware('auth');
 
 Route::get('/show/{id}', [ProdukController::class, 'show'])->name('show');
