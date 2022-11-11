@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\TransaksiController;
 use App\Models\Keranjang;
 use App\Models\Produk;
 use Illuminate\Support\Facades\Auth;
@@ -69,3 +70,5 @@ Route::post('/penjual/store', [ProdukController::class, 'store'])->name('penjual
 Route::get('/show/{id}', [ProdukController::class, 'show'])->name('show')->middleware('auth');
 
 Route::post('/{product}', [KeranjangController::class, 'keranjang'])->name('keranjang')->middleware('auth');
+
+Route::get('/keranjang/checkout/{id}', [TransaksiController::class, 'store'])->name('pembeli.checkout')->middleware('auth');

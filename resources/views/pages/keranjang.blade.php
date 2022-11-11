@@ -28,6 +28,7 @@
             @endforeach
         </tbody>
     </table>
+    <a href="{{ route('pembeli.checkout', Auth::user()->id) }}" class="btn btn-warning">Checkout</a>
 </div>
 
 @endsection

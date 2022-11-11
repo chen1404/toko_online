@@ -3,7 +3,7 @@
       data-aos="fade-down"
     >
       <div class="container">
-        <a href="{{ route('index') }}" class="navbar-brand">
+        <a href="{{ route( Auth::user() == 'penjual' ? 'penjual.home' : 'index') }}" class="navbar-brand">
           <img src="{{ asset('images/logo.svg') }}" alt="logo" />
         </a>
         <button
@@ -17,7 +17,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item ">
-              <a href="{{ route('index') }}" class="nav-link">Home</a>
+              <a href="{{ route( Auth::user() == 'penjual' ? 'penjual.home' : 'index') }}" class="nav-link">Home</a>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">Categories</a>

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Keranjang;
 use App\Models\Produk;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class KeranjangController extends Controller
