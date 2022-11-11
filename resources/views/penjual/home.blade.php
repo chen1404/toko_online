@@ -123,7 +123,7 @@
       </section>
       
       <div class="price-container mode-bg" id="pricelist">
-        <h3 class="mode-text">Price List</h3>
+        <h3 class="mode-text">Products List</h3>
         <div class="price-table">
           <table class="table">
             <thead class="mode-border">
@@ -136,30 +136,32 @@
               </tr>
             </thead>
             <tbody>
-              @foreach($products as $product)
-                <tr onclick="window.location='#';">
-                  <td class='mode-text' scope='row'>
-                    <a href="#" class="btn-show">{{ $product->id }}</a>
-                  </td>
-                  <td class='mode-text'>
-                    <a href="#" class="btn-show">{{ $product->nama }}</a>
-                  </td>
-                  <td class='mode-text'>
-                    <a href="#" class="btn-show">{{ $product->harga }}</a>
-                  </td>
-                  <td class='mode-text'>
-                    <a href="#" class="btn-show">{{ $product->gambar }}</a>
-                  </td>
-                  <td class='mode-text'>
-                    <a href="#" class="btn-show"><b>{{ $product->deskripsi }}</b></a>
+              @if(count($products) > 0)
+                @foreach($products as $product)
+                  <tr onclick="window.location='#';">
+                    <td class='mode-text' scope='row'>
+                      <a href="#" class="btn-show">{{ $product->id }}</a>
+                    </td>
+                    <td class='mode-text'>
+                      <a href="#" class="btn-show">{{ $product->nama }}</a>
+                    </td>
+                    <td class='mode-text'>
+                      <a href="#" class="btn-show">{{ $product->harga }}</a>
+                    </td>
+                    <td class='mode-text'>
+                      <a href="#" class="btn-show">{{ $product->gambar }}</a>
+                    </td>
+                    <td class='mode-text'>
+                      <a href="#" class="btn-show"><b>{{ $product->deskripsi }}</b></a>
+                    </td>
+                  </tr>
+                @endforeach
+              @endif
+                <tr class="row-create text-center" onclick="window.location='{{ route('penjual.create', Auth::user()->id) }}';">
+                  <td colspan="5">
+                    <a class="text-white btn"><i class="fa-solid fa-plus"></i> Create New List</a>
                   </td>
                 </tr>
-              @endforeach
-              <tr class="row-create text-center" onclick="window.location='{{ route('penjual.create', $product->penjual_id) }}';">
-                <td colspan="5">
-                  <a class="text-white btn"><i class="fa-solid fa-plus"></i> Create New List</a>
-                </td>
-              </tr>
             </tbody>
           </table>
         </div>

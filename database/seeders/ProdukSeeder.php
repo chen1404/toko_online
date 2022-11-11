@@ -21,56 +21,56 @@ class ProdukSeeder extends Seeder
         $produks = [
             [
                 'nama' => 'Apple Watch 4',
-                'harga' => '$890',
+                'harga' => '890',
                 'gambar' => 'products-apple-watch.jpg',
                 'deskripsi' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor amet quisquam quaerat sequi saepe doloremque, at accusantium quasi.',
                 'penjual_id' => '1'
             ],
             [
                 'nama' => 'Orange Bogotta',
-                'harga' => '$94,509',
+                'harga' => '94,509',
                 'gambar' => 'products-orange-bogotta.jpg',
                 'deskripsi' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor amet quisquam quaerat sequi saepe doloremque, at accusantium quasi.',
                 'penjual_id' => '1'
             ],
             [
                 'nama' => 'Sofa Ternyaman',
-                'harga' => '$1,409',
+                'harga' => '1,409',
                 'gambar' => 'products-sofa-ternyaman.jpg',
                 'deskripsi' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor amet quisquam quaerat sequi saepe doloremque, at accusantium quasi.',
                 'penjual_id' => '1'
             ],
             [
                 'nama' => 'Bubuk Maketti',
-                'harga' => '$225',
+                'harga' => '225',
                 'gambar' => 'products-bubuk-maketti.jpg',
                 'deskripsi' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor amet quisquam quaerat sequi saepe doloremque, at accusantium quasi.',
                 'penjual_id' => '1'
             ],
             [
                 'nama' => 'Tatakan Gelas',
-                'harga' => '$45,184',
+                'harga' => '45,184',
                 'gambar' => 'products-tatakan-gelas.jpg',
                 'deskripsi' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor amet quisquam quaerat sequi saepe doloremque, at accusantium quasi.',
                 'penjual_id' => '2'
             ],
             [
                 'nama' => 'Mavic Kawe',
-                'harga' => '$503',
+                'harga' => '503',
                 'gambar' => 'products-mavic-kawe.jpg',
                 'deskripsi' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor amet quisquam quaerat sequi saepe doloremque, at accusantium quasi.',
                 'penjual_id' => '2'
             ],
             [
                 'nama' => 'Black Edition Nike',
-                'harga' => '$70,482',
+                'harga' => '70,482',
                 'gambar' => 'products-black-edition-nike.jpg',
                 'deskripsi' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor amet quisquam quaerat sequi saepe doloremque, at accusantium quasi.',
                 'penjual_id' => '2'
             ],
             [
                 'nama' => 'Monkey Toys',
-                'harga' => '$783',
+                'harga' => '783',
                 'gambar' => 'products-monkey-toys.jpg',
                 'deskripsi' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor amet quisquam quaerat sequi saepe doloremque, at accusantium quasi.',
                 'penjual_id' => '2'

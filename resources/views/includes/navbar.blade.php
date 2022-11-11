@@ -3,8 +3,8 @@
       data-aos="fade-down"
     >
       <div class="container">
-        <a href="{{ route('home') }}" class="navbar-brand">
-          <img src="images/logo.svg" alt="logo" />
+        <a href="{{ route('index') }}" class="navbar-brand">
+          <img src="{{ asset('images/logo.svg') }}" alt="logo" />
         </a>
         <button
           class="navbar-toggler"
@@ -17,7 +17,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item ">
-              <a href="{{ route('home') }}" class="nav-link">Home</a>
+              <a href="{{ route('index') }}" class="nav-link">Home</a>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">Categories</a>
@@ -25,18 +25,25 @@
             <li class="nav-item">
               <a href="#" class="nav-link">Rewards</a>
             </li>
+            @if(Auth::user())
+              @if(Auth::user()->role == 'pembeli')
+                <li class="nav-item">
+                  <a href="{{ route('pages.keranjang') }}" class="nav-link active" aria-current="page">Profil</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('pages.keranjang') }}" class="nav-link active" aria-current="page">Keranjang</a>
+                </li>
+              @endif
+            @else
+              <li class="nav-item">
+                <a href="{{ route('register') }}" class="nav-link">Sign-Up</a>
+              </li>
+            @endif
             <li class="nav-item">
-              <a href="/register.html" class="nav-link">Sign Up</a>
-            </li>
-            <li class="nav-item">
-              <a href="{{ Auth::user() ? '/logout' : '/login' }}" class="nav-link active" aria-current="page">
-                  {{ Auth::user() ? 'Logout' : 'Login' }}
+              @php $stat = Auth::user() ? 'logout' : 'login' @endphp
+              <a href="{{ "/$stat" }}" class="nav-link active" aria-current="page">
+                  {{ ucfirst($stat) }}
               </a>
-              {{-- <a
-                href="/login.html"
-                class="btn btn-success nav-link px-4 text-white"
-                >Sign in</a
-              > --}}
             </li>
           </ul>
         </div>

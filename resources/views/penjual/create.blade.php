@@ -22,7 +22,7 @@
 <body>
     <section class="create-con con-card">
         <div class="card w-50">
-            <form action="/penjual/store" method="post" class="card-body">
+            <form action="/penjual/store" method="post" class="card-body" enctype="multipart/form-data">
                 @csrf
                 <h3><strong>CREATE DATA</strong></h3>
                 <hr>
@@ -47,35 +47,20 @@
                 </div>
                 <div class="mb-3">
                     <label for="deskripsi" class="form-label">Deskripsi</label>
-                    <input type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" placeholder="Deskripsi" required>
-                    
+                    <textarea type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" placeholder="Deskripsi" required></textarea>
                     @error('deskripsi')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="mb-3">
                     <label for="gambar" class="form-label">gambar</label>
-                    <input type="file" class="form-control @error('gambar') is-invalid @enderror" id="gambar" name="gambar" placeholder="gambar" required>
+                    <input type="file" class="form-control @error('gambar') is-invalid @enderror" id="gambar" name="file" placeholder="gambar" accept=".jpg,.jpeg,.png" required>
                     
                     @error('gambar')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
-                </div>
                     <input name="penjual_id" value="{{ $id }}" hidden>
-                {{-- <div class="mb-3">
-                    <label for="brand_id" class="form-label ">Publisher</label>
-                    <select name="brand_id" id="brand_id" class="form-select @error('brand_id') is-invalid @enderror" aria-label="Default select example">
-                        <option value="" selected disabled>Choose publisher</option>
-                        @foreach ($brands as $brand)
-                            <option value={{ $brand->id }}>{{ $brand->merek }}</option>
-                        @endforeach
-                    </select>
-
-                    @error('brand_id')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div> --}}
-
+                </div>
                 <div class="mb-3">
                     <button type="submit" class="btn btn-primary w-100">Create List</button>
                 </div>

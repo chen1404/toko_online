@@ -30,7 +30,7 @@ class KeranjangSeeder extends Seeder
         ];
         
         foreach($barangs as $barang) {
-            \App\Models\keranjang::firstOrCreate($barang);
+            \App\Models\Keranjang::firstOrCreate($barang);
         }
     }
 }

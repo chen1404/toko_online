@@ -49,7 +49,7 @@ class AuthController extends Controller
             // $id = Auth::user()->id;
 
             if($role == 'pembeli') {
-                return redirect('index');
+                return redirect('/');
             } else {
                 return redirect("/penjual/home");
             }

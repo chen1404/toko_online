@@ -176,12 +176,12 @@
                   <div
                     class="products-image"
                     style="
-                      background-image: url('/images/{{ $product->gambar }}');
+                      background-image: url('/img/products/{{ $product->gambar }}');
                     "
                   ></div>
                 </div>
                 <div class="products-text">{{ $product->nama }}</div>
-                <div class="products-price">{{ $product->harga }}</div>
+                <div class="products-price">Rp.{{ $product->harga }}</div>
               </a>
             </div>
             @endforeach

@@ -19,21 +19,27 @@ class UserSeeder extends Seeder
         $users = [
             [
                 'role' => 'penjual',
-                'name' => 'rosyan',
-                'email' => 'rosyanxone@gmail.com',
-                'password' => 'rosyan'
+                'name' => 'rausyanfikrkarmayoga',
+                'email' => 'rausyanfikrkarmayoga@gmail.com',
+                'password' => '123'
             ],
             [
                 'role' => 'penjual',
-                'name' => 'asep',
-                'email' => 'asep@gmail.com',
-                'password' => 'asep'
+                'name' => 'rosyanxone',
+                'email' => 'rosyanxone@student.unmul.ac.id',
+                'password' => '123'
             ],
             [
                 'role' => 'pembeli',
-                'name' => 'Udin Sarifudin',
-                'email' => 'udin@gmail.com',
-                'password' => 'udin'
+                'name' => 'vannyputriandrini',
+                'email' => 'vannyputriandrini@gmail.com',
+                'password' => '123'
+            ],
+            [
+                'role' => 'pembeli',
+                'name' => 'asep',
+                'email' => 'asep@gmail.com',
+                'password' => '123'
             ],
         ];
         
@@ -43,7 +49,6 @@ class UserSeeder extends Seeder
                 'name' => $user["name"],
                 'email' => $user["email"],
                 'password' => Hash::make($user["password"])
-                // 'password' => $user["password"]
             ]);
         }
     }
