@@ -1,8 +1,12 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\TransaksiController;
+use App\Models\Keranjang;
 use App\Models\Produk;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,9 +34,12 @@ Route::get('/index', function () {
     ]);
 })->name('index');
 
+Route::get('/keranjang', function () {
+    return view('pages.keranjang',  ["products" => Keranjang::all()->where('pembeli_id', Auth::user()->id)]);
+})->name('pages.keranjang')->middleware('auth');
 
 Route::get('/register', function () {
-    return view('pages.register');
+    return view('auth.register');
 })->name('register');
 
 Route::post(
@@ -41,7 +48,7 @@ Route::post(
 );
 
 Route::get('/login', function () {
-    return view('pages.login');
+    return view('auth.login');
 })->name("login");
 
 Route::post('/action-login', [AuthController::class, 'actionLogin']);
