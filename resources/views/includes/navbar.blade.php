@@ -6,6 +6,9 @@
         <a href="{{ route( Auth::user() == 'penjual' ? 'penjual.home' : 'index') }}" class="navbar-brand">
           <img src="{{ asset('images/logo.svg') }}" alt="logo" />
         </a>
+        @if(Auth::user())
+        <span class="fs-4">Selamat Datang {{ Auth::user()->name ?? "HomePage"}}</span>
+        @endif
         <button
           class="navbar-toggler"
           type="button"
@@ -17,31 +20,29 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item ">
-              <a href="{{ route( Auth::user() == 'penjual' ? 'penjual.home' : 'index') }}" class="nav-link">Home</a>
+              <a href="{{ route( Auth::user() == 'penjual' ? 'penjual.home' : 'index') }}" class="nav-link active">Home</a>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">Categories</a>
             </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">Rewards</a>
-            </li>
+        
             @if(Auth::user())
               @if(Auth::user()->role == 'pembeli')
                 <li class="nav-item">
-                  <a href="{{ route('pages.keranjang') }}" class="nav-link active" aria-current="page">Profil</a>
+                  <a href="{{ route('pages.keranjang') }}" class="nav-link" aria-current="page">Profil</a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('pages.keranjang') }}" class="nav-link active" aria-current="page">Keranjang</a>
+                  <a href="{{ route('pages.keranjang') }}" class="nav-link" aria-current="page">Keranjang</a>
                 </li>
               @endif
             @else
               <li class="nav-item">
-                <a href="{{ route('register') }}" class="nav-link">Sign-Up</a>
+                <a href="{{ route('register') }}" class="nav-link">Sign Up</a>
               </li>
             @endif
             <li class="nav-item">
               @php $stat = Auth::user() ? 'logout' : 'login' @endphp
-              <a href="{{ "/$stat" }}" class="nav-link active" aria-current="page">
+              <a class="btn btn-danger" href="{{ "/$stat" }}" class="nav-link " aria-current="page">
                   {{ ucfirst($stat) }}
               </a>
             </li>

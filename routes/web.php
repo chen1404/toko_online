@@ -32,23 +32,16 @@ Route::get('/welcome', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('/home', function () {
-    return view('pages.home');
-})->name('home');
-
-Route::get('/home', function () {
-    return view('pages.home');
-})->name('home');
-
 Route::get('/', function () {
-    return view('auth.login');
-})->name('login ');
-
-Route::get('/index', function () {
     return view('pages.index', [
         "products" => Produk::all()
     ]);
 })->name('index');
+
+Route::get('/penjual/home', function () {
+    $id = Auth::user()->id;
+    return view('penjual.home',  ["products" => Produk::all()->where('penjual_id', $id)]);
+})->name('penjual.home')->middleware('auth');
 
 Route::get('/keranjang', function () {
     return view('pages.keranjang',  ["products" => Keranjang::all()->where('pembeli_id', Auth::user()->id)]);
@@ -69,4 +62,19 @@ Route::get('/login', function () {
 
 Route::post('/action-login', [AuthController::class, 'actionLogin']);
 
-Route::get('/show/{id}', [ProdukController::class, 'show'])->name('show');
+Route::get('/logout', [AuthController::class, 'logout']);
+
+Route::get('/penjual/create', [ProdukController::class, 'create'])->name('penjual.create')->middleware('auth');
+Route::post('/penjual/store', [ProdukController::class, 'store'])->name('penjual.store')->middleware('auth');
+
+Route::get('/show/{id}', [ProdukController::class, 'show'])->name('show')->middleware('auth');
+
+Route::post('/{product}', [KeranjangController::class, 'keranjang'])->name('keranjang')->middleware('auth');
+
+Route::get('/keranjang/checkout/{id}', [TransaksiController::class, 'store'])->name('pembeli.checkout')->middleware('auth');
+
+// route Satria
+
+Route::get('/produk', function () {
+    return view('penjual.produk');
+})->name('produk');

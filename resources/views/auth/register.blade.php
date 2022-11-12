@@ -64,6 +64,45 @@
                   name="confirm_password" required
                   />
                 </div>
+
+                <div class="form-group">
+                  <label>Store</label>
+                  <p class="text-muted">Apakah anda juga ingin membuka toko?</p>
+                  <div
+                    class="custom-control custom-radio custom-control-inline"
+                  >
+                    <input
+                      type="radio"
+                      class="custom-control-input"
+                      name="is_store_open"
+                      id="openStoreTrue"
+                      v-model="is_store_open"
+                      :value="true"
+                    />
+                    <label for="openStoreTrue" class="custom-control-label"
+                      >Iya, boleh</label
+                    >
+                  </div>
+                  <div
+                    class="custom-control custom-radio custom-control-inline"
+                  >
+                    <input
+                      type="radio"
+                      class="custom-control-input"
+                      name="is_store_open"
+                      id="openStoreFalse"
+                      v-model="is_store_open"
+                      :value="false"
+                    />
+                    <label for="openStoreFalse" class="custom-control-label"
+                      >Enggak, makasih</label
+                    >
+                  </div>
+                </div>
+                <div class="form-group" v-if="is_store_open">
+                  <label>Nama Toko</label>
+                  <input type="text" class="form-control" />
+                </div>
                 
                 <input type="text" name="role" id="" value="penjual" hidden>
                 
