@@ -74,4 +74,17 @@ Route::get('/penjual', function () {
 
 Route::get('/penjual/create', [ProdukController::class, 'create'])->name('penjual.create')->middleware('auth');
 Route::post('/penjual/store', [ProdukController::class, 'store'])->name('penjual.store')->middleware('auth');
+
+
+// route Satria
 // END PENJUAL
+Route::get('/show/{id}', [ProdukController::class, 'show'])->name('show')->middleware('auth');
+
+Route::post('/{product}', [KeranjangController::class, 'keranjang'])->name('keranjang')->middleware('auth');
+
+Route::get('/keranjang/checkout/{id}', [TransaksiController::class, 'store'])->name('pembeli.checkout')->middleware('auth');
+
+
+Route::get('/produk', function () {
+    return view('penjual.produk');
+})->name('produk');

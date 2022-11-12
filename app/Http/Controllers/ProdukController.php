@@ -9,24 +9,26 @@ use Illuminate\Support\Facades\Auth;
 
 class ProdukController extends Controller
 {
-    public function create() {
+    public function create()
+    {
         $id = Auth::user()->id;
         return view('penjual.create', ["id" => $id]);
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $request->validate([
             "nama" => 'required|string',
             "harga" => 'required|string',
             "deskripsi" => 'required|string',
             "penjual_id" => 'required',
         ]);
-        
+
         if ($request->hasFile('file')) {
             $slug = Str::slug($request->get('nama'), '-');
             $randstr = Str::lower(Str::random(5));
             $file = $request->file('file');
-            $filename = 'products-'.$slug.'-'.$randstr.'.'.$file->getClientOriginalExtension();
+            $filename = 'products-' . $slug . '-' . $randstr . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('img/products'), $filename);
 
             $product = new Produk([

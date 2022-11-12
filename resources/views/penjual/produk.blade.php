@@ -9,10 +9,10 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Weesia Dashboard Penjual</title>
+    <title>Store - Your Best Marketplace</title>
 
-    <link href="{{ asset('style/main.css') }}" rel="stylesheet" />
-    <link href="{{ asset('stylesheet/style.css') }}" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link href="style/main.css" rel="stylesheet" />
   </head>
 
   <body>
@@ -140,87 +140,99 @@
           >
             <div class="container-fluid">
               <div class="dashboard-heading">
-                <h2 class="dashboard-title">Tambah Produk Baru</h2>
-                <p class="dashboard-subtitle">Buat Produkmu sendiri yuk</p>
+                <h2 class="dashboard-title">My Products</h2>
+                <p class="dashboard-subtitle">Manage it well and get money</p>
               </div>
               <div class="dashboard-content">
                 <div class="row">
                   <div class="col-12">
-                    <form action="/penjual/store" method="post" class="card-body" enctype="multipart/form-data">
-                        @csrf
-                      <div class="card">
-                        <div class="card-body">
-                          <div class="row">
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label for="nama" class="form-label">Nama Produk</label>
-                                <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" placeholder="Nama Produk" required />
-                               
-                                @error('nama')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label for="harga" class="form-label">Harga</label>
-                                <input type="number" class="form-control @error('harga') is-invalid @enderror" id="harga" name="harga" placeholder="Harga" required />
-                                @error('harga')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            </div>
-                            <div class="col-md-12">
-                              <div class="form-group">
-                                <label>Kategori</label>
-                                <select name="category" class="form-control">
-                                  <option value="" disabled>
-                                    Select Category
-                                  </option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="col-md-12">
-                              <div class="form-group">
-                                <label for="deskripsi" class="form-label">Deskripsi</label>
-                                <textarea  name="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" placeholder="Deskripsi" required></textarea>
-                              </div>
-                            </div>
-                            <div class="col-md-12">
-                              <div class="form-group">
-                                <label for="gambar" class="form-label">Gambar</label>
-                                <input type="file" class="form-control @error('gambar') is-invalid @enderror" id="gambar" name="file" placeholder="gambar" accept=".jpg,.jpeg,.png" required />
-                                <p class="text-muted">
-                                  silahkan input gambar produk
-                                </p>
-                                @error('gambar')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                                <input name="penjual_id" value="{{ $id }}" hidden>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="col text-right">
-                              <button
-                                type="submit"
-                                class="btn btn-success px-5 btn-block"
-                              >
-                                Create Product
-                              </button>
-                            </div>
-                          </div>
-                          <div class="row mt-5">
-                            <div class="col text-right">
-                              
-                                
-                              <a class=" btn btn-danger text-white" href="{{ route('penjual.home') }}"><i class="fa-sharp fa-solid fa-arrow-left"></i> Back</a>
-                              
-                            </div>
-                          </div>
-                        </div>
+                    <a
+                      href="/dashboard-products-create.html"
+                      class="btn btn-success"
+                      >Add New Product</a
+                    >
+                  </div>
+                </div>
+                <div class="row mt-4">
+                  <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <a
+                      href="/dashboard-products-details.html"
+                      class="card card-dashboard-product d-block"
+                    >
+                      <div class="card-body">
+                        <img
+                          src="/images/product-card-1.png"
+                          alt=""
+                          class="w-100 mb-2"
+                        />
+                        <div class="product-tittle">Shirup Marzzan</div>
+                        <div class="product-category">Foods</div>
                       </div>
-                    </form>
+                    </a>
+                  </div>
+                  <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <a
+                      href="/dashboard-products-details.html"
+                      class="card card-dashboard-product d-block"
+                    >
+                      <div class="card-body">
+                        <img
+                          src="/images/product-card-2.png"
+                          alt=""
+                          class="w-100 mb-2"
+                        />
+                        <div class="product-tittle">Shirup Marzzan</div>
+                        <div class="product-category">Foods</div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <a
+                      href="/dashboard-products-details.html"
+                      class="card card-dashboard-product d-block"
+                    >
+                      <div class="card-body">
+                        <img
+                          src="/images/product-card-3.png"
+                          alt=""
+                          class="w-100 mb-2"
+                        />
+                        <div class="product-tittle">Shirup Marzzan</div>
+                        <div class="product-category">Foods</div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <a
+                      href="/dashboard-products-details.html"
+                      class="card card-dashboard-product d-block"
+                    >
+                      <div class="card-body">
+                        <img
+                          src="/images/product-card-4.png"
+                          alt=""
+                          class="w-100 mb-2"
+                        />
+                        <div class="product-tittle">Shirup Marzzan</div>
+                        <div class="product-category">Foods</div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <a
+                      href="/dashboard-products-details.html"
+                      class="card card-dashboard-product d-block"
+                    >
+                      <div class="card-body">
+                        <img
+                          src="/images/product-card-5.png"
+                          alt=""
+                          class="w-100 mb-2"
+                        />
+                        <div class="product-tittle">Shirup Marzzan</div>
+                        <div class="product-category">Foods</div>
+                      </div>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -247,11 +259,5 @@
         $("#wrapper").toggleClass("toggled");
       });
     </script>
-    <script src="https://cdn.ckeditor.com/4.19.0/standard/ckeditor.js"></script>
-    <script>
-      CKEDITOR.replace("editor");
-    </script>
   </body>
 </html>
-
-
