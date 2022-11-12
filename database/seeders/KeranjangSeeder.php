@@ -17,13 +17,13 @@ class KeranjangSeeder extends Seeder
         $barangs = [
             [
                 'nama' => 'Apple Watch 4',
-                'harga' => '$890',
+                'harga' => '890',
                 'gambar' => 'products-apple-watch.jpg',
                 'pembeli_id' => '3'
             ],
             [
                 'nama' => 'Monkey Toys',
-                'harga' => '$783',
+                'harga' => '783',
                 'gambar' => 'products-monkey-toys.jpg',
                 'pembeli_id' => '3'
             ],

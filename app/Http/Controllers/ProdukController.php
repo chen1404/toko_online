@@ -29,11 +29,6 @@ class ProdukController extends Controller
             $filename = 'products-'.$slug.'-'.$randstr.'.'.$file->getClientOriginalExtension();
             $file->move(public_path('img/products'), $filename);
 
-            // Save the file locally in the storage/public/ folder under a new folder named /product
-            // $request->file->store('product', 'public');
-            // "gambar" => $request->file->hashName(),
-            // Store the record, using the new file hashname which will be it's new filename identity.
-            
             $product = new Produk([
                 "nama" => $request->get('nama'),
                 "harga" => $request->get('harga'),
@@ -41,15 +36,15 @@ class ProdukController extends Controller
                 "deskripsi" => $request->get('deskripsi'),
                 "penjual_id" => $request->get('penjual_id')
             ]);
-            $product->save(); // Finally, save the record.
+            $product->save();
         }
 
         // Produk::create($validateData);
-        return redirect('/penjual/home')->with('success', 'Produk berhasil ditambahkan');
+        return redirect('/penjual')->with('success', 'Produk berhasil ditambahkan');
     }
     
     public function show(Produk $id) {
-        return view('pages.show', [
+        return view('pembeli.show', [
             'products' => $id,
         ]);
     }

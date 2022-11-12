@@ -28,14 +28,14 @@ class AuthController extends Controller
         }
     }
 
-    public function loginView()
-    {
-        if (Auth::check()) {
-            return redirect('index');
-        } else {
-            return view('login');
-        }
-    }
+    // public function loginView()
+    // {
+    //     if (Auth::check()) {
+    //         return redirect('pembeli.home');
+    //     } else {
+    //         return view('login');
+    //     }
+    // }
 
     public function actionLogin(Request $request)
     {
@@ -46,12 +46,11 @@ class AuthController extends Controller
 
         if (Auth::Attempt($data)) {
             $role = Auth::user()->role;
-            // $id = Auth::user()->id;
 
             if($role == 'pembeli') {
                 return redirect('/');
-            } else {
-                return redirect("/penjual/home");
+            } elseif($role == 'penjual') {
+                return redirect("/penjual");
             }
         } else {
             session()->flash('error', 'Email atau Password Salah');
