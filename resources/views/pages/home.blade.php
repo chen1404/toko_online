@@ -131,8 +131,8 @@
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
           </div>
-          <div class="card shadow" style="width: 18rem;" onclick="window.location='{{ route('loginPenjual') }}'">
-            <img src="img/logo/penjual.png" class="card-img-top" alt="..." a href="{{ route('loginPenjual') }}>
+          <div class="card shadow" style="width: 18rem;" onclick="window.location='#'">
+            <img src="img/logo/penjual.png" class="card-img-top" alt="..." a href="#>
             <a href=""></a>
             <div class="card-body">
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
