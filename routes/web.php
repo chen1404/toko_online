@@ -20,6 +20,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Comment
+// Route::get('/home', function () {
+//     return view('pages.home');
+// })->name('home')->middleware('auth');
+
+// Route::get('/login', function () {
+//     return view('pages.login');
+// })->name('login');
+
+Route::get('/welcome', function () {
+    return view('welcome');
+})->name('welcome');
+
+Route::get('/home', function () {
+    return view('pages.home');
+})->name('home');
+
 Route::get('/home', function () {
     return view('pages.home');
 })->name('home');
