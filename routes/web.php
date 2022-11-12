@@ -57,7 +57,7 @@ Route::get('/checkout', function () {
     return view('pembeli.checkout',  ["products" => Transaksi::all()->where('pembeli_id', Auth::user()->id)]);
 })->name('pembeli.checkout')->middleware('auth');
 
-Route::get('/checkout/{id}', [TransaksiController::class, 'store'])->name('pembeli.checkout')->middleware('auth');
+Route::get('/checkout/{id}', [TransaksiController::class, 'store'])->name('checkout')->middleware('auth');
 // END PEMBELI
 
 
@@ -78,13 +78,13 @@ Route::post('/penjual/store', [ProdukController::class, 'store'])->name('penjual
 
 // route Satria
 // END PENJUAL
-Route::get('/show/{id}', [ProdukController::class, 'show'])->name('show')->middleware('auth');
+// Route::get('/show/{id}', [ProdukController::class, 'show'])->name('show')->middleware('auth');
 
-Route::post('/{product}', [KeranjangController::class, 'keranjang'])->name('keranjang')->middleware('auth');
+// Route::post('/{product}', [KeranjangController::class, 'keranjang'])->name('keranjang')->middleware('auth');
 
-Route::get('/keranjang/checkout/{id}', [TransaksiController::class, 'store'])->name('pembeli.checkout')->middleware('auth');
+// Route::get('/keranjang/checkout/{id}', [TransaksiController::class, 'store'])->name('pembeli.checkout')->middleware('auth');
 
 
-Route::get('/produk', function () {
-    return view('penjual.produk');
-})->name('produk');
+// Route::get('/produk', function () {
+//     return view('penjual.produk');
+// })->name('produk');

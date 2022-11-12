@@ -29,10 +29,10 @@
             @if(Auth::user())
               @if(Auth::user()->role == 'pembeli')
                 <li class="nav-item">
-                  <a href="{{ route('pages.keranjang') }}" class="nav-link" aria-current="page">Profil</a>
+                  <a href="{{ route('pembeli.checkout') }}" class="nav-link" aria-current="page">Profil</a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('pages.keranjang') }}" class="nav-link" aria-current="page">Keranjang</a>
+                  <a href="{{ route('pembeli.keranjang') }}" class="nav-link" aria-current="page">Keranjang</a>
                 </li>
               @endif
             @else

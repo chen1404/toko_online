@@ -27,14 +27,14 @@
                 <div class="carousel-inner">
                   <div class="carousel-item active">
                     <img
-                      src="/images/banner.jpg"
+                      src="/images/banner.png"
                       alt="Carousel Image"
                       class="d-block w-100"
                     />
                   </div>
                   <div class="carousel-item">
                     <img
-                      src="/images/banner.jpg"
+                      src="/images/Banner1.jpg"
                       alt="Carousel Image"
                       class="d-block w-100"
                     />
@@ -57,14 +57,14 @@
         <div class="container">
           <div class="row">
             <div class="col-12" data-aos="fade-up">
-              <h5>Trend Categories</h5>
+              <h5>Kategori</h5>
             </div>
           </div>
           <div class="row">
             <div
               class="col-6 col-md col-lg-2"
               data-aos="fade-up"
-              data-aos-delay="100"
+              data-aos-delay="200"
             >
               <a href="" class="component-categories d-block">
                 <div class="categories-image">
@@ -74,7 +74,7 @@
                     class="w-100"
                   />
                 </div>
-                <p class="categories-text">Member</p>
+                <p class="categories-text">Elektronik</p>
               </a>
             </div>
             <div
@@ -85,12 +85,12 @@
               <a href="" class="component-categories d-block">
                 <div class="categories-image">
                   <img
-                    src="/images/categories-furniture.svg"
+                    src="/images/healthcare.png"
                     alt=""
                     class="w-100"
                   />
                 </div>
-                <p class="categories-text">Furniture</p>
+                <p class="categories-text">Perawatan</p>
               </a>
             </div>
             <div
@@ -101,12 +101,12 @@
               <a href="" class="component-categories d-block">
                 <div class="categories-image">
                   <img
-                    src="/images/categories-makeup.svg"
+                    src="/images/handphone.png"
                     alt=""
                     class="w-100"
                   />
                 </div>
-                <p class="categories-text">Make Up</p>
+                <p class="categories-text">Handphone</p>
               </a>
             </div>
             <div
@@ -117,12 +117,12 @@
               <a href="" class="component-categories d-block">
                 <div class="categories-image">
                   <img
-                    src="/images/categories-sneaker.svg"
+                    src="/images/furniture.png"
                     alt=""
                     class="w-100"
                   />
                 </div>
-                <p class="categories-text">Sneaker</p>
+                <p class="categories-text">Perabotan</p>
               </a>
             </div>
             <div
@@ -133,12 +133,12 @@
               <a href="" class="component-categories d-block">
                 <div class="categories-image">
                   <img
-                    src="/images/categories-tools.svg"
+                    src="/images/watch.png"
                     alt=""
                     class="w-100"
                   />
                 </div>
-                <p class="categories-text">Tools</p>
+                <p class="categories-text">Jam</p>
               </a>
             </div>
             <div
@@ -148,9 +148,9 @@
             >
               <a href="" class="component-categories d-block">
                 <div class="categories-image">
-                  <img src="/images/categories-baby.svg" alt="" class="w-100" />
+                  <img src="/images/otomotif.png" alt="" class="w-100" />
                 </div>
-                <p class="categories-text">Baby</p>
+                <p class="categories-text">Otomotif</p>
               </a>
             </div>
           </div>
@@ -161,7 +161,7 @@
         <div class="container">
           <div class="row">
             <div class="col-12" data-aos="fade-up">
-              <h5>New Products</h5>
+              <h5>Produk Baru</h5>
             </div>
           </div>
           <div class="row">
