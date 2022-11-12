@@ -81,7 +81,7 @@
                 </table>
                 <div class="action-container d-flex justify-content-center">
                     <div class="btn">
-                        <a class="text-dark btn btn-warning" href="/update/{{ $products->id }}" style="margin-right: 9px;"><i class=""></i> Checkout</a>
+                        <a class="text-dark btn btn-warning" href="{{ route('checkout.produk', $products) }}" style="margin-right: 9px;"><i class=""></i> Checkout</a>
                     </div>
                     <form action="{{ route('keranjang', $products) }}" method="post">
                         @csrf

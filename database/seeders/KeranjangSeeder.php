@@ -16,16 +16,32 @@ class KeranjangSeeder extends Seeder
     {
         $barangs = [
             [
-                'nama' => 'Apple Watch 4',
+                'id' => '1',
                 'harga' => '890',
-                'gambar' => 'products-apple-watch.jpg',
-                'pembeli_id' => '3'
+                'pembeli_id' => '3',
+                'produk_id' => '1'
             ],
             [
-                'nama' => 'Monkey Toys',
-                'harga' => '783',
-                'gambar' => 'products-monkey-toys.jpg',
-                'pembeli_id' => '3'
+                'id' => '2',
+                'harga' => '890',
+                'pembeli_id' => '3',
+                'produk_id' => '1'
+            ],
+            [
+                'harga' => '1409',
+                'pembeli_id' => '3',
+                'produk_id' => '3'
+            ],
+            [
+                'id' => '4',
+                'harga' => '890',
+                'pembeli_id' => '3',
+                'produk_id' => '1'
+            ],
+            [
+                'harga' => '200',
+                'pembeli_id' => '3',
+                'produk_id' => '4'
             ],
         ];
         

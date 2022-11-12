@@ -15,6 +15,9 @@ class User extends Authenticatable
     public function Produk() {
         return $this->hasMany(Produk::class);
     }
+    public function Transaksi() {
+        return $this->hasMany(Transaksi::class);
+    }
 
     /**
      * The attributes that are mass assignable.
