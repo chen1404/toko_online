@@ -16,18 +16,20 @@ class TransaksiSeeder extends Seeder
     {
         $transactions = [
             [
-                'total_harga' => '$890',
+                'total_harga' => '890',
                 'jumlah_barang' => '4',
-                'produk_id' => '1',
+                'alamat' => 'Samarinda',
                 'pembeli_id' => '3',
-                'penjual_id' => '1'
+                'penjual_id' => '1',
+                'produk_id' => '1'
             ],
             [
-                'total_harga' => '$783',
+                'total_harga' => '783',
                 'jumlah_barang' => '2',
-                'produk_id' => '8',
+                'alamat' => 'Balikpapan',
                 'pembeli_id' => '3',
-                'penjual_id' => '2'
+                'penjual_id' => '2',
+                'produk_id' => '8'
             ],
         ];
         

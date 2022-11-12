@@ -28,14 +28,14 @@ class ProdukSeeder extends Seeder
             ],
             [
                 'nama' => 'Orange Bogotta',
-                'harga' => '94,509',
+                'harga' => '94509',
                 'gambar' => 'products-orange-bogotta.jpg',
                 'deskripsi' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor amet quisquam quaerat sequi saepe doloremque, at accusantium quasi.',
                 'penjual_id' => '1'
             ],
             [
                 'nama' => 'Sofa Ternyaman',
-                'harga' => '1,409',
+                'harga' => '1409',
                 'gambar' => 'products-sofa-ternyaman.jpg',
                 'deskripsi' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor amet quisquam quaerat sequi saepe doloremque, at accusantium quasi.',
                 'penjual_id' => '1'
@@ -49,7 +49,7 @@ class ProdukSeeder extends Seeder
             ],
             [
                 'nama' => 'Tatakan Gelas',
-                'harga' => '45,184',
+                'harga' => '45184',
                 'gambar' => 'products-tatakan-gelas.jpg',
                 'deskripsi' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor amet quisquam quaerat sequi saepe doloremque, at accusantium quasi.',
                 'penjual_id' => '2'
@@ -63,7 +63,7 @@ class ProdukSeeder extends Seeder
             ],
             [
                 'nama' => 'Black Edition Nike',
-                'harga' => '70,482',
+                'harga' => '70482',
                 'gambar' => 'products-black-edition-nike.jpg',
                 'deskripsi' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor amet quisquam quaerat sequi saepe doloremque, at accusantium quasi.',
                 'penjual_id' => '2'

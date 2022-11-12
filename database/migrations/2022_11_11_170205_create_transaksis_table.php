@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('total_harga');
             $table->string('jumlah_barang');
+            $table->string('alamat');
             $table->foreignId('pembeli_id');
             $table->foreignId('penjual_id');
             $table->foreignId('produk_id');
