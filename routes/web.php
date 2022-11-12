@@ -25,7 +25,7 @@ Route::get('/home', function () {
 })->name('home');
 
 Route::get('/', function () {
-    return view('pages.login');
+    return view('auth.login');
 })->name('login ');
 
 Route::get('/index', function () {
