@@ -25,6 +25,11 @@
             <div class="card-body">
                 <h3><strong>READ DATA</strong></h3>
                 <hr>
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{session('success')}}
+                    </div>
+                @endif
                 <div class="btn-success">
                     <a class="text-dark btn btn-success text-white" href="/"><i class="fa-sharp fa-solid fa-arrow-left"></i> Back</a>
                 </div>
@@ -74,16 +79,15 @@
                         </td>
                     </tr>
                 </table>
-                {{-- <div class="action-container d-flex justify-content-center">
-                    <div class="edit-btn">
-                        <a class="text-dark btn btn-warning" href="/update/{{ $rentalps->id }}" style="margin-right: 9px;"><i class="fa-solid fa-pen-to-square"></i> Update</a>
+                <div class="action-container d-flex justify-content-center">
+                    <div class="btn">
+                        <a class="text-dark btn btn-warning" href="/update/{{ $products->id }}" style="margin-right: 9px;"><i class=""></i> Checkout</a>
                     </div>
-                    <form action="{{ route('delete', $rentalps->id) }}" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus mahasiswa ini?')">
+                    <form action="{{ route('keranjang', $products) }}" method="post">
                         @csrf
-                        @method('delete')
-                        <button type="submit" class="text-dark btn btn-danger mb-3"><i class="fa-solid fa-trash"></i> Delete</button>
+                        <button type="submit" class="text-dark btn btn-primary mb-3 text-white"><i class=""></i> + Keranjang</button>
                     </form>
-                </div> --}}
+                </div>
             </div>
         </div>
     </section>
