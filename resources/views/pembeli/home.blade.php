@@ -41,7 +41,7 @@
                   </div>
                   <div class="carousel-item">
                     <img
-                      src="/images/banner.jpg"
+                      src="/images/banner2.png"
                       alt="Carousel Image"
                       class="d-block w-100"
                     />
@@ -185,7 +185,7 @@
               </a>
             </div>
             @endforeach
-          </div>
+          </div>A
         </div>
       </section>
     </div>
