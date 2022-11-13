@@ -42,7 +42,7 @@
             @endif
             <li class="nav-item">
               @php $stat = Auth::user() ? 'logout' : 'login' @endphp
-              <a class="btn btn-danger" href="{{ "/$stat" }}" class="nav-link " aria-current="page">
+              <a class="btn btn-primary" href="{{ "/$stat" }}" class="nav-link " aria-current="page">
                   {{ ucfirst($stat) }}
               </a>
             </li>

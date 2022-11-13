@@ -20,6 +20,7 @@ class ProdukController extends Controller
         $request->validate([
             "nama" => 'required|string',
             "harga" => 'required|string',
+            "kategori" => 'required|string',
             "deskripsi" => 'required|string',
             "penjual_id" => 'required',
         ]);
@@ -34,6 +35,7 @@ class ProdukController extends Controller
             $product = new Produk([
                 "nama" => $request->get('nama'),
                 "harga" => $request->get('harga'),
+                "kategori" => $request->get('kategori'),
                 "gambar" => $filename,
                 "deskripsi" => $request->get('deskripsi'),
                 "penjual_id" => $request->get('penjual_id')
@@ -42,7 +44,7 @@ class ProdukController extends Controller
         }
 
         // Produk::create($validateData);
-        return redirect('/penjual')->with('success', 'Produk berhasil ditambahkan');
+        return redirect('/produk')->with('success', 'Produk berhasil ditambahkan');
     }
     
     public function show(Produk $id) {

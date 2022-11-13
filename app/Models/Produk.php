@@ -12,6 +12,9 @@ class Produk extends Model
     public function user() {
         return $this->belongsTo(User::class);
     }
+    public function Transaksi() {
+        return $this->hasMany(Transaksi::class);
+    }
     protected $table = 'produks';
-    protected $fillable = ['nama', 'harga', 'gambar', 'deskripsi', 'penjual_id'];
+    protected $fillable = ['nama', 'harga', 'kategori', 'gambar', 'deskripsi', 'penjual_id'];
 }

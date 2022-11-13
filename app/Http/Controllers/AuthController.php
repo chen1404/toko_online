@@ -21,7 +21,7 @@ class AuthController extends Controller
             ]);
             session()->flash('success', 'Berhasil Membuat Akun!');
 
-            return redirect('/register');
+            return redirect('/login');
         } else {
             session()->flash('error', 'Konfirmasi password anda berbeda!');
             return redirect('/register');

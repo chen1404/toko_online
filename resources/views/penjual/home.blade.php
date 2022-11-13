@@ -24,13 +24,13 @@
           </div>
           <div class="list-group list-group-flush">
             <a
-              href="/dashboard.html"
+              href="{{ route('penjual.home') }}"
               class="list-group-item list-group-item-action active"
             >
               Dashboard
             </a>
             <a
-              href="/dashboard-product.html"
+              href="{{ route('produk') }}"
               class="list-group-item list-group-item-action"
             >
               My Products
@@ -54,7 +54,7 @@
               My Account
             </a>
             <a
-              href="/index.html"
+              href="/logout"
               class="list-group-item list-group-item-action"
             >
               Sign Out
@@ -109,7 +109,7 @@
                         >Settings</a
                       >
                       <div class="dropdown-divider"></div>
-                      <a href="/" class="dropdown-item">Logout</a>
+                      <a href="/logout" class="dropdown-item">Logout</a>
                     </div>
                   </li>
                   <li class="nav-item">
@@ -172,125 +172,34 @@
                 <div class="row mt-3">
                   <div class="col-12 mt-2">
                     <h5 class="mb-3">Recent Transactions</h5>
-                    <a
-                      href="/dashboard-transactions-details.html"
-                      class="card card-list d-block"
-                    >
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-md-1">
-                            <img
-                              src="/images/dashboard-icon-product-1.png"
-                              alt=""
-                            />
-                          </div>
-                          <div class="col-md-4">Shirup Marzzan</div>
-                          <div class="col-md-3">Angga Risky</div>
-                          <div class="col-md-3">12 Januari, 2020</div>
-                          <div class="col-md-1 d-none d-md-block">
-                            <img
-                              src="/images/dashboard-arrow-right.svg"
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-                    <a
-                      href="/dashboard-transactions-details.html"
-                      class="card card-list d-block"
-                    >
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-md-1">
-                            <img
-                              src="/images/dashboard-icon-product-2.png"
-                              alt=""
-                            />
-                          </div>
-                          <div class="col-md-4">LeBrone X</div>
-                          <div class="col-md-3">Masayoshi</div>
-                          <div class="col-md-3">11 January, 2020</div>
-                          <div class="col-md-1 d-none d-md-block">
-                            <img
-                              src="/images/dashboard-arrow-right.svg"
-                              alt=""
-                            />
+                    @if(count($products) > 0)
+                    @foreach($products as $product)
+                      <a
+                        href="/dashboard-transactions-details.html"
+                        class="card card-list d-block"
+                      >
+                        <div class="card-body">
+                          <div class="row d-flex justify-content-between align-center">
+                            <div class="col-md-1">
+                              <img
+                                src="/img/products/{{ $product->produk->gambar }}"
+                                alt="" style="height: 44px;"
+                              />
+                            </div>
+                            <div class="col-md-4">{{ $product->produk->nama }}<br>{{ $product->jumlah_barang }}x</div>
+                            <div class="col-md-3">{{ $product->user->name }}</div>
+                            <div class="col-md-3">{{ $product->created_at->format('D, d M Y') }}</div>
+                            <div class="col-md-1 d-none d-md-block">
+                              <img
+                                src="/images/dashboard-arrow-right.svg"
+                                alt=""
+                              />
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </a>
-                    <a
-                      href="/dashboard-transactions-details.html"
-                      class="card card-list d-block"
-                    >
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-md-1">
-                            <img
-                              src="/images/dashboard-icon-product-3.png"
-                              alt=""
-                            />
-                          </div>
-                          <div class="col-md-4">Soffa Lembutte</div>
-                          <div class="col-md-3">Shayna</div>
-                          <div class="col-md-3">11 January, 2020</div>
-                          <div class="col-md-1 d-none d-md-block">
-                            <img
-                              src="/images/dashboard-arrow-right.svg"
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-
-                    <div class="price-container mode-bg" id="pricelist">
-        <h3 class="mode-text">Products List</h3>
-        <div class="price-table">
-          <table class="table">
-            <thead class="mode-border">
-              <tr class="mode-text">
-                <th scope='col'>No</th>
-                <th scope='col'>Nama</th>
-                <th scope='col'>Harga</th>
-                <th scope='col'>Gambar</th>
-                <th scope='col'>Deskripsi</th>
-              </tr>
-            </thead>
-            <tbody>
-              @if(count($products) > 0)
-                @foreach($products as $product)
-                  <tr onclick="window.location='#';">
-                    <td class='mode-text' scope='row'>
-                      <a href="#" class="btn-show">{{ $product->id }}</a>
-                    </td>
-                    <td class='mode-text'>
-                      <a href="#" class="btn-show">{{ $product->nama }}</a>
-                    </td>
-                    <td class='mode-text'>
-                      <a href="#" class="btn-show">{{ $product->harga }}</a>
-                    </td>
-                    <td class='mode-text'>
-                      <a href="#" class="btn-show">{{ $product->gambar }}</a>
-                    </td>
-                    <td class='mode-text'>
-                      <a href="#" class="btn-show"><b>{{ $product->deskripsi }}</b></a>
-                    </td>
-                  </tr>
-                @endforeach
-              @endif
-                <tr class="row-create text-center" onclick="window.location='{{ route('penjual.create', Auth::user()->id) }}';">
-                  <td colspan="5">
-                    <a class="text-white btn"><i class="fa-solid fa-plus"></i> Create New List</a>
-                  </td>
-                </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
+                      </a>
+                      @endforeach
+                    @endif
                   </div>
                 </div>
               </div>
