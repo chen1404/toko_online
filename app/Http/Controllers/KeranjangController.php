@@ -10,9 +10,8 @@ class KeranjangController extends Controller
 {
     public function keranjang(Produk $product) {
         Keranjang::create([
-            'nama' => $product->nama,
             'harga' => $product->harga,
-            'gambar' => $product->gambar,
+            'produk_id' => $product->id,
             'pembeli_id' => Auth::user()->id
         ]);
         session()->flash('success', 'Berhasil Ditambah ke Keranjang!');

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Transaksi extends Model
 {
@@ -13,7 +14,8 @@ class Transaksi extends Model
         return $this->belongsTo(Produk::class);
     }
     public function user() {
-        return $this->belongsTo(User::class);
+        $role = Auth::user()->role == 'penjual' ? 'pembeli_id' : 'penjual_id';
+        return $this->belongsTo(User::class, $role);
     }
     protected $table = 'transaksis';
     protected $fillable = ['total_harga', 'jumlah_barang', 'alamat', 'pembeli_id', 'penjual_id', 'produk_id'];

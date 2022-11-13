@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('keranjangs', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
             $table->string('harga');
-            $table->string('gambar');
+            $table->foreignId('produk_id');
             $table->foreignId('pembeli_id');
             $table->timestamps();
+            $table->foreign('produk_id')->references('id')->on('produks');
             $table->foreign('pembeli_id')->references('id')->on('users');
         });
     }

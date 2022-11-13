@@ -66,13 +66,9 @@
               data-aos="fade-up"
               data-aos-delay="200"
             >
-              <a href="" class="component-categories d-block">
+              <a href="/kategori/elektronik" class="component-categories d-block">
                 <div class="categories-image">
-                  <img
-                    src="/images/people-team-svgrepo-com.svg"
-                    alt=""
-                    class="w-100"
-                  />
+                  <img src="/images/categories-elektronik.png" alt="" class="w-100" />
                 </div>
                 <p class="categories-text">Elektronik</p>
               </a>
@@ -82,7 +78,7 @@
               data-aos="fade-up"
               data-aos-delay="200"
             >
-              <a href="" class="component-categories d-block">
+              <a href="/kategori/kesehatan" class="component-categories d-block">
                 <div class="categories-image">
                   <img
                     src="/images/healthcare.png"
@@ -90,7 +86,7 @@
                     class="w-100"
                   />
                 </div>
-                <p class="categories-text">Perawatan</p>
+                <p class="categories-text">Kesehatan</p>
               </a>
             </div>
             <div
@@ -98,26 +94,10 @@
               data-aos="fade-up"
               data-aos-delay="300"
             >
-              <a href="" class="component-categories d-block">
+              <a href="/kategori/perabotan" class="component-categories d-block">
                 <div class="categories-image">
                   <img
-                    src="/images/handphone.png"
-                    alt=""
-                    class="w-100"
-                  />
-                </div>
-                <p class="categories-text">Handphone</p>
-              </a>
-            </div>
-            <div
-              class="col-6 col-md col-lg-2"
-              data-aos="fade-up"
-              data-aos-delay="400"
-            >
-              <a href="" class="component-categories d-block">
-                <div class="categories-image">
-                  <img
-                    src="/images/furniture.png"
+                    src="/images/categories-furniture.svg"
                     alt=""
                     class="w-100"
                   />
@@ -128,17 +108,33 @@
             <div
               class="col-6 col-md col-lg-2"
               data-aos="fade-up"
-              data-aos-delay="500"
+              data-aos-delay="400"
             >
-              <a href="" class="component-categories d-block">
+              <a href="/kategori/pakaian" class="component-categories d-block">
                 <div class="categories-image">
                   <img
-                    src="/images/watch.png"
+                    src="/images/furniture.png"
                     alt=""
                     class="w-100"
                   />
                 </div>
-                <p class="categories-text">Jam</p>
+                <p class="categories-text">Pakaian</p>
+              </a>
+            </div>
+            <div
+              class="col-6 col-md col-lg-2"
+              data-aos="fade-up"
+              data-aos-delay="500"
+            >
+              <a href="/kategori/kecantikan" class="component-categories d-block">
+                <div class="categories-image">
+                  <img
+                    src="/images/categories-makeup.svg"
+                    alt=""
+                    class="w-100"
+                  />
+                </div>
+                <p class="categories-text">Kecantikan</p>
               </a>
             </div>
             <div
@@ -146,11 +142,15 @@
               data-aos="fade-up"
               data-aos-delay="600"
             >
-              <a href="" class="component-categories d-block">
+              <a href="/kategori/gaming" class="component-categories d-block">
                 <div class="categories-image">
-                  <img src="/images/otomotif.png" alt="" class="w-100" />
+                  <img
+                    src="/images/people-team-svgrepo-com.svg"
+                    alt=""
+                    class="w-100"
+                  />
                 </div>
-                <p class="categories-text">Otomotif</p>
+                <p class="categories-text">Gaming</p>
               </a>
             </div>
           </div>

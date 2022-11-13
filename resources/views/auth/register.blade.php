@@ -78,6 +78,8 @@
                       id="openStoreTrue"
                       v-model="is_store_open"
                       :value="true"
+                      onclick="boleh()"
+                      required 
                     />
                     <label for="openStoreTrue" class="custom-control-label"
                       >Iya, boleh</label
@@ -93,6 +95,8 @@
                       id="openStoreFalse"
                       v-model="is_store_open"
                       :value="false"
+                      onclick="enggak()"
+                      required
                     />
                     <label for="openStoreFalse" class="custom-control-label"
                       >Enggak, makasih</label
@@ -101,10 +105,10 @@
                 </div>
                 <div class="form-group" v-if="is_store_open">
                   <label>Nama Toko</label>
-                  <input type="text" class="form-control" />
+                  <input type="text" class="form-control" id="namaToko" disabled/>
                 </div>
                 
-                <input type="text" name="role" id="" value="penjual" hidden>
+                <input type="text" name="role" id="role" hidden>
                 
                 <button type="submit" class="btn btn-success btn-block mt-4"
                   >Sign Up Now</button>
@@ -119,4 +123,5 @@
       </div>
     </div>
      
+    <script src="js/register-role.js"></script>
 @endsection

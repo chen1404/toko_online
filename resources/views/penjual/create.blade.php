@@ -25,13 +25,13 @@
           </div>
           <div class="list-group list-group-flush">
             <a
-              href="/dashboard.html"
+              href="{{ route('penjual.home') }}"
               class="list-group-item list-group-item-action"
             >
               Dashboard
             </a>
             <a
-              href="/dashboard-product.html"
+              href="{{ route('produk') }}"
               class="list-group-item list-group-item-action active"
             >
               My Products
@@ -55,7 +55,7 @@
               My Account
             </a>
             <a
-              href="/index.html"
+              href="/logout"
               class="list-group-item list-group-item-action"
             >
               Sign Out
@@ -146,8 +146,8 @@
               <div class="dashboard-content">
                 <div class="row">
                   <div class="col-12">
-                    <form action="/penjual/store" method="post" class="card-body" enctype="multipart/form-data">
-                        @csrf
+                    <form action="/produk/store" method="post" class="card-body" enctype="multipart/form-data">
+                      @csrf
                       <div class="card">
                         <div class="card-body">
                           <div class="row">
@@ -155,7 +155,6 @@
                               <div class="form-group">
                                 <label for="nama" class="form-label">Nama Produk</label>
                                 <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" placeholder="Nama Produk" required />
-                               
                                 @error('nama')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -173,10 +172,15 @@
                             <div class="col-md-12">
                               <div class="form-group">
                                 <label>Kategori</label>
-                                <select name="category" class="form-control">
-                                  <option value="" disabled>
-                                    Select Category
-                                  </option>
+                                <select name="kategori" class="form-control" required>
+                                  <option disabled selected>Select Category</option>
+                                  <option value="elektronik">Elektronik</option>
+                                  <option value="kesehatan">Kesehatan</option>
+                                  <option value="perabotan">Perabotan</option>
+                                  <option value="pakaian">Pakaian</option>
+                                  <option value="kecantikan">Kecantikan</option>
+                                  <option value="gaming">Gaming</option>
+                                  <option value="lainnya">Lainnya</option>
                                 </select>
                               </div>
                             </div>
@@ -212,10 +216,7 @@
                           </div>
                           <div class="row mt-5">
                             <div class="col text-right">
-                              
-                                
-                              <a class=" btn btn-danger text-white" href="{{ route('penjual.home') }}"><i class="fa-sharp fa-solid fa-arrow-left"></i> Back</a>
-                              
+                              <a class=" btn btn-danger text-white" href="{{ route('produk') }}"><i class="fa-sharp fa-solid fa-arrow-left"></i> Back</a>
                             </div>
                           </div>
                         </div>

@@ -9,6 +9,13 @@ class Keranjang extends Model
 {
     use HasFactory;
     
+    public function produk() {
+        return $this->belongsTo(Produk::class);
+    }
+    public function user() {
+        return $this->belongsTo(User::class, 'pembeli_id');
+    }
+
     protected $table = 'keranjangs';
-    protected $fillable = ['nama', 'harga', 'gambar', 'pembeli_id'];
+    protected $fillable = ['harga', 'produk_id', 'pembeli_id'];
 }

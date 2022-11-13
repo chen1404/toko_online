@@ -24,7 +24,7 @@
                     <th scope="row">{{ $no++ }}</th>
                     <td>{{ $product->produk->nama }}</td>
                     <td>{{ $product->total_harga }}</td>
-                    <td>{{ $product->penjual_id }}</td>
+                    <td>{{ $product->user->name }}</td>
                     <td>{{ $product->produk_id }}</td>
                 </tr>
             @endforeach
