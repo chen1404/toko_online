@@ -50,4 +50,18 @@ class TransaksiController extends Controller
         
         return redirect("/show/$products->id")->with('success', 'Produk berhasil di Checkout!');
     }
+
+    public function penjual() {
+        $transactions = Transaksi::all()->where('penjual_id', Auth::user()->id);
+        $jumlahTransaksi = Transaksi::all()->where('penjual_id', Auth::user()->id)->count();
+        $totalIncome = Transaksi::where('penjual_id', Auth::user()->id)->sum('total_harga');
+        $jumlahCustomer = Transaksi::select('pembeli_id')->distinct()->get()->count();
+        
+        return view('penjual.home', [
+            "transactions" => $transactions,
+            "jumlah_transaksi" => $jumlahTransaksi,
+            "total_income" => $totalIncome,
+            "customer" => $jumlahCustomer,
+        ]);
+    }
 }

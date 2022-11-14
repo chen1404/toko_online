@@ -66,14 +66,7 @@ Route::get('/checkout/produk/{products}', [TransaksiController::class, 'storeKer
 
 
 // PENJUAL
-Route::get('/penjual', function () {
-    return view('penjual.home', [
-        "transaksix" => Transaksi::all()->where('penjual_id', Auth::user()->id),
-        "total_transaksi" => Transaksi::all()->where('penjual_id', Auth::user()->id)->count(),
-        "income" => Transaksi::where('penjual_id', Auth::user()->id)->sum('total_harga'),
-        "customer" => Transaksi::select('pembeli_id')->distinct()->get()->count(),
-    ]);
-})->name('penjual.home')->middleware('auth');
+Route::get('/penjual', [TransaksiController::class, 'penjual'])->name('penjual.home')->middleware('auth');
 
 Route::get('/produk/create', [ProdukController::class, 'create'])->name('penjual.create')->middleware('auth');
 Route::post('/produk/store', [ProdukController::class, 'store'])->name('penjual.store')->middleware('auth');
