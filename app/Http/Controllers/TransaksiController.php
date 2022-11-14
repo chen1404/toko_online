@@ -5,13 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Keranjang;
 use App\Models\Produk;
 use App\Models\Transaksi;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class TransaksiController extends Controller
 {
     public function store($id) {
-
+        $id = Auth::user()->id;
         $keranjang = Keranjang::all()->where('pembeli_id', $id);
         
         foreach($keranjang as $keranj) {
@@ -34,7 +33,7 @@ class TransaksiController extends Controller
         }
         Keranjang::where('pembeli_id', $id)->delete();
 
-        return redirect('/keranjang')->with('success', 'Keranjang berhasil di Checkout!');
+        return redirect('/success');
     }
     
     public function storeKeranjang(Produk $products) {

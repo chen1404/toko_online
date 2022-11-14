@@ -55,12 +55,12 @@ Route::post('/{product}', [KeranjangController::class, 'keranjang'])->name('kera
 
 Route::get('/keranjang', [KeranjangController::class, 'pembeli'])->name('pembeli.keranjang')->middleware('auth');
 Route::get('/keranjang/{id}', [KeranjangController::class, 'destroy'])->name('pembeli.keranjang.delete')->middleware('auth');
+Route::get('/keranjang/checkout/{id}', [TransaksiController::class, 'store'])->name('pembeli.keranjang.checkout')->middleware('auth');
 
 Route::get('/checkout', function () {
     return view('pembeli.checkout',  ["products" => Transaksi::all()->where('pembeli_id', Auth::user()->id)]);
 })->name('pembeli.checkout')->middleware('auth');
 
-Route::get('/checkout/{id}', [TransaksiController::class, 'store'])->name('checkout')->middleware('auth');
 Route::get('/checkout/produk/{products}', [TransaksiController::class, 'storeKeranjang'])->name('checkout.produk')->middleware('auth');
 // END PEMBELI
 
@@ -83,7 +83,7 @@ Route::delete('/{id}', [ProdukController::class, 'destroy'])->name('delete')->mi
 
 // Route Satria
 
-Route::get('success', function () {
+Route::get('/success', function () {
     return view('pembeli.success', [
         "products" => Produk::all()
     ]);

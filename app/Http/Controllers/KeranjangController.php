@@ -27,7 +27,7 @@ class KeranjangController extends Controller
         $totalHarga = Keranjang::all()->where('pembeli_id', $idUser)->sum('harga');
         $biayaAdmin = $totalHarga * 0.2 / 100;
         $totalProduk = Keranjang::all()->where('pembeli_id', $idUser)->count();
-        $dataUser = User::select('number', 'address')->where('id', $idUser)->get('number');
+        $dataUser = User::select('id', 'number', 'address')->where('id', $idUser)->get('number');
         
         return view('pembeli.keranjang', [
             "keranjangs" => $keranjangs,
@@ -36,6 +36,7 @@ class KeranjangController extends Controller
             "total_produk" => $totalProduk,
             "nohp_user" => $dataUser[0]['number'],
             "alamat_user" => $dataUser[0]['address'],
+            "id_user" => $dataUser[0]['id'],
         ]);
     }
     

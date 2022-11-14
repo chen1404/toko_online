@@ -253,7 +253,7 @@
             </div>
             <div class="col-8 col-md-3">
               <a
-                href="/success.html"
+                href="/keranjang/checkout/{{ $id_user }}"
                 class="btn btn-success mt-4 px-4 btn-block"
                 >Checkout Now</a
               >
