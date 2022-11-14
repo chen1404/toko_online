@@ -78,7 +78,7 @@
                       id="openStoreTrue"
                       v-model="is_store_open"
                       :value="true"
-                      onclick="boleh()"
+                      onclick="onLoad('hide', 'show')"
                       required 
                     />
                     <label for="openStoreTrue" class="custom-control-label"
@@ -95,7 +95,7 @@
                       id="openStoreFalse"
                       v-model="is_store_open"
                       :value="false"
-                      onclick="enggak()"
+                      onclick="onLoad('show', 'hide')"
                       required
                     />
                     <label for="openStoreFalse" class="custom-control-label"
@@ -103,9 +103,9 @@
                     >
                   </div>
                 </div>
-                <div class="form-group" v-if="is_store_open">
+                <div class="form-group hide" v-if="is_store_open" id="tokoDiv">
                   <label>Nama Toko</label>
-                  <input type="text" class="form-control" id="namaToko" disabled/>
+                  <input type="text" class="form-control" id="namaToko"/>
                 </div>
                 
                 <input type="text" name="role" id="role" hidden>

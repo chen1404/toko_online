@@ -1,6 +1,6 @@
 
 /* price list */
-.price-container h3 {
+/* .price-container h3 {
     font-size: 30px;
     text-align: center;
     font-weight: 600;
@@ -88,4 +88,12 @@ thead tr th {
     color: var(--bs-table-hover-color);
     cursor: pointer;
     text-decoration: underline;
+} */
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
 }
