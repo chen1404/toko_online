@@ -53,9 +53,8 @@ Route::get('/kategori/{produk}', function ($kategori) {
 Route::get('/show/{id}', [ProdukController::class, 'show'])->name('show')->middleware('auth');
 Route::post('/{product}', [KeranjangController::class, 'keranjang'])->name('keranjang')->middleware('auth');
 
-Route::get('/keranjang', function () {
-    return view('pembeli.keranjang',  ["keranjangs" => Keranjang::all()->where('pembeli_id', Auth::user()->id)]);
-})->name('pembeli.keranjang')->middleware('auth');
+Route::get('/keranjang', [KeranjangController::class, 'pembeli'])->name('pembeli.keranjang')->middleware('auth');
+Route::get('/keranjang/{id}', [KeranjangController::class, 'destroy'])->name('pembeli.keranjang.delete')->middleware('auth');
 
 Route::get('/checkout', function () {
     return view('pembeli.checkout',  ["products" => Transaksi::all()->where('pembeli_id', Auth::user()->id)]);

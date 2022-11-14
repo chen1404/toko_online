@@ -58,7 +58,7 @@
             @endif
             <li class="nav-item">
               @php $stat = Auth::user() ? 'logout' : 'login' @endphp
-              <a class="btn btn-danger" href="{{ "/$stat" }}" class="nav-link " aria-current="page">
+              <a class="btn btn-primary" href="{{ "/$stat" }}" class="nav-link " aria-current="page">
                   {{ ucfirst($stat) }}
               </a>
             </li>
@@ -129,7 +129,7 @@
                       <div class="product-subtitle">IDR</div>
                     </td>
                     <td style="width: 20%">
-                      <a href="#" class="btn btn-remove-cart"> remove </a>
+                      <a href="/keranjang/{{ $keranjang->id }}" class="btn btn-remove-cart"> remove </a>
                     </td>
                   </tr>
                 </tbody>
@@ -146,19 +146,7 @@
             </div>
           </div>
           <div class="row mb-2" data-aos="fade-up" data-aos-delay="200">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="addressOne">Address 1</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="addressOne"
-                  name="addressOne"
-                  value="Setra Duta Cemara"
-                />
-              </div>
-            </div>
-            <div class="col-md-6">
+            {{-- <div class="col-md-6">
               <div class="form-group">
                 <label for="addressTwo">Address 2</label>
                 <input
@@ -169,24 +157,36 @@
                   value="Blok B2 No. 34"
                 />
               </div>
-            </div>
-            <div class="col-md-4">
+            </div> --}}
+            <div class="col-md-6">
               <div class="form-group">
-                <label for="Province">Province</label>
+                <label for="Province">Provinsi</label>
                 <select name="Province" id="Province" class="form-control">
                   <option value="West Java">West Java</option>
                 </select>
               </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
               <div class="form-group">
-                <label for="Province">city</label>
+                <label for="Province">Kota</label>
                 <select name="city" id="city" class="form-control">
                   <option value="Bandung">Bandung</option>
                 </select>
               </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="addressOne">Alamat</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="addressOne"
+                  name="addressOne"
+                  value="Setra Duta Cemara"
+                />
+              </div>
+            </div>
+            {{-- <div class="col-md-4">
               <div class="form-group">
                 <label for="postalCode">Postal Code</label>
                 <input
@@ -197,8 +197,8 @@
                   value="40512"
                 />
               </div>
-            </div>
-            <div class="col-md-6">
+            </div> --}}
+            {{-- <div class="col-md-6">
               <div class="form-group">
                 <label for="country">Country</label>
                 <input
@@ -209,10 +209,10 @@
                   value="Indonesia "
                 />
               </div>
-            </div>
+            </div> --}}
             <div class="col-md-6">
               <div class="form-group">
-                <label for="mobile">Mobile</label>
+                <label for="mobile">Nomor Hp</label>
                 <input
                   type="text"
                   class="form-control"
@@ -232,21 +232,17 @@
             </div>
           </div>
           <div class="row" data-aos="fade-up" data-aos-delay="200">
-            {{-- <div class="col-4 col-md-2">
-              <div class="product-title">$10</div>
-              <div class="product-subtitle">Country Tax</div>
-            </div> --}}
             <div class="col-4 col-md-3">
-              <div class="product-title">$10</div>
-              <div class="product-subtitle">Product Insurance</div>
+              <div class="product-title">{{ $total_produk }}</div>
+              <div class="product-subtitle">Total Produk</div>
             </div>
             <div class="col-4 col-md-3">
-              <div class="product-title">$580</div>
-              <div class="product-subtitle">Ship to Jakarta</div>
+              <div class="product-title">{{ $biaya_admin }}</div>
+              <div class="product-subtitle">Pajak Admin</div>
             </div>
             <div class="col-4 col-md-3">
-              <div class="product-title text-success">$392,409</div>
-              <div class="product-subtitle">Total</div>
+              <div class="product-title text-success">{{ $total_harga }}</div>
+              <div class="product-subtitle">Total Harga</div>
             </div>
             <div class="col-8 col-md-3">
               <a
