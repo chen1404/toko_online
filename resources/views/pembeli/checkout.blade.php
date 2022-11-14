@@ -13,7 +13,8 @@
             <th scope="col">No</th>
             <th scope="col">Nama</th>
             <th scope="col">Total Harga</th>
-            <th scope="col">Id Penjual</th>
+            <th scope="col">Jumlah Barang</th>
+            <th scope="col">Penjual</th>
             <th scope="col">Id Produk</th>
         </tr>
         </thead>
@@ -24,6 +25,7 @@
                     <th scope="row">{{ $no++ }}</th>
                     <td>{{ $product->produk->nama }}</td>
                     <td>{{ $product->total_harga }}</td>
+                    <td><b>{{ $product->jumlah_barang }}x</b></td>
                     <td>{{ $product->user->name }}</td>
                     <td>{{ $product->produk_id }}</td>
                 </tr>

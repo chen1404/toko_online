@@ -52,4 +52,42 @@ class ProdukController extends Controller
             'products' => $id,
         ]);
     }
+    public function edit(Produk $produk) {
+        return view('penjual.update', [
+            'product' => $produk,
+        ]);
+    }
+    
+    public function update(Request $request, $id) {
+        $produk = Produk::findOrFail($id);
+
+        $filename = $produk->gambar;
+        if ($request->hasFile('file')) {
+            $slug = Str::slug($request->get('nama'), '-');
+            $randstr = Str::lower(Str::random(5));
+            $file = $request->file('file');
+            $filename = 'products-' . $slug . '-' . $randstr . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('img/products'), $filename);
+        }
+
+        $validateData = $request->validate([
+            "nama" => 'required|string',
+            "harga" => 'required|string',
+            "kategori" => 'required|string',
+            "gambar" => $filename,
+            "deskripsi" => 'required|string',
+            "penjual_id" => 'required',
+        ]);
+        $produk->update($validateData);
+
+        return redirect("/produk")->with('success', 'Rental berhasil diubah');
+    }
+    
+    public function destroy($id) {
+        $produk = Produk::findOrFail($id);
+        $produk->delete();
+
+        return redirect('/produk')->with('success', 'Rental berhasil dihapus');
+    }
 }
+
