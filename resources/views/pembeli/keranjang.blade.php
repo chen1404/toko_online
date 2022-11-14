@@ -80,7 +80,7 @@
               <nav>
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item">
-                    <a href="/index.html">Home</a>
+                    <a href="{{ route( Auth::user() == 'penjual' ? 'penjual.home' : 'pembeli.home') }}">Home</a>
                   </li>
                   <li class="breadcrumb-item active">Cart</li>
                 </ol>
@@ -103,9 +103,9 @@
               <table class="table table-borderless table-cart">
                 <thead>
                   <tr>
-                    <td>Image</td>
-                    <td>Name &amp; Seller</td>
-                    <td>Price</td>
+                    <td>Gambar</td>
+                    <td>Nama Produk &amp; Penjual</td>
+                    <td>Harga</td>
                     <td>Menu</td>
                   </tr>
                 </thead>
@@ -142,7 +142,7 @@
               <hr />
             </div>
             <div class="col-12">
-              <h2 class="mb-4">Shipping Details</h2>
+              <h2 class="mb-4">Rincian pengiriman</h2>
             </div>
           </div>
           <div class="row mb-2" data-aos="fade-up" data-aos-delay="200">
@@ -162,15 +162,22 @@
               <div class="form-group">
                 <label for="Province">Provinsi</label>
                 <select name="Province" id="Province" class="form-control">
-                  <option value="West Java">West Java</option>
+                  <option value="Kalimantan Timur">Kalimantan Timur</option>
+                  <option value="Kalimantan Selatan">Kalimantan Selatan</option>
+                  <option value=">Kalimantan Tengah">Kalimantan Tengah</option>
                 </select>
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <label for="Province">Kota</label>
+                <label for="city">Kota</label>
                 <select name="city" id="city" class="form-control">
-                  <option value="Bandung">Bandung</option>
+                  <option value="Samarinda">Samarinda</option>
+                  <option value="Balikpapan">Balikpapan</option>
+                  <option value="Bontang">Bontang</option>
+                  <option value="Sangata">Sangata</option>
+                  <option value="Banjarmasin">Banjarmasin</option>
+                  <option value="Balangan">Balangan</option>
                 </select>
               </div>
             </div>
