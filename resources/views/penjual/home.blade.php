@@ -94,12 +94,12 @@
                       role="button"
                       data-toggle="dropdown"
                     >
+                      Hi, {{ Auth::user()->name }}
                       <img
                         src="/images/icon-user.png"
                         alt=""
                         class="rounded-circle mr-2 profile-picture"
                       />
-                      Hi, Rai
                     </a>
                     <div class="dropdown-menu">
                       <a href="/dashboard.html" class="dropdown-item"
@@ -148,7 +148,7 @@
                     <div class="card mb-2">
                       <div class="card-body">
                         <div class="dashboard-card-title">Customer</div>
-                        <div class="dashboard-card-subtitle">15,209</div>
+                        <div class="dashboard-card-subtitle">{{ $customer }}</div>
                       </div>
                     </div>
                   </div>
@@ -156,7 +156,7 @@
                     <div class="card mb-2">
                       <div class="card-body">
                         <div class="dashboard-card-title">Revenue</div>
-                        <div class="dashboard-card-subtitle">$931,290</div>
+                        <div class="dashboard-card-subtitle">Rp.{{ $income }}</div>
                       </div>
                     </div>
                   </div>
@@ -164,7 +164,7 @@
                     <div class="card mb-2">
                       <div class="card-body">
                         <div class="dashboard-card-title">Transaction</div>
-                        <div class="dashboard-card-subtitle">22,409,399</div>
+                        <div class="dashboard-card-subtitle">{{ $total_transaksi }}</div>
                       </div>
                     </div>
                   </div>
@@ -172,8 +172,8 @@
                 <div class="row mt-3">
                   <div class="col-12 mt-2">
                     <h5 class="mb-3">Recent Transactions</h5>
-                    @if(count($products) > 0)
-                    @foreach($products as $product)
+                    @if(count($transaksix) > 0)
+                      @foreach($transaksix as $transaksi)
                       <a
                         href="/dashboard-transactions-details.html"
                         class="card card-list d-block"
@@ -182,13 +182,14 @@
                           <div class="row d-flex justify-content-between align-center">
                             <div class="col-md-1">
                               <img
-                                src="/img/products/{{ $product->produk->gambar }}"
-                                alt="" style="height: 44px;"
+                                src="/img/products/{{ $transaksi->produk->gambar }}"
+                                alt="" style="height: 50px;"
                               />
                             </div>
-                            <div class="col-md-4">{{ $product->produk->nama }}<br>{{ $product->jumlah_barang }}x</div>
-                            <div class="col-md-3">{{ $product->user->name }}</div>
-                            <div class="col-md-3">{{ $product->created_at->format('D, d M Y') }}</div>
+                            <div class="col-md-3">{{ $transaksi->produk->nama }} <b>{{ $transaksi->jumlah_barang }}x</b></div>
+                            <div class="col-md-2">Rp.{{ $transaksi->total_harga }}</div>
+                            <div class="col-md-3">{{ $transaksi->user->name }}</div>
+                            <div class="col-md-2">{{ $transaksi->created_at->format('D, d M Y') }}</div>
                             <div class="col-md-1 d-none d-md-block">
                               <img
                                 src="/images/dashboard-arrow-right.svg"
