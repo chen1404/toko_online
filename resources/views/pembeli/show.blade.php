@@ -17,7 +17,7 @@
   </head>
 
   <body>
-<nav
+    <nav
       class="navbar navbar-expand-lg navbar-light navbar-store fixed-top navbar-fixed-top"
       data-aos="fade-down"
     >
@@ -91,6 +91,11 @@
 
       <section class="store-gallery" id="gallery" style="margin-top: 20px">
         <div class="container">
+          @if(session('success'))
+            <div class="alert alert-success">
+                {{session('success')}}
+            </div>
+          @endif
           <div class="row">
             <div class="col-lg-8" data-aos="zoom-in">
                 <img
@@ -111,7 +116,7 @@
             <div class="row">
               <div class="col-lg-8">
                 <h1>{{ $products->nama }}</h1>
-                <div class="owner">By Rai</div>
+                <div class="owner">By {{ $products->user->name }}</div>
                 <div class="price">Rp.{{ $products->harga }}</div>
               </div>
               
@@ -137,7 +142,7 @@
 
               <div class="" data-aos="zoom-in">
                 <a 
-                  href="/update/{{ $products->id }}"
+                  href="{{ route('checkout.produk', $products) }}"
                   class="btn btn-success px-4 text-white btn-block mb-3"
                   >Checkout</a
                 >

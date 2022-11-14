@@ -68,7 +68,12 @@ Route::get('/checkout/produk/{products}', [TransaksiController::class, 'storeKer
 
 // PENJUAL
 Route::get('/penjual', function () {
-    return view('penjual.home', ["products" => Transaksi::all()->where('penjual_id', Auth::user()->id)]);
+    return view('penjual.home', [
+        "transaksix" => Transaksi::all()->where('penjual_id', Auth::user()->id),
+        "total_transaksi" => Transaksi::all()->where('penjual_id', Auth::user()->id)->count(),
+        "income" => Transaksi::where('penjual_id', Auth::user()->id)->sum('total_harga'),
+        "customer" => Transaksi::select('pembeli_id')->distinct()->get()->count(),
+    ]);
 })->name('penjual.home')->middleware('auth');
 
 Route::get('/produk/create', [ProdukController::class, 'create'])->name('penjual.create')->middleware('auth');
@@ -77,4 +82,9 @@ Route::post('/produk/store', [ProdukController::class, 'store'])->name('penjual.
 Route::get('/produk', function () {
     return view('penjual.produk', ["products" => Produk::all()->where('penjual_id', Auth::user()->id)]);
 })->name('produk');
+
+Route::get('/update/{produk}', [ProdukController::class, 'edit'])->name('edit')->middleware('auth');
+Route::put('/{id}', [ProdukController::class, 'update'])->name('update')->middleware('auth');
+
+Route::delete('/{id}', [ProdukController::class, 'destroy'])->name('delete')->middleware('auth');
 // END PENJUAL

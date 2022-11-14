@@ -185,7 +185,7 @@
               </a>
             </div>
             @endforeach
-          </div>A
+          </div>
         </div>
       </section>
     </div>

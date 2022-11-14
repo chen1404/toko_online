@@ -95,12 +95,12 @@
                       role="button"
                       data-toggle="dropdown"
                     >
+                      Hi, {{ Auth::user()->name }}
                       <img
                         src="/images/icon-user.png"
                         alt=""
                         class="rounded-circle mr-2 profile-picture"
                       />
-                      Hi, Rai
                     </a>
                     <div class="dropdown-menu">
                       <a href="/dashboard.html" class="dropdown-item"
