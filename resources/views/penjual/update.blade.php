@@ -228,15 +228,6 @@
                                                             </button>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col text-right">
-                                                            <form action="{{ route('delete', $product->id) }}" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus mahasiswa ini?')">
-                                                                @csrf
-                                                                @method('delete')
-                                                                <button type="submit" class="btn btn-danger mb-3 px-5 w-100"><i class="fa-solid fa-trash"></i> Delete Product</button>
-                                                            </form>
-                                                        </div>
-                                                    </div>
                                                     <div class="row mt-5">
                                                         <div class="col text-right">
                                                             <a class=" btn btn-warning text-white" href="{{ route('produk') }}"><i class="fa-sharp fa-solid fa-arrow-left"></i> Back</a>
@@ -245,6 +236,15 @@
                                                 </div>
                                             </div>
                                         </form>
+                                        <div class="row">
+                                            <div class="col text-right">
+                                                <form action="{{ route('delete', $product->id) }}" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus mahasiswa ini?')">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" class="btn btn-danger mb-3 px-5 w-100"><i class="fa-solid fa-trash"></i> Delete Product</button>
+                                                </form>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

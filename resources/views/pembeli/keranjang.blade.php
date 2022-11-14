@@ -115,14 +115,14 @@
                   <tr>
                     <td style="width: 20%">
                       <img
-                        src="/images/product-cart-1.png"
+                        src="/img/products/{{ $keranjang->produk->gambar }}"
                         alt=""
-                        class="cart-image w-100"
+                        class="cart-image "
                       />
                     </td>
                     <td td style="width: 35%">
                       <div class="product-title">{{ $keranjang->produk->nama }}</div>
-                      <div class="product-subtitle">{{ $keranjang->pembeli_id    }}</div>
+                      <div class="product-subtitle">{{ $keranjang->user->name    }}</div>
                     </td>
                     <td td style="width: 35%">
                       <div class="product-title">Rp.{{ $keranjang->harga }}</div>
@@ -232,19 +232,19 @@
             </div>
           </div>
           <div class="row" data-aos="fade-up" data-aos-delay="200">
-            <div class="col-4 col-md-2">
+            {{-- <div class="col-4 col-md-2">
               <div class="product-title">$10</div>
               <div class="product-subtitle">Country Tax</div>
-            </div>
+            </div> --}}
             <div class="col-4 col-md-3">
               <div class="product-title">$10</div>
               <div class="product-subtitle">Product Insurance</div>
             </div>
-            <div class="col-4 col-md-2">
+            <div class="col-4 col-md-3">
               <div class="product-title">$580</div>
               <div class="product-subtitle">Ship to Jakarta</div>
             </div>
-            <div class="col-4 col-md-2">
+            <div class="col-4 col-md-3">
               <div class="product-title text-success">$392,409</div>
               <div class="product-subtitle">Total</div>
             </div>

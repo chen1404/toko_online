@@ -47,7 +47,7 @@ Route::get('/', function () {
 })->name('pembeli.home');
 
 Route::get('/kategori/{produk}', function ($kategori) {
-    return view('pembeli.home', [ "products" => Produk::all()->where('kategori', $kategori)]);
+    return view('pembeli.home', ["products" => Produk::all()->where('kategori', $kategori)]);
 })->name('pembeli.home.kategori');
 
 Route::get('/show/{id}', [ProdukController::class, 'show'])->name('show')->middleware('auth');
@@ -88,3 +88,11 @@ Route::put('/{id}', [ProdukController::class, 'update'])->name('update')->middle
 
 Route::delete('/{id}', [ProdukController::class, 'destroy'])->name('delete')->middleware('auth');
 // END PENJUAL
+
+// Route Satria
+
+Route::get('success', function () {
+    return view('pembeli.success', [
+        "products" => Produk::all()
+    ]);
+})->name('pembeli.success');
