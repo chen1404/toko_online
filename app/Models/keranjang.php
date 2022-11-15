@@ -16,6 +16,6 @@ class Keranjang extends Model
         return $this->belongsTo(User::class, 'pembeli_id');
     }
 
-    protected $table = 'keranjangs';
-    protected $fillable = ['harga', 'produk_id', 'pembeli_id'];
+    protected $table = 'carts';
+    protected $fillable = ['total_harga', 'jumlah_barang', 'produk_id', 'pembeli_id'];
 }

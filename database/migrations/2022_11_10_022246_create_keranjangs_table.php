@@ -13,14 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('keranjangs', function (Blueprint $table) {
+        Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->string('harga');
-            $table->foreignId('produk_id');
+            $table->string('total_harga');
+            $table->string('jumlah_barang');
             $table->foreignId('pembeli_id');
+            $table->foreignId('produk_id');
             $table->timestamps();
-            $table->foreign('produk_id')->references('id')->on('produks');
-            $table->foreign('pembeli_id')->references('id')->on('users');
+            $table->foreign('pembeli_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('produk_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('keranjangs');
+        Schema::dropIfExists('carts');
     }
 };

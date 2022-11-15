@@ -92,11 +92,16 @@
 
       <section class="store-cart">
         <div class="container">
-            @if(session('success'))
-            <div class="">
+          @if(session('success'))
+            <div class="alert alert-success">
                 <p>{{ session('success') }}</p>
             </div>
-            @endif
+          @endif
+          @if(session('del-success'))
+            <div class="alert alert-danger">
+                <p>{{ session('del-success') }}</p>
+            </div>
+          @endif
 
           <div class="row" data-aos="fade-up" data-aos-delay="100">
             <div class="col-12 table-responsive">
@@ -105,6 +110,7 @@
                   <tr>
                     <td>Gambar</td>
                     <td>Nama Produk &amp; Penjual</td>
+                    <td>Jumlah Barang</td>
                     <td>Harga</td>
                     <td>Menu</td>
                   </tr>
@@ -120,16 +126,19 @@
                         class="cart-image "
                       />
                     </td>
-                    <td td style="width: 35%">
+                    <td td style="width: 25%">
                       <div class="product-title">{{ $keranjang->produk->nama }}</div>
                       <div class="product-subtitle">{{ $keranjang->produk->user->name }}</div>
                     </td>
-                    <td td style="width: 35%">
-                      <div class="product-title">Rp.{{ $keranjang->harga }}</div>
+                    <td td style="width: 20%">
+                      <div class="product-title">{{ $keranjang->jumlah_barang }}x</div>
+                    </td>
+                    <td td style="width: 20%">
+                      <div class="product-title">Rp.{{ $keranjang->total_harga }}</div>
                       <div class="product-subtitle">IDR</div>
                     </td>
                     <td style="width: 20%">
-                      <a href="/keranjang/{{ $keranjang->id }}" class="btn btn-remove-cart"> remove </a>
+                      <a href="/keranjang/delete/{{ $keranjang->id }}" class="btn btn-remove-cart"> remove </a>
                     </td>
                   </tr>
                 </tbody>

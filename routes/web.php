@@ -51,10 +51,10 @@ Route::get('/kategori/{produk}', function ($kategori) {
 })->name('pembeli.home.kategori');
 
 Route::get('/show/{id}', [ProdukController::class, 'show'])->name('show')->middleware('auth');
-Route::post('/{product}', [KeranjangController::class, 'keranjang'])->name('keranjang')->middleware('auth');
+Route::post('/show/{product}/add', [KeranjangController::class, 'keranjang'])->name('show.add')->middleware('auth');
 
 Route::get('/keranjang', [KeranjangController::class, 'pembeli'])->name('pembeli.keranjang')->middleware('auth');
-Route::get('/keranjang/{id}', [KeranjangController::class, 'destroy'])->name('pembeli.keranjang.delete')->middleware('auth');
+Route::get('/keranjang/delete/{id}', [KeranjangController::class, 'destroy'])->name('pembeli.keranjang.delete')->middleware('auth');
 Route::get('/keranjang/checkout/{id}', [TransaksiController::class, 'store'])->name('pembeli.keranjang.checkout')->middleware('auth');
 
 Route::get('/checkout', function () {

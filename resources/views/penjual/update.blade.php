@@ -145,12 +145,12 @@
                             </div>
                             <div class="dashboard-content">
                                 <div class="row">
-                                    <div class="col-12">
-                                        <form action="{{ route('update', $product->id) }}" method="post" class="card-body" enctype="multipart/form-data">
-                                            @csrf
-                                            @method('put')
-                                            <div class="card">
-                                                <div class="card-body">
+                                    <div class="col-12 card-body">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <form action="{{ route('update', $product->id) }}" method="post" enctype="multipart/form-data">
+                                                    @csrf
+                                                    @method('put')
                                                     @if(session('success'))
                                                       <div class="alert alert-success">
                                                           <b>Yeah!</b> {{session('success')}}
@@ -197,52 +197,67 @@
                                                             <textarea  name="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" placeholder="Deskripsi" required>{{ $product->deskripsi }}</textarea>
                                                         </div>
                                                         </div>
-                                                        <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label for="gambar" class="form-label">Gambar</label>
-                                                            <input type="file" class="form-control @error('gambar') is-invalid @enderror" id="gambar" name="file" placeholder="gambar" accept=".jpg,.jpeg,.png" />
-                                                            <p class="text-muted">
-                                                                silahkan input gambar produk<br>
-                                                                gambar default :
-                                                                <img
-                                                                    style="border-radius: 10px; height: 60px;"
-                                                                    src="/img/products/{{ $product->gambar }}"
-                                                                    class="main-image mb-3"
-                                                                    alt=""
-                                                                />
-                                                            </p>
-                                                            @error('gambar')
+                                                        <div class="col-md-6">
+                                                          <div class="form-group">
+                                                            <label for="stok" class="form-label">Stok</label>
+                                                            <input type="number" class="form-control @error('stok') is-invalid @enderror" id="stok" name="stok" placeholder="Stok" value="{{ $product->stok }}" required />
+                                                            @error('stok')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                             @enderror
-                                                            <input name="penjual_id" value="{{ $product->penjual_id }}" hidden>
+                                                          </div>
                                                         </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="file" class="form-label">Gambar</label>
+                                                                <input type="file" class="form-control @error('file') is-invalid @enderror" id="file" name="file" placeholder="gambar" accept=".jpg,.jpeg,.png" />
+                                                                <div class="row pt-2 d-flex justify-content-start">
+                                                                    <div class="col-5">
+                                                                        <p class="text-muted text-right">
+                                                                            silahkan input gambar produk
+                                                                            gambar default :
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="col-4">
+                                                                        <img
+                                                                            style="border-radius: 10px; height: 60px;"
+                                                                            src="/img/products/{{ $product->gambar }}"
+                                                                            class="main-image mb-3"
+                                                                            alt=""
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                                @error('gambar')
+                                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                                @enderror
+                                                                <input name="penjual_id" value="{{ $product->penjual_id }}" hidden>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col text-right">
                                                             <button
                                                                 type="submit"
-                                                                class="btn btn-success px-5 btn-block"
+                                                                class="btn btn-success px-5 mb-3 btn-block"
                                                             >
                                                                 Update Product
                                                             </button>
                                                         </div>
                                                     </div>
-                                                    <div class="row mt-5">
-                                                        <div class="col text-right">
-                                                            <a class=" btn btn-warning text-white" href="{{ route('produk') }}"><i class="fa-sharp fa-solid fa-arrow-left"></i> Back</a>
-                                                        </div>
+                                                </form>
+                                                <div class="row">
+                                                    <div class="col text-right">
+                                                        <form action="{{ route('delete', $product->id) }}" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus mahasiswa ini?')">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button type="submit" class="btn btn-danger mb-3 px-5 w-100"><i class="fa-solid fa-trash"></i> Delete Product</button>
+                                                        </form>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </form>
-                                        <div class="row">
-                                            <div class="col text-right">
-                                                <form action="{{ route('delete', $product->id) }}" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus mahasiswa ini?')">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button type="submit" class="btn btn-danger mb-3 px-5 w-100"><i class="fa-solid fa-trash"></i> Delete Product</button>
-                                                </form>
+                                                <div class="row">
+                                                    <div class="col text-right">
+                                                        <a class=" btn btn-warning text-white" href="{{ route('produk') }}"><i class="fa-sharp fa-solid fa-arrow-left"></i> Back</a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
