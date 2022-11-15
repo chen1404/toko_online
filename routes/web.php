@@ -55,25 +55,18 @@ Route::post('/{product}', [KeranjangController::class, 'keranjang'])->name('kera
 
 Route::get('/keranjang', [KeranjangController::class, 'pembeli'])->name('pembeli.keranjang')->middleware('auth');
 Route::get('/keranjang/{id}', [KeranjangController::class, 'destroy'])->name('pembeli.keranjang.delete')->middleware('auth');
+Route::get('/keranjang/checkout/{id}', [TransaksiController::class, 'store'])->name('pembeli.keranjang.checkout')->middleware('auth');
 
 Route::get('/checkout', function () {
     return view('pembeli.checkout',  ["products" => Transaksi::all()->where('pembeli_id', Auth::user()->id)]);
 })->name('pembeli.checkout')->middleware('auth');
 
-Route::get('/checkout/{id}', [TransaksiController::class, 'store'])->name('checkout')->middleware('auth');
 Route::get('/checkout/produk/{products}', [TransaksiController::class, 'storeKeranjang'])->name('checkout.produk')->middleware('auth');
 // END PEMBELI
 
 
 // PENJUAL
-Route::get('/penjual', function () {
-    return view('penjual.home', [
-        "transaksix" => Transaksi::all()->where('penjual_id', Auth::user()->id),
-        "total_transaksi" => Transaksi::all()->where('penjual_id', Auth::user()->id)->count(),
-        "income" => Transaksi::where('penjual_id', Auth::user()->id)->sum('total_harga'),
-        "customer" => Transaksi::select('pembeli_id')->distinct()->get()->count(),
-    ]);
-})->name('penjual.home')->middleware('auth');
+Route::get('/penjual', [TransaksiController::class, 'penjual'])->name('penjual.home')->middleware('auth');
 
 Route::get('/produk/create', [ProdukController::class, 'create'])->name('penjual.create')->middleware('auth');
 Route::post('/produk/store', [ProdukController::class, 'store'])->name('penjual.store')->middleware('auth');
@@ -90,7 +83,7 @@ Route::delete('/{id}', [ProdukController::class, 'destroy'])->name('delete')->mi
 
 // Route Satria
 
-Route::get('success', function () {
+Route::get('/success', function () {
     return view('pembeli.success', [
         "products" => Produk::all()
     ]);

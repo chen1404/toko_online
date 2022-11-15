@@ -147,7 +147,7 @@
                   <div class="col-md-4">
                     <div class="card mb-2">
                       <div class="card-body">
-                        <div class="dashboard-card-title">Customer</div>
+                        <div class="dashboard-card-title">Jumlah Customer</div>
                         <div class="dashboard-card-subtitle">{{ $customer }}</div>
                       </div>
                     </div>
@@ -155,16 +155,16 @@
                   <div class="col-md-4">
                     <div class="card mb-2">
                       <div class="card-body">
-                        <div class="dashboard-card-title">Revenue</div>
-                        <div class="dashboard-card-subtitle">Rp.{{ $income }}</div>
+                        <div class="dashboard-card-title">Total Pemasukan</div>
+                        <div class="dashboard-card-subtitle">Rp.{{ $total_income }}</div>
                       </div>
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="card mb-2">
                       <div class="card-body">
-                        <div class="dashboard-card-title">Transaction</div>
-                        <div class="dashboard-card-subtitle">{{ $total_transaksi }}</div>
+                        <div class="dashboard-card-title">Jumlah Transaksi</div>
+                        <div class="dashboard-card-subtitle">{{ $jumlah_transaksi }}</div>
                       </div>
                     </div>
                   </div>
@@ -172,8 +172,8 @@
                 <div class="row mt-3">
                   <div class="col-12 mt-2">
                     <h5 class="mb-3">Recent Transactions</h5>
-                    @if(count($transaksix) > 0)
-                      @foreach($transaksix as $transaksi)
+                    @if(count($transactions) > 0)
+                      @foreach($transactions as $transaction)
                       <a
                         href="/dashboard-transactions-details.html"
                         class="card card-list d-block"
@@ -182,14 +182,14 @@
                           <div class="row d-flex justify-content-between align-center">
                             <div class="col-md-1">
                               <img
-                                src="/img/products/{{ $transaksi->produk->gambar }}"
+                                src="/img/products/{{ $transaction->produk->gambar }}"
                                 alt="" style="height: 50px;"
                               />
                             </div>
-                            <div class="col-md-3">{{ $transaksi->produk->nama }} <b>{{ $transaksi->jumlah_barang }}x</b></div>
-                            <div class="col-md-2">Rp.{{ $transaksi->total_harga }}</div>
-                            <div class="col-md-3">{{ $transaksi->user->name }}</div>
-                            <div class="col-md-2">{{ $transaksi->created_at->format('D, d M Y') }}</div>
+                            <div class="col-md-3">{{ $transaction->produk->nama }} <b>{{ $transaction->jumlah_barang }}x</b></div>
+                            <div class="col-md-2">Rp.{{ $transaction->total_harga }}</div>
+                            <div class="col-md-3">{{ $transaction->user->name }}</div>
+                            <div class="col-md-2">{{ $transaction->created_at->format('D, d M Y') }}</div>
                             <div class="col-md-1 d-none d-md-block">
                               <img
                                 src="/images/dashboard-arrow-right.svg"

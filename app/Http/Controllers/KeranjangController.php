@@ -21,17 +21,22 @@ class KeranjangController extends Controller
     }
 
     public function pembeli() {
-        $keranjangs = Keranjang::all()->where('pembeli_id', Auth::user()->id);
-        $totalHarga = Keranjang::all()->where('pembeli_id', Auth::user()->id)->sum('harga');
-        $biayaAdmin = $totalHarga * 5 / 100;
-        $totalProduk = Keranjang::all()->where('pembeli_id', Auth::user()->id)->count();
-        // $dataUser = User::all()->where('id', Auth::user()->id);
+        $idUser = Auth::user()->id;
+
+        $keranjangs = Keranjang::all()->where('pembeli_id', $idUser);
+        $totalHarga = Keranjang::all()->where('pembeli_id', $idUser)->sum('harga');
+        $biayaAdmin = $totalHarga * 0.2 / 100;
+        $totalProduk = Keranjang::all()->where('pembeli_id', $idUser)->count();
+        $dataUser = User::select('id', 'number', 'address')->where('id', $idUser)->get('number');
         
         return view('pembeli.keranjang', [
             "keranjangs" => $keranjangs,
             "total_harga" => 'Rp.'.$totalHarga,
             "biaya_admin" => 'Rp.'.$biayaAdmin,
             "total_produk" => $totalProduk,
+            "nohp_user" => $dataUser[0]['number'],
+            "alamat_user" => $dataUser[0]['address'],
+            "id_user" => $dataUser[0]['id'],
         ]);
     }
     

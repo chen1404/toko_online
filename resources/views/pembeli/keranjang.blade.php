@@ -122,7 +122,7 @@
                     </td>
                     <td td style="width: 35%">
                       <div class="product-title">{{ $keranjang->produk->nama }}</div>
-                      <div class="product-subtitle">{{ $keranjang->user->name    }}</div>
+                      <div class="product-subtitle">{{ $keranjang->produk->user->name }}</div>
                     </td>
                     <td td style="width: 35%">
                       <div class="product-title">Rp.{{ $keranjang->harga }}</div>
@@ -189,7 +189,7 @@
                   class="form-control"
                   id="addressOne"
                   name="addressOne"
-                 
+                  value="{{ $alamat_user }}"
                 />
               </div>
             </div>
@@ -225,7 +225,7 @@
                   class="form-control"
                   id="mobile"
                   name="mobile"
-                  value="+62 "
+                  value="{{ $nohp_user }}"
                 />
               </div>
             </div>
@@ -253,7 +253,7 @@
             </div>
             <div class="col-8 col-md-3">
               <a
-                href="/success.html"
+                href="/keranjang/checkout/{{ $id_user }}"
                 class="btn btn-success mt-4 px-4 btn-block"
                 >Checkout Now</a
               >

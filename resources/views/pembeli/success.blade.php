@@ -39,12 +39,12 @@
                             </p>
                             <div>
                                 <a
-                                    href="/dashboard.html"
+                                    href="{{ route('pembeli.checkout') }}"
                                     class="btn btn-success w-50 mt-4"
                                     >Riwayat Pesanan</a
                                 >
                                 <a
-                                    href="/index.html"
+                                    href="{{ route('pembeli.home') }}"
                                     class="btn btn-signup w-50 mt-2"
                                     >Kembali Berbelanja</a
                                 >
