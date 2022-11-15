@@ -198,7 +198,7 @@
                 <div class="form-group">
                   <label for="mobile">Nomor Hp</label>
                   <input
-                    type="text"
+                    type="number"
                     class="form-control"
                     id="mobile"
                     name="mobile"

@@ -12,10 +12,18 @@ class AuthController extends Controller
 {
     public function actionRegister(Request $request)
     {
+        $provinsi = $request->get('Province');
+        $kota = $request->get('city');
+        $alamat = $request->get('addressOne');
+        $nohp = $request->get('mobile');
+        $alamatLengkap = $provinsi.', '.$kota.'. '.$alamat.'; '.$nohp;
+
         if ($request->password == $request->confirm_password) {
             User::create([
-                'role' => $request->role,
+                'role' => $request->is_store_open,
                 'name' => $request->name,
+                'address' => $alamatLengkap,
+                'number' => $nohp,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
             ]);

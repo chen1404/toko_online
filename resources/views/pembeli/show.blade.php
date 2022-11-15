@@ -153,7 +153,7 @@
 
                 <div class="" data-aos="zoom-in">
                   <a 
-                    href="{{ route('checkout.produk', $product) }}"
+                    href="{{ route('show.checkout', $product) }}"
                     class="btn btn-success px-4 text-white btn-block mb-3"
                     >Checkout</a
                   >

@@ -49,18 +49,21 @@ class TransaksiController extends Controller
         }
     }
     
-    public function storeKeranjang(Produk $products) {
+    public function storeProduk(Produk $product) {
+        $sisaBarang = $product->stok - 1;
+        $product->update(['stok' => $sisaBarang]);
+        
         $transaksi = new Transaksi([
-            "total_harga" => $products->harga,
+            "total_harga" => $product->harga,
             "jumlah_barang" => '1',
-            "alamat" => 'Samarinda',
+            "alamat" => Auth::user()->address,
             "pembeli_id" => Auth::user()->id,
-            "penjual_id" => $products->penjual_id,
-            "produk_id" => $products->id,
+            "penjual_id" => $product->penjual_id,
+            "produk_id" => $product->id,
         ]); 
         $transaksi->save();
         
-        return redirect("/show/$products->id")->with('success', 'Produk berhasil di Checkout!');
+        return redirect("/show/$product->id")->with('success', 'Produk berhasil di Checkout!');
     }
 
     public function daftarTransaksi() {

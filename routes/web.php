@@ -52,7 +52,7 @@ Route::get('/kategori/{produk}', function ($kategori) {
 
 Route::get('/show/{id}', [ProdukController::class, 'show'])->name('show')->middleware('auth');
 Route::post('/show/{product}/add', [KeranjangController::class, 'keranjang'])->name('show.add')->middleware('auth');
-Route::get('/checkout/produk/{products}', [TransaksiController::class, 'storeKeranjang'])->name('checkout.produk')->middleware('auth');
+Route::get('/show/{product}/checkout', [TransaksiController::class, 'storeProduk'])->name('show.checkout')->middleware('auth');
 
 Route::get('/keranjang', [KeranjangController::class, 'pembeli'])->name('pembeli.keranjang')->middleware('auth');
 Route::get('/keranjang/delete/{id}', [KeranjangController::class, 'destroy'])->name('pembeli.keranjang.delete')->middleware('auth');
