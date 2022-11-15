@@ -13,6 +13,7 @@
 
     <link href="{{ asset('style/main.css') }}" rel="stylesheet" />
     <link href="{{ asset('stylesheet/style.css') }}" rel="stylesheet" />
+    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous"> --}}
   </head>
 <body>
     <div class="page-dashboard">
@@ -186,7 +187,14 @@
                                 alt="" style="height: 50px;"
                               />
                             </div>
-                            <div class="col-md-3">{{ $transaction->produk->nama }} <b>{{ $transaction->jumlah_barang }}x</b></div>
+                            <div class="col-md-3">
+                              <div class="row">
+                                {{ $transaction->produk->nama }}
+                              </div>
+                              <div class="row">
+                                <p class="fs-6"><b>{{ $transaction->jumlah_barang }}x</b></p>
+                              </div>
+                            </div>
                             <div class="col-md-2">Rp.{{ $transaction->total_harga }}</div>
                             <div class="col-md-3">{{ $transaction->user->name }}</div>
                             <div class="col-md-2">{{ $transaction->created_at->format('D, d M Y') }}</div>

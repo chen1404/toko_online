@@ -45,7 +45,7 @@
             @if(Auth::user())
               @if(Auth::user()->role == 'pembeli')
                 <li class="nav-item">
-                  <a href="{{ route('pembeli.checkout') }}" class="nav-link" aria-current="page">Profil</a>
+                  <a href="{{ route('user.transaksi') }}" class="nav-link" aria-current="page">Profil</a>
                 </li>
                 <li class="nav-item">
                   <a href="{{ route('pembeli.keranjang') }}" class="nav-link" aria-current="page">Keranjang</a>
@@ -154,120 +154,93 @@
               <h2 class="mb-4">Rincian pengiriman</h2>
             </div>
           </div>
-          <div class="row mb-2" data-aos="fade-up" data-aos-delay="200">
-            {{-- <div class="col-md-6">
-              <div class="form-group">
-                <label for="addressTwo">Address 2</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="addressOne"
-                  name="addressOne"
-                  value="Blok B2 No. 34"
-                />
+          <form action="/keranjang/checkout" method="post">
+            @csrf
+            <div class="row mb-2" data-aos="fade-up" data-aos-delay="200">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="Province">Provinsi</label>
+                  <select name="Province" id="Province" class="form-control" required>
+                    <option value="Kalimantan Timur">Kalimantan Timur</option>
+                    <option value="Kalimantan Selatan">Kalimantan Selatan</option>
+                    <option value=">Kalimantan Tengah">Kalimantan Tengah</option>
+                  </select>
+                </div>
               </div>
-            </div> --}}
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="Province">Provinsi</label>
-                <select name="Province" id="Province" class="form-control">
-                  <option value="Kalimantan Timur">Kalimantan Timur</option>
-                  <option value="Kalimantan Selatan">Kalimantan Selatan</option>
-                  <option value=">Kalimantan Tengah">Kalimantan Tengah</option>
-                </select>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="city">Kota</label>
+                  <select name="city" id="city" class="form-control" required>
+                    <option value="Samarinda">Samarinda</option>
+                    <option value="Balikpapan">Balikpapan</option>
+                    <option value="Bontang">Bontang</option>
+                    <option value="Sangata">Sangata</option>
+                    <option value="Banjarmasin">Banjarmasin</option>
+                    <option value="Balangan">Balangan</option>
+                  </select>
+                </div>
               </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="city">Kota</label>
-                <select name="city" id="city" class="form-control">
-                  <option value="Samarinda">Samarinda</option>
-                  <option value="Balikpapan">Balikpapan</option>
-                  <option value="Bontang">Bontang</option>
-                  <option value="Sangata">Sangata</option>
-                  <option value="Banjarmasin">Banjarmasin</option>
-                  <option value="Balangan">Balangan</option>
-                </select>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="addressOne">Alamat</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="addressOne"
+                    name="addressOne"
+                    placeholder="Alamat rumah tujuan"
+                    value="{{ $alamat_user }}"
+                    required
+                  />
+                </div>
               </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="addressOne">Alamat</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="addressOne"
-                  name="addressOne"
-                  value="{{ $alamat_user }}"
-                />
-              </div>
-            </div>
-            {{-- <div class="col-md-4">
-              <div class="form-group">
-                <label for="postalCode">Postal Code</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="postalCode"
-                  name="postalCode"
-                  value="40512"
-                />
-              </div>
-            </div> --}}
-            {{-- <div class="col-md-6">
-              <div class="form-group">
-                <label for="country">Country</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="country"
-                  name="country"
-                  value="Indonesia "
-                />
-              </div>
-            </div> --}}
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="mobile">Nomor Hp</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="mobile"
-                  name="mobile"
-                  value="{{ $nohp_user }}"
-                />
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="mobile">Nomor Hp</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="mobile"
+                    name="mobile"
+                    placeholder="Nomor Hp yang dapat dihubungi"
+                    value="{{ $nohp_user }}"
+                    required
+                  />
+                </div>
               </div>
             </div>
-          </div>
-          <div class="row" data-aos="fade-up" data-aos-delay="150">
-            <div class="col-12">
-              <hr />
+            <div class="row" data-aos="fade-up" data-aos-delay="150">
+              <div class="col-12">
+                <hr />
+              </div>
+              <div class="col-12">
+                <h2 class="mb-1">Payment Information</h2>
+              </div>
             </div>
-            <div class="col-12">
-              <h2 class="mb-1">Payment Information</h2>
+            <div class="row" data-aos="fade-up" data-aos-delay="200">
+              <div class="col-4 col-md-3">
+                <div class="product-title">{{ $total_produk }}</div>
+                <div class="product-subtitle">Total Produk</div>
+                <input type="text" value="{{ $total_produk }}" name="counts" hidden>
+              </div>
+              <div class="col-4 col-md-3">
+                <div class="product-title">{{ $biaya_admin }}</div>
+                <div class="product-subtitle">Pajak Admin</div>
+              </div>
+              <div class="col-4 col-md-3">
+                <div class="product-title text-success">{{ $total_harga }}</div>
+                <div class="product-subtitle">Total Harga</div>
+              </div>
+              <div class="col-8 col-md-3">
+                <button
+                  type="submit"
+                  class="btn btn-success mt-4 px-4 btn-block"
+                >
+                  Checkout Now
+                </button>
+              </div>
             </div>
-          </div>
-          <div class="row" data-aos="fade-up" data-aos-delay="200">
-            <div class="col-4 col-md-3">
-              <div class="product-title">{{ $total_produk }}</div>
-              <div class="product-subtitle">Total Produk</div>
-            </div>
-            <div class="col-4 col-md-3">
-              <div class="product-title">{{ $biaya_admin }}</div>
-              <div class="product-subtitle">Pajak Admin</div>
-            </div>
-            <div class="col-4 col-md-3">
-              <div class="product-title text-success">{{ $total_harga }}</div>
-              <div class="product-subtitle">Total Harga</div>
-            </div>
-            <div class="col-8 col-md-3">
-              <a
-                href="/keranjang/checkout/{{ $id_user }}"
-                class="btn btn-success mt-4 px-4 btn-block"
-                >Checkout Now</a
-              >
-            </div>
-          </div>
+          </form>
         </div>
       </section>
     </div>

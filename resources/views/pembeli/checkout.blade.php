@@ -15,24 +15,24 @@
             <th scope="col">Total Harga</th>
             <th scope="col">Jumlah Barang</th>
             <th scope="col">Penjual</th>
-            <th scope="col">Id Produk</th>
+            <th scope="col">Alamat tujuan</th>
         </tr>
         </thead>
         <tbody class="table-group-divider">
             @php $no = 1 @endphp
-            @foreach($products as $product)
+            @foreach($transactions as $transaction)
                 <tr>
                     <th scope="row">{{ $no++ }}</th>
-                    <td>{{ $product->produk->nama }}</td>
-                    <td>{{ $product->total_harga }}</td>
-                    <td><b>{{ $product->jumlah_barang }}x</b></td>
-                    <td>{{ $product->user->name }}</td>
-                    <td>{{ $product->produk_id }}</td>
+                    <td>{{ $transaction->produk->nama }}</td>
+                    <td>{{ $transaction->total_harga }}</td>
+                    <td><b>{{ $transaction->jumlah_barang }}x</b></td>
+                    <td>{{ $transaction->user->name }}</td>
+                    <td>{{ $transaction->alamat }}</td>
                 </tr>
             @endforeach
         </tbody>
     </table>
-    <a href="{{ route('pembeli.checkout', Auth::user()->id) }}" class="btn btn-warning">Checkout</a>
+    {{-- <a href="{{ route('user.transaksi', Auth::user()->id) }}" class="btn btn-warning">Checkout</a> --}}
 </div>
 
 @endsection

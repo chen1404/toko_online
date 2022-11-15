@@ -15,7 +15,7 @@ class KeranjangController extends Controller
         $jumlBrg = $request->get('barang');
 
         if($cart) {
-            $totlHrg = $cart->total_harga + $product->harga;
+            $totlHrg = $cart->total_harga + $product->harga * $jumlBrg;
             $jumlBrg += $cart->jumlah_barang;
 
             $cart->update([
@@ -42,16 +42,16 @@ class KeranjangController extends Controller
         $totalHarga = Keranjang::all()->where('pembeli_id', $idUser)->sum('total_harga');
         $biayaAdmin = round($totalHarga * 0.2 / 100);
         $totalProduk = Keranjang::all()->where('pembeli_id', $idUser)->count();
-        $dataUser = User::select('id', 'number', 'address')->where('id', $idUser)->get('number');
+        $dataUser = User::select('id', 'number', 'address')->where('id', $idUser)->get('number')->first();
         
         return view('pembeli.keranjang', [
             "keranjangs" => $keranjangs,
             "total_harga" => 'Rp.'.$totalHarga,
             "biaya_admin" => 'Rp.'.$biayaAdmin,
             "total_produk" => $totalProduk,
-            "nohp_user" => $dataUser[0]['number'],
-            "alamat_user" => $dataUser[0]['address'],
-            "id_user" => $dataUser[0]['id'],
+            "nohp_user" => $dataUser['number'],
+            "alamat_user" => $dataUser['address'],
+            "id_user" => $dataUser['id'],
         ]);
     }
     

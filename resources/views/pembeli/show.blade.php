@@ -45,7 +45,7 @@
             @if(Auth::user())
               @if(Auth::user()->role == 'pembeli')
                 <li class="nav-item">
-                  <a href="{{ route('pembeli.checkout') }}" class="nav-link" aria-current="page">Profil</a>
+                  <a href="{{ route('user.transaksi') }}" class="nav-link" aria-current="page">Profil</a>
                 </li>
                 <li class="nav-item">
                   <a href="{{ route('pembeli.keranjang') }}" class="nav-link" aria-current="page">Keranjang</a>
@@ -58,7 +58,7 @@
             @endif
             <li class="nav-item">
               @php $stat = Auth::user() ? 'logout' : 'login' @endphp
-              <a class="btn btn-danger" href="{{ "/$stat" }}" class="nav-link " aria-current="page">
+              <a class="btn btn-primary" href="{{ "/$stat" }}" class="nav-link " aria-current="page">
                   {{ ucfirst($stat) }}
               </a>
             </li>
