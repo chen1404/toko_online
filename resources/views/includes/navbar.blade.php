@@ -7,7 +7,7 @@
           <img src="{{ asset('images/logo.svg') }}" alt="logo" />
         </a>
         @if(Auth::user())
-        <span class="fs-4">Selamat Datang {{ Auth::user()->name ?? "HomePage"}}</span>
+        <span class="fs-4">Selamat Datang <b>{{ Auth::user()->name ?? "HomePage"}}</b></span>
         @endif
         <button
           class="navbar-toggler"
@@ -22,9 +22,7 @@
             <li class="nav-item ">
               <a href="{{ route( Auth::user() == 'penjual' ? 'penjual.home' : 'pembeli.home') }}" class="nav-link">Home</a>
             </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">Categories</a>
-            </li>
+            
         
             @if(Auth::user())
               @if(Auth::user()->role == 'pembeli')

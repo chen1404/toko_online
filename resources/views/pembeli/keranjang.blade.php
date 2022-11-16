@@ -134,7 +134,7 @@
                       <div class="product-title">{{ $keranjang->jumlah_barang }}x</div>
                     </td>
                     <td td style="width: 20%">
-                      <div class="product-title">Rp.{{ $keranjang->total_harga }}</div>
+                      <div class="product-title">Rp {{ number_format($keranjang->total_harga) }}</div>
                       <div class="product-subtitle">IDR</div>
                     </td>
                     <td style="width: 20%">

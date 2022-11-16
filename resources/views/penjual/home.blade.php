@@ -116,7 +116,7 @@
                   <li class="nav-item">
                     <a href="" class="nav-link d-inline-block mt-2">
                       <img src="/images/icon-cart-filled.svg" alt="" />
-                      <div class="card-badge">3</div>
+                      <div class="card-badge">10000000</div>
                     </a>
                   </li>
                 </ul>
