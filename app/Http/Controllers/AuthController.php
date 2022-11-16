@@ -12,18 +12,12 @@ class AuthController extends Controller
 {
     public function actionRegister(Request $request)
     {
-        $provinsi = $request->get('Province');
-        $kota = $request->get('city');
-        $alamat = $request->get('addressOne');
-        $nohp = $request->get('mobile');
-        $alamatLengkap = $provinsi.', '.$kota.'. '.$alamat.'; '.$nohp;
-
         if ($request->password == $request->confirm_password) {
             User::create([
                 'role' => $request->is_store_open,
                 'name' => $request->name,
-                'address' => $alamatLengkap,
-                'number' => $nohp,
+                'address' => $request->addressOne,
+                'number' => $request->mobile,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
             ]);
@@ -35,15 +29,6 @@ class AuthController extends Controller
             return redirect('/register');
         }
     }
-
-    // public function loginView()
-    // {
-    //     if (Auth::check()) {
-    //         return redirect('pembeli.home');
-    //     } else {
-    //         return view('login');
-    //     }
-    // }
 
     public function actionLogin(Request $request)
     {
@@ -70,7 +55,7 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        session()->flash('success', 'Berhasil Logout');
+        session()->flash('success-logout', 'Berhasil Logout');
         return redirect('/login');
     }
 }

@@ -10,11 +10,11 @@
         <div class="container">
           <div class="row align-items-center justify-content-center row-login">
             <div class="col-lg-4">
-              @if(session('success'))
+              {{-- @if(session('success'))
               <div class="alert alert-success">
                 <b>Yeah!</b> {{session('success')}}
               </div>
-              @endif
+              @endif --}}
               @if(session('error'))
               <div class="alert alert-danger">
                   <b>Opps!</b> {{session('error')}}
@@ -48,29 +48,6 @@
                 </div>
 
                 <div class="row mb-2" data-aos="fade-up" data-aos-delay="200">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="Province">Provinsi</label>
-                      <select name="Province" id="Province" class="form-control" required>
-                        <option value="Kalimantan Timur">Kalimantan Timur</option>
-                        <option value="Kalimantan Selatan">Kalimantan Selatan</option>
-                        <option value=">Kalimantan Tengah">Kalimantan Tengah</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="city">Kota</label>
-                      <select name="city" id="city" class="form-control" required>
-                        <option value="Samarinda">Samarinda</option>
-                        <option value="Balikpapan">Balikpapan</option>
-                        <option value="Bontang">Bontang</option>
-                        <option value="Sangata">Sangata</option>
-                        <option value="Banjarmasin">Banjarmasin</option>
-                        <option value="Balangan">Balangan</option>
-                      </select>
-                    </div>
-                  </div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="addressOne">Alamat</label>

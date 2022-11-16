@@ -17,6 +17,11 @@
             />
           </div>
           <div class="col-lg-5">
+              @if(session('success-logout'))
+                <div class="alert alert-success">
+                    {{session('success-logout')}}
+                </div>
+              @endif
               @if(session('success'))
                 <div class="alert alert-success">
                     <b>Yeah!</b> {{session('success')}}
@@ -40,11 +45,11 @@
               @csrf
               <div class="form-group">
                 <label>Email Address</label>
-                <input type="email" class="form-control w-75" name="email"/>
+                <input type="email" class="form-control w-75" name="email" placeholder="email"/>
               </div>
               <div class="form-group">
                 <label>Password</label>
-                <input type="password" class="form-control w-75" name="password"/>
+                <input type="password" class="form-control w-75" name="password" placeholder="password"/>
               </div>
               <button type="submit" class="btn btn-success btn-block w-75 mt-4">Sign In to My Account</button>
               <a href="{{ route('register') }}" class="btn btn-signup btn-block w-75 mt-4">Sign Up</a>
