@@ -40,7 +40,8 @@ class KeranjangController extends Controller
 
         $keranjangs = Keranjang::all()->where('pembeli_id', $idUser);
         $totalHarga = Keranjang::all()->where('pembeli_id', $idUser)->sum('total_harga');
-        $biayaAdmin = round($totalHarga * 0.2 / 100);
+        $biayaAdmin = round($totalHarga * 1 / 100);
+        $totalHarga += $biayaAdmin;
         $totalProduk = Keranjang::all()->where('pembeli_id', $idUser)->count();
         $dataUser = User::select('id', 'number', 'address')->where('id', $idUser)->get('number')->first();
         

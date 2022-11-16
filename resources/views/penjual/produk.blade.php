@@ -161,23 +161,24 @@
                 <div class="row mt-4">
                   @if(count($products) > 0)
                     @foreach($products as $product)
-                  <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                      <a
-                        href="/update/{{ $product->id }}"
-                        class="card card-dashboard-product d-block"
-                      >
-                        <div class="card-body">
-                          <img
-                            src="/img/products/{{ $product->gambar }}"
-                            alt="" style="width: 258px;"
-                            class="w-100 mb-2"
-                          />
-                          <div class="product-tittle">{{ $product->nama }}</div>
-                          <div class="product-category">{{ ucfirst($product->kategori) }}</div>
-                          <div class="product-stock">Stok: {{ $product->stok }}</div>
-                        </div>
-                      </a>
-                    </div>
+                      @php $stock = $product->stok == 0 ? '<span class="text-danger">Habis</span>' : $product->stok; @endphp
+                      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <a
+                          href="/update/{{ $product->id }}"
+                          class="card card-dashboard-product d-block"
+                        >
+                          <div class="card-body">
+                            <img
+                              src="/img/products/{{ $product->gambar }}"
+                              alt="" style="width: 258px;"
+                              class="w-100 mb-2"
+                            />
+                            <div class="product-tittle">{{ $product->nama }}</div>
+                            <div class="product-category">{{ ucfirst($product->kategori) }}</div>
+                            <div class="product-stock">Stok: {!! $stock !!}</div>
+                          </div>
+                        </a>
+                      </div>
                     @endforeach
                   @endif
                 </div>
