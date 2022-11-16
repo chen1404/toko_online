@@ -174,6 +174,7 @@
                           />
                           <div class="product-tittle">{{ $product->nama }}</div>
                           <div class="product-category">{{ ucfirst($product->kategori) }}</div>
+                          <div class="product-stock">Stok: {{ $product->stok }}</div>
                         </div>
                       </a>
                     </div>

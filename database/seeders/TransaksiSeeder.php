@@ -18,7 +18,7 @@ class TransaksiSeeder extends Seeder
             [
                 'total_harga' => '2890',
                 'jumlah_barang' => '1',
-                'alamat' => 'Samarinda',
+                'alamat' => 'Kalimantan Timur, Samarinda. Jl. Abdul W. Syahranie Gg 555; 0824561727383',
                 'pembeli_id' => '4',
                 'penjual_id' => '1',
                 'produk_id' => '1'
@@ -26,7 +26,7 @@ class TransaksiSeeder extends Seeder
             [
                 'total_harga' => '1783',
                 'jumlah_barang' => '2',
-                'alamat' => 'Balikpapan',
+                'alamat' => 'Kalimantan Timur, Samarinda. Jl. Abdul W. Syahranie Gg 555; 0824561727383',
                 'pembeli_id' => '4',
                 'penjual_id' => '2',
                 'produk_id' => '8'
@@ -34,7 +34,7 @@ class TransaksiSeeder extends Seeder
             [
                 'total_harga' => '3890',
                 'jumlah_barang' => '2',
-                'alamat' => 'Samarinda',
+                'alamat' => 'Kalimantan Timur, Samarinda. Jl. Abdul W. Syahranie Gg 555; 0824561727383',
                 'pembeli_id' => '4',
                 'penjual_id' => '1',
                 'produk_id' => '3'
@@ -42,7 +42,7 @@ class TransaksiSeeder extends Seeder
             [
                 'total_harga' => '5890',
                 'jumlah_barang' => '3',
-                'alamat' => 'Samarinda',
+                'alamat' => 'Kalimantan Timur, Samarinda. Jl. Abdul W. Syahranie Gg 555; 0824561727383',
                 'pembeli_id' => '4',
                 'penjual_id' => '1',
                 'produk_id' => '4'

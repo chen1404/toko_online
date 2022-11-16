@@ -14,8 +14,10 @@ class AuthController extends Controller
     {
         if ($request->password == $request->confirm_password) {
             User::create([
-                'role' => $request->role,
+                'role' => $request->is_store_open,
                 'name' => $request->name,
+                'address' => $request->addressOne,
+                'number' => $request->mobile,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
             ]);
@@ -27,15 +29,6 @@ class AuthController extends Controller
             return redirect('/register');
         }
     }
-
-    // public function loginView()
-    // {
-    //     if (Auth::check()) {
-    //         return redirect('pembeli.home');
-    //     } else {
-    //         return view('login');
-    //     }
-    // }
 
     public function actionLogin(Request $request)
     {
@@ -62,7 +55,7 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        session()->flash('success', 'Berhasil Logout');
+        session()->flash('success-logout', 'Berhasil Logout');
         return redirect('/login');
     }
 }

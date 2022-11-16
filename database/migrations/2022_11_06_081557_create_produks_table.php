@@ -13,16 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('produks', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
             $table->string('harga');
             $table->string('kategori');
+            $table->string('stok');
             $table->string('gambar');
             $table->string('deskripsi');
             $table->foreignId('penjual_id');
             $table->timestamps();
-            $table->foreign('penjual_id')->references('id')->on('users');
+            $table->foreign('penjual_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -33,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('produks');
+        Schema::dropIfExists('products');
     }
 };

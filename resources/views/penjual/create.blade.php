@@ -167,7 +167,7 @@
                                 @error('harga')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
-                            </div>
+                              </div>
                             </div>
                             <div class="col-md-12">
                               <div class="form-group">
@@ -182,6 +182,9 @@
                                   <option value="gaming">Gaming</option>
                                   <option value="lainnya">Lainnya</option>
                                 </select>
+                                @error('kategori')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                               </div>
                             </div>
                             <div class="col-md-12">
@@ -190,7 +193,16 @@
                                 <textarea  name="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" placeholder="Deskripsi" required></textarea>
                               </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="stok" class="form-label">Stok</label>
+                                <input type="number" class="form-control @error('stok') is-invalid @enderror" id="stok" name="stok" placeholder="Stok" required />
+                                @error('stok')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                              </div>
+                            </div>
+                            <div class="col-md-6">
                               <div class="form-group">
                                 <label for="gambar" class="form-label">Gambar</label>
                                 <input type="file" class="form-control @error('gambar') is-invalid @enderror" id="gambar" name="file" placeholder="gambar" accept=".jpg,.jpeg,.png" required />

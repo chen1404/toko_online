@@ -17,30 +17,37 @@ class KeranjangSeeder extends Seeder
         $barangs = [
             [
                 'id' => '1',
-                'harga' => '890',
+                'total_harga' => '1890000',
+                'jumlah_barang' => '1',
                 'pembeli_id' => '4',
                 'produk_id' => '1'
             ],
             [
                 'id' => '2',
-                'harga' => '890',
-                'pembeli_id' => '4',
+                'total_harga' => '1890000',
+                'jumlah_barang' => '1',
+                'pembeli_id' => '3',
                 'produk_id' => '1'
             ],
             [
-                'harga' => '1409',
+                'id' => '3',
+                'total_harga' => '22500',
+                'jumlah_barang' => '1',
                 'pembeli_id' => '4',
                 'produk_id' => '4'
             ],
             [
                 'id' => '4',
-                'harga' => '890',
+                'total_harga' => '700482',
+                'jumlah_barang' => '1',
                 'pembeli_id' => '4',
-                'produk_id' => '1'
+                'produk_id' => '7'
             ],
             [
-                'harga' => '200',
-                'pembeli_id' => '4',
+                'id' => '5',
+                'total_harga' => '22500',
+                'jumlah_barang' => '1',
+                'pembeli_id' => '1',
                 'produk_id' => '4'
             ],
         ];

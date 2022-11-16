@@ -39,7 +39,7 @@
                             </p>
                             <div>
                                 <a
-                                    href="{{ route('pembeli.checkout') }}"
+                                    href="{{ route('user.transaksi') }}"
                                     class="btn btn-success w-50 mt-4"
                                     >Riwayat Pesanan</a
                                 >

@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             [
                 'role' => 'penjual',
                 'name' => 'Rausyanfikr Karmayoga',
-                'address' => 'Kalimantan Timur, Samarinda. Jl. Abdul W.',
+                'address' => 'Jl. Abdul W. Syahranie Gg 555',
                 'number' => '081351580524',
                 'email' => 'rausyanfikrkarmayoga@gmail.com',
                 'password' => '123'
@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
             [
                 'role' => 'penjual',
                 'name' => 'Asep Harahap',
-                'address' => 'Kalimantan Selatan, Banjarmasin. Jl. Juanda',
+                'address' => 'Jl. Juanda 7 No 5',
                 'number' => '0824561727383',
                 'email' => 'asep@gmail.com',
                 'password' => '123'
@@ -36,7 +36,7 @@ class UserSeeder extends Seeder
             [
                 'role' => 'pembeli',
                 'name' => 'Vanny Putri',
-                'address' => 'Kalimantan Selatan, Banjarmasin. Jl. Juanda',
+                'address' => 'Jl. Juanda 7 No 5',
                 'number' => '0824561727383',
                 'email' => 'vannyputriandrini@gmail.com',
                 'password' => '123'
@@ -44,7 +44,7 @@ class UserSeeder extends Seeder
             [
                 'role' => 'pembeli',
                 'name' => 'Rosyan Xone',
-                'address' => 'Kalimantan Timur, Samarinda. Jl. Abdul W.',
+                'address' => 'Jl. Abdul W. Syahranie Gg 555',
                 'number' => '081351580524',
                 'email' => 'rosyanxone@student.unmul.ac.id',
                 'password' => '123'

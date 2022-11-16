@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
 
 class Produk extends Model
 {
@@ -17,6 +16,6 @@ class Produk extends Model
     public function Transaksi() {
         return $this->hasMany(Transaksi::class);
     }
-    protected $table = 'produks';
-    protected $fillable = ['nama', 'harga', 'kategori', 'gambar', 'deskripsi', 'penjual_id'];
+    protected $table = 'products';
+    protected $fillable = ['nama', 'harga', 'kategori', 'stok', 'gambar', 'deskripsi', 'penjual_id'];
 }

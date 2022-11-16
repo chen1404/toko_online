@@ -10,11 +10,11 @@
         <div class="container">
           <div class="row align-items-center justify-content-center row-login">
             <div class="col-lg-4">
-              @if(session('success'))
+              {{-- @if(session('success'))
               <div class="alert alert-success">
                 <b>Yeah!</b> {{session('success')}}
               </div>
-              @endif
+              @endif --}}
               @if(session('error'))
               <div class="alert alert-danger">
                   <b>Opps!</b> {{session('error')}}
@@ -46,6 +46,79 @@
                     name="email" required
                   />
                 </div>
+
+                <div class="row mb-2" data-aos="fade-up" data-aos-delay="200">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="addressOne">Alamat</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="addressOne"
+                        name="addressOne"
+                        placeholder="Alamat rumah"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="mobile">Nomor Hp</label>
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="mobile"
+                        name="mobile"
+                        placeholder="Nomor Hp"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label>Store</label>
+                  <p class="text-muted">Apakah anda juga ingin membuka toko?</p>
+                  <div
+                    class="custom-control custom-radio custom-control-inline"
+                  >
+                    <input
+                      type="radio"
+                      class="custom-control-input"
+                      name="is_store_open"
+                      id="openStoreTrue"
+                      v-model="is_store_open"
+                      value="penjual"
+                      onclick="onLoad('hide', 'show')"
+                      required 
+                    />
+                    <label for="openStoreTrue" class="custom-control-label"
+                      >Iya, boleh</label
+                    >
+                  </div>
+                  <div
+                    class="custom-control custom-radio custom-control-inline"
+                  >
+                    <input
+                      type="radio"
+                      class="custom-control-input"
+                      name="is_store_open"
+                      id="openStoreFalse"
+                      v-model="is_store_open"
+                      value="pembeli"
+                      onclick="onLoad('show', 'hide')"
+                      required
+                    />
+                    <label for="openStoreFalse" class="custom-control-label"
+                      >Enggak, makasih</label
+                    >
+                  </div>
+                </div>
+                <div class="form-group hide" v-if="is_store_open" id="tokoDiv">
+                  <label>Nama Toko</label>
+                  <input type="text" class="form-control" placeholder="masukkan nama toko" id="namaToko"/>
+                </div>
+                
                 <div class="form-group">
                   <label>Password</label>
                   <input 
@@ -64,51 +137,6 @@
                   name="confirm_password" required
                   />
                 </div>
-
-                <div class="form-group">
-                  <label>Store</label>
-                  <p class="text-muted">Apakah anda juga ingin membuka toko?</p>
-                  <div
-                    class="custom-control custom-radio custom-control-inline"
-                  >
-                    <input
-                      type="radio"
-                      class="custom-control-input"
-                      name="is_store_open"
-                      id="openStoreTrue"
-                      v-model="is_store_open"
-                      :value="true"
-                      onclick="onLoad('hide', 'show')"
-                      required 
-                    />
-                    <label for="openStoreTrue" class="custom-control-label"
-                      >Iya, boleh</label
-                    >
-                  </div>
-                  <div
-                    class="custom-control custom-radio custom-control-inline"
-                  >
-                    <input
-                      type="radio"
-                      class="custom-control-input"
-                      name="is_store_open"
-                      id="openStoreFalse"
-                      v-model="is_store_open"
-                      :value="false"
-                      onclick="onLoad('show', 'hide')"
-                      required
-                    />
-                    <label for="openStoreFalse" class="custom-control-label"
-                      >Enggak, makasih</label
-                    >
-                  </div>
-                </div>
-                <div class="form-group hide" v-if="is_store_open" id="tokoDiv">
-                  <label>Nama Toko</label>
-                  <input type="text" class="form-control" id="namaToko"/>
-                </div>
-                
-                <input type="text" name="role" id="role" hidden>
                 
                 <button type="submit" class="btn btn-success btn-block mt-4"
                   >Sign Up Now</button>

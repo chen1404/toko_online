@@ -45,7 +45,7 @@
             @if(Auth::user())
               @if(Auth::user()->role == 'pembeli')
                 <li class="nav-item">
-                  <a href="{{ route('pembeli.checkout') }}" class="nav-link" aria-current="page">Profil</a>
+                  <a href="{{ route('user.transaksi') }}" class="nav-link" aria-current="page">Profil</a>
                 </li>
                 <li class="nav-item">
                   <a href="{{ route('pembeli.keranjang') }}" class="nav-link" aria-current="page">Keranjang</a>
@@ -58,7 +58,7 @@
             @endif
             <li class="nav-item">
               @php $stat = Auth::user() ? 'logout' : 'login' @endphp
-              <a class="btn btn-danger" href="{{ "/$stat" }}" class="nav-link " aria-current="page">
+              <a class="btn btn-primary" href="{{ "/$stat" }}" class="nav-link " aria-current="page">
                   {{ ucfirst($stat) }}
               </a>
             </li>
@@ -100,7 +100,7 @@
             <div class="col-lg-8" data-aos="zoom-in">
                 <img
                   style="border-radius: 10px"
-                  src="/img/products/{{ $products->gambar }}"
+                  src="/img/products/{{ $product->gambar }}"
                   class="w-100 main-image mb-3"
                   alt=""
                 />
@@ -115,9 +115,10 @@
           <div class="container">
             <div class="row">
               <div class="col-lg-8">
-                <h1>{{ $products->nama }}</h1>
-                <div class="owner">By {{ $products->user->name }}</div>
-                <div class="price">Rp.{{ $products->harga }}</div>
+                <h1>{{ $product->nama }}</h1>
+                <div class="owner">By {{ $product->user->name }}</div>
+                <div class="price">Rp.{{ $product->harga }}</div>
+                <div class="owner">Stok {{ $product->stok }}</div>
               </div>
               
             </div>
@@ -127,26 +128,36 @@
           <div class="container">
             <div class="row">
               <div class="col-12 col-lg-8">
-                <p>
-                  {{ $products->deskripsi }}
-                </p>
+                  <p>
+                    {{ $product->deskripsi }}
+                  </p>
 
                 <div class="" data-aos="zoom-in">
-                <form action="{{ route('keranjang', $products) }}" method="post">
-                @csrf
-                <button type="submit"
-                  class="btn btn-secondary px-4 text-white btn-block mb-3"
-                  >Tambah di keranjang</button
-                >
-              </div>
+                  <form action="{{ route('show.add', $product) }}" method="post">
+                    @csrf
+                    {{-- Yg Bagian ini sat --}}
+                    <div class="form-group">
+                      <input 
+                        type="number" class="form-control" 
+                        id="barang" name="barang" placeholder="Jumlah Barang"
+                        max="{{ $product->stok }}" min="1"
+                        required 
+                      />
+                    </div>
+                    <button type="submit"
+                      class="btn btn-secondary px-4 text-white btn-block mb-3"
+                      >Tambah di keranjang</button
+                    >
+                  </form>
+                </div>
 
-              <div class="" data-aos="zoom-in">
-                <a 
-                  href="{{ route('checkout.produk', $products) }}"
-                  class="btn btn-success px-4 text-white btn-block mb-3"
-                  >Checkout</a
-                >
-              </div>
+                <div class="" data-aos="zoom-in">
+                  <a 
+                    href="{{ route('show.checkout', $product) }}"
+                    class="btn btn-success px-4 text-white btn-block mb-3"
+                    >Checkout</a
+                  >
+                </div>
 
               </div>
             </div>
