@@ -43,8 +43,6 @@
                                     <img src="/images/icon-cart-filled.svg" alt="" />
                                     <div class="card-badge">1</div>
                                 </a>
-
-
                             </li>
                         @endif
                     @else
@@ -80,69 +78,6 @@
                 </div>
             </div>
         </section>
-
-        {{-- <section class="store-gallery" id="gallery" style="margin-top: 20px">
-        <div class="container">
-          @if (session('success'))
-            <div class="col-lg-8 alert alert-success">
-              {{session('success')}}
-            </div>
-          @endif
-          @php $stock = $product->stok == 0 ? '<span class="text-danger">Habis</span>' : $product->stok; @endphp
-          @if ($product->stok == 0)
-            <div class="col-lg-8 alert alert-danger">
-              Stok Produk Habis!
-            </div>
-          @endif
-          <div class="row">
-            <div class="col-lg-8" data-aos="zoom-in">
-              <img
-                style="border-radius: 10px"
-                src="/img/products/{{ $product->gambar }}"
-                class="w-100 main-image mb-3"
-                alt=""
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="store-details-container" data-aos="fade-up">
-        <section class="store-heading">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-8">
-                <h1>{{ $product->nama }}</h1>
-                <div class="owner">By {{ $product->user->name }}</div>
-                <div class="price">Rp.{{ $product->harga }}</div>
-                <div class="owner">Stok {!! $stock !!}</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="store-description">
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-lg-8">
-                <p>
-                  {{ $product->deskripsi }}
-                </p>
-
-                <div class="" data-aos="zoom-in">
-                  <form action="{{ route('show.add', $product) }}" method="post">
-                    @csrf
-                    <div class="form-group">
-                      <input 
-                        type="number" class="form-control" 
-                        id="barang" name="barang" placeholder="Jumlah Barang"
-                        max="{{ $product->stok }}" min="1"
-                        required 
-                      />
-                    </div>
-                </div>
-            </div>
-        </section> --}}
 
         <section class="store-gallery" id="gallery" style="margin-top: 20px">
             <div class="container">

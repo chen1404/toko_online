@@ -20,26 +20,20 @@
             <!-- Sidebar -->
             <div class="border-right" id="sidebar-wrapper">
                 <div class="sidebar-heading text-center">
-                    <img src="/images/dashboard-store-logo.svg" alt="" class="my-4" />
+                    <img src="/images/logo.svg" alt="" class="my-4" width="180px" />
                 </div>
                 <div class="list-group list-group-flush">
                     <a href="{{ route('penjual.home') }}" class="list-group-item list-group-item-action">
                         Dashboard
                     </a>
                     <a href="{{ route('produk') }}" class="list-group-item list-group-item-action">
-                        My Products
-                    </a>
-                    <a href="/dashboard-transactions.html" class="list-group-item list-group-item-action">
-                        Transactions
-                    </a>
-                    <a href="/dashboard-settings.html" class="list-group-item list-group-item-action">
-                        Store Settings
+                        Produk
                     </a>
                     <a href="/penjual/user" class="list-group-item list-group-item-action active">
-                        My Account
+                        Akun
                     </a>
                     <a href="/logout" class="list-group-item list-group-item-action">
-                        Sign Out
+                        Logout
                     </a>
                 </div>
             </div>
@@ -66,8 +60,8 @@
                                             class="rounded-circle mr-2 profile-picture" />
                                     </a>
                                     <div class="dropdown-menu">
-                                        <a href="/dashboard.html" class="dropdown-item">Dashboard</a>
-                                        <a href="/penjual/user" class="dropdown-item">Settings</a>
+                                        <a href="/penjual" class="dropdown-item">Dashboard</a>
+                                        <a href="/penjual/user" class="dropdown-item">Account</a>
                                         <div class="dropdown-divider"></div>
                                         <a href="/logout" class="dropdown-item">Logout</a>
                                     </div>
@@ -93,24 +87,6 @@
                 </nav>
 
                 <div class="page-content page-cart">
-                    <section class="store-breadcrumbs" data-aos="fade-down" data-aos-delay="100">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-12">
-                                    <nav>
-                                        <ol class="breadcrumb">
-                                            <li class="breadcrumb-item">
-                                                <a
-                                                    href="{{ route(Auth::user() == 'penjual' ? 'penjual.home' : 'pembeli.home') }}">Home</a>
-                                            </li>
-                                            <li class="breadcrumb-item active">Profil</li>
-                                        </ol>
-                                    </nav>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
                     <section class="store-cart">
                         <div class="container mt-5 pt-5">
                             @if (session('success'))
@@ -160,11 +136,11 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-12 col-md-6">
-                                                            <div class="product-title">Total Pengeluaran</div>
+                                                            <div class="product-title">Total Pemasukkan</div>
                                                             {{-- <div class="product-subtitle">Rp.{{ number_format($total_pengeluaran) }}</div> --}}
                                                         </div>
                                                         <div class="col-12 col-md-6">
-                                                            <div class="product-title">Total Barang</div>
+                                                            <div class="product-title">Total Produk</div>
                                                             <div class="product-subtitle">
                                                                 {{-- {{ $total_barang }} barang --}}
                                                             </div>
@@ -300,10 +276,6 @@
                                     </div>
                                 </div>
                             </div>
-                    </section>
-
-                    <section class="store-cart">
-
                     </section>
                 </div>
 

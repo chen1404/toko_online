@@ -30,7 +30,6 @@
                             class="nav-link">Home</a>
                     </li>
 
-
                     @if (Auth::user())
                         @if (Auth::user()->role == 'pembeli')
                             <li class="nav-item">
@@ -52,6 +51,7 @@
                             <a href="{{ route('register') }}" class="nav-link">Sign Up</a>
                         </li>
                     @endif
+
                     <li class="nav-item">
                         @php $stat = Auth::user() ? 'logout' : 'login' @endphp
                         <a class="btn btn-primary" href="{{ "/$stat" }}" class="nav-link " aria-current="page">
@@ -87,24 +87,24 @@
             <div class="container mt-1 pt-1">
                 <div class="row">
                     <div class="col-12">
-                        <h1>Profil Saya</h1>
                         <div class="card">
                             <div class="card-body">
+                                <h1 class="mb-4">Profil Saya</h1>
                                 <div class="row">
                                     <div class="col-12 col-md-4">
-                                        <img src="/images/product-details-dashboard.png" class="w-100 mb-3"
+                                        <img src="{{ asset('img/profile/'.$user->image) }}" class="rounded-4 w-100 mb-3"
                                             alt="" />
                                     </div>
                                     <div class="col-12 col-md-8">
                                         <div class="row">
                                             <div class="col-12 col-md-6">
                                                 <div class="product-title">Nama</div>
-                                                <div class="product-subtitle">Rai</div>
+                                                <div class="product-subtitle">{{ $user->name }}</div>
                                             </div>
                                             <div class="col-12 col-md-6">
                                                 <div class="product-title">Email</div>
                                                 <div class="product-subtitle">
-                                                    satria@gmail.com
+                                                    {{ $user->email }}
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-6">
@@ -112,23 +112,23 @@
                                                     Alamat
                                                 </div>
                                                 <div class="product-subtitle">
-                                                    jl. keliling kota
+                                                    {{ $user->address }}
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-6">
                                                 <div class="product-title">No Hp</div>
                                                 <div class="product-subtitle">
-                                                    +62 545415245
+                                                    {{ $user->number }}
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-6">
-                                                <div class="product-title">Total Amount</div>
-                                                <div class="product-subtitle">$280,409</div>
+                                                <div class="product-title">Total Pengeluaran</div>
+                                                <div class="product-subtitle">Rp.{{ number_format($total_pengeluaran) }}</div>
                                             </div>
                                             <div class="col-12 col-md-6">
-                                                <div class="product-title">Mobile</div>
+                                                <div class="product-title">Total Barang</div>
                                                 <div class="product-subtitle">
-                                                    +628 2020 11111
+                                                    {{ $total_barang }} barang
                                                 </div>
                                             </div>
 
@@ -151,7 +151,7 @@
 
                                 <!-- Modal Ubah Password -->
                                 <div class="modal fade" id="modaleditpass" tabindex="-1" role="dialog"
-                                    aria-labelledby="modaleditpassLabel" aria-hidden="true">
+                                aria-labelledby="modaleditpassLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -162,32 +162,28 @@
                                                 </button>
                                             </div>
 
-                                            <form method="" action="">
+                                            <form action="{{ url('/user/action-pwd') }}" method="post">
+                                                @csrf
                                                 <div class="modal-body">
                                                     <div class="mb-3">
                                                         <label class="form-label">Password Sebelumnya</label>
-                                                        <input type="text" class="form-control" name=""
-                                                            value="">
+                                                        <input type="password" class="form-control" name="password_old">
                                                     </div>
                                                     <div class="mb-3">
                                                         <label class="form-label">Password Baru</label>
-                                                        <input type="text" class="form-control" name=""
-                                                            value="">
+                                                        <input type="password" class="form-control" name="password_new">
                                                     </div>
-
                                                     <div class="mb-3">
                                                         <label class="form-label">Konfirmasi Password Baru</label>
-                                                        <input type="text" class="form-control" name=""
-                                                            value="">
+                                                        <input type="password" class="form-control" name="password_confirm">
                                                     </div>
-
-
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                         data-dismiss="modal">Tutup</button>
-                                                    <button type="button" class="btn btn-primary">Simpan</button>
+                                                    <button type="submit" class="btn btn-primary">Simpan</button>
                                                 </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -195,7 +191,7 @@
 
                                 <!-- Modal Ubah -->
                                 <div class="modal fade" id="modaledit" tabindex="-1" role="dialog"
-                                    aria-labelledby="modaleditLabel" aria-hidden="true">
+                                aria-labelledby="modaleditLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -205,56 +201,51 @@
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-
-                                            <form method="" action="">
+                                            <form method="post" action="{{ url('/user/action-data') }}" enctype="multipart/form-data">
+                                                @csrf
+                                                @method('put')
                                                 <div class="modal-body">
                                                     <div class="mb-3">
                                                         <label class="form-label">Nama </label>
-                                                        <input type="text" class="form-control" name=""
-                                                            value="">
+                                                        <input type="text" class="form-control" name="name"
+                                                            value="{{ $user->name }}">
                                                     </div>
                                                     <div class="mb-3">
                                                         <label class="form-label">Email</label>
-                                                        <input type="text" class="form-control" name=""
-                                                            value="">
+                                                        <input type="text" class="form-control" name="email"
+                                                            value="{{ $user->email }}">
                                                     </div>
 
                                                     <div class="mb-3">
                                                         <label class="form-label">Alamat</label>
-                                                        <input type="text" class="form-control" name=""
-                                                            value="">
+                                                        <input type="text" class="form-control" name="address"
+                                                            value="{{ $user->address }}">
                                                     </div>
 
                                                     <div class="mb-3">
                                                         <label class="form-label">No Hp</label>
-                                                        <input type="text" class="form-control" name=""
-                                                            value="">
+                                                        <input type="text" class="form-control" name="mobile"
+                                                            value="{{ $user->number }}">
                                                     </div>
                                                     <div class="mb-3">
                                                         <label class="form-label">Foto Profil</label>
-                                                        <input type="file" class="form-control" name=""
-                                                            value="">
+                                                        <input type="file" class="form-control" name="file"
+                                                            value="{{ $user->image }}"
+                                                        >
+                                                        <p style="font-size: 10px;"><span style="color: red;">*</span> abaikan jika tidak ingin merubah data</p>
                                                     </div>
-
-
-
                                                 </div>
+                                                <input type="text" name="store" value="false" hidden>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                         data-dismiss="modal">Tutup</button>
-                                                    <button type="button" class="btn btn-primary">Simpan</button>
+                                                    <button type="submit" class="btn btn-primary">Simpan</button>
                                                 </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- Akhir Modal Ubah -->
-
-
-
-
-
-
-
 
                                 <div class="row">
                                     <div class="col-12 mt-4">
@@ -284,7 +275,7 @@
                                                                 style="width: 75%" />
                                                         </td>
                                                         <td>{{ $transaction->produk->nama }}</td>
-                                                        <td>{{ $transaction->total_harga }}</td>
+                                                        <td>Rp.{{ number_format($transaction->total_harga) }}</td>
                                                         <td><b>{{ $transaction->jumlah_barang }}x</b></td>
                                                         <td>{{ $transaction->user->name }}</td>
                                                         <td>{{ $transaction->alamat }}</td>
@@ -294,18 +285,11 @@
                                         </table>
                                         {{-- <a href="{{ route('user.transaksi', Auth::user()->id) }}" class="btn btn-warning">Checkout</a> --}}
                                     </div>
-
-
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-        </section>
-
-        <section class="store-cart">
-
         </section>
     </div>
 

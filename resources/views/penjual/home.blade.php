@@ -29,7 +29,7 @@
                     <a href="{{ route('produk') }}" class="list-group-item list-group-item-action">
                         Produk
                     </a>
-                    <a href="/dashboard-account.html" class="list-group-item list-group-item-action">
+                    <a href="/penjual/user" class="list-group-item list-group-item-action">
                         Akun
                     </a>
                     <a href="/logout" class="list-group-item list-group-item-action">
@@ -60,8 +60,8 @@
                                             class="rounded-circle mr-2 profile-picture" />
                                     </a>
                                     <div class="dropdown-menu">
-                                        <a href="/dashboard.html" class="dropdown-item">Dashboard</a>
-                                        <a href="/dashboard-account.html" class="dropdown-item">Settings</a>
+                                        <a href="/penjual" class="dropdown-item">Dashboard</a>
+                                        <a href="/penjual/user" class="dropdown-item">Account</a>
                                         <div class="dropdown-divider"></div>
                                         <a href="/logout" class="dropdown-item">Logout</a>
                                     </div>

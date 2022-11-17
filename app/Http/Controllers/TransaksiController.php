@@ -27,10 +27,6 @@ class TransaksiController extends Controller
                 $produk = Produk::findOrFail($cart->produk->id);
 
                 $sisaBarang = $produk->stok - $cart->jumlah_barang;
-                // if($sisaBarang == 0) {
-                //     $produk->delete();
-                // } else {
-                // }
                 $produk->update(['stok' => $sisaBarang]);
 
                 $transaksi = new Transaksi([
@@ -52,19 +48,23 @@ class TransaksiController extends Controller
     
     public function storeProduk(Produk $product) {
         $sisaBarang = $product->stok - 1;
-        $product->update(['stok' => $sisaBarang]);
-        
-        $transaksi = new Transaksi([
-            "total_harga" => $product->harga,
-            "jumlah_barang" => '1',
-            "alamat" => Auth::user()->address,
-            "pembeli_id" => Auth::user()->id,
-            "penjual_id" => $product->penjual_id,
-            "produk_id" => $product->id,
-        ]); 
-        $transaksi->save();
-        
-        return redirect("/show/$product->id")->with('success', 'Produk berhasil di Checkout!');
+        if($sisaBarang >= 0) {
+            $product->update(['stok' => $sisaBarang]);
+            
+            $transaksi = new Transaksi([
+                "total_harga" => $product->harga,
+                "jumlah_barang" => '1',
+                "alamat" => Auth::user()->address,
+                "pembeli_id" => Auth::user()->id,
+                "penjual_id" => $product->penjual_id,
+                "produk_id" => $product->id,
+            ]); 
+            $transaksi->save();
+            
+            return redirect("/show/$product->id")->with('success', 'Produk berhasil di Checkout!');
+        } else {
+            return redirect("/show/$product->id");
+        }
     }
 
     public function daftarTransaksi() {
