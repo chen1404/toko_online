@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Keranjang;
 use App\Models\Produk;
 use App\Models\Transaksi;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -67,9 +68,22 @@ class TransaksiController extends Controller
     }
 
     public function daftarTransaksi() {
-        $transaksi = Transaksi::all()->where('pembeli_id', Auth::user()->id);
+        $id = Auth::user()->id;
+        $transaksi = Transaksi::all()->where('pembeli_id', $id);
+        $user = User::all()->where('id', $id)->first();
+        $totalBarang = Transaksi::all()->where('pembeli_id', $id)->sum('jumlah_barang');
 
-        return view('pembeli.checkout', ["transactions" => $transaksi]);
+        $totalPengeluaran = 0;
+        foreach($transaksi as $trans) {
+            $totalPengeluaran += $trans->total_harga;
+        }
+
+        return view('pembeli.checkout', [
+            "total_pengeluaran" => $totalPengeluaran,
+            "total_barang" => $totalBarang,
+            "transactions" => $transaksi,
+            "user" => $user,
+        ]);
     }
 
     public function penjual() {

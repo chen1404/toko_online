@@ -49,7 +49,7 @@
                             Store Settings
                         </a>
                         <a
-                        href="/dashboard-account.html"
+                        href="/penjual/user"
                         class="list-group-item list-group-item-action"
                         >
                             My Account
@@ -106,7 +106,7 @@
                                             <a href="/dashboard.html" class="dropdown-item"
                                                 >Dashboard</a
                                             >
-                                            <a href="/dashboard-account.html" class="dropdown-item"
+                                            <a href="/penjual/user" class="dropdown-item"
                                                 >Settings</a
                                             >
                                             <div class="dropdown-divider"></div>
