@@ -26,7 +26,7 @@ class KeranjangController extends Controller
                 ]);
             } else {
                 Keranjang::create([
-                    'total_harga' => $product->harga * $request->get('barang'),
+                    'total_harga' => $product->harga*$jumlBrg,
                     'jumlah_barang' => $jumlBrg,
                     'produk_id' => $product->id,
                     'pembeli_id' => Auth::user()->id
