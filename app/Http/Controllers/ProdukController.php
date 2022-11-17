@@ -51,6 +51,7 @@ class ProdukController extends Controller
             'product' => $id,
         ]);
     }
+    
     public function edit(Produk $produk) {
         return view('penjual.update', [
             'product' => $produk,

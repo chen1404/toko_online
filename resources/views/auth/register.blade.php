@@ -10,21 +10,16 @@
         <div class="container">
           <div class="row align-items-center justify-content-center row-login">
             <div class="col-lg-4">
-              {{-- @if(session('success'))
-              <div class="alert alert-success">
-                <b>Yeah!</b> {{session('success')}}
-              </div>
-              @endif --}}
               @if(session('error'))
-              <div class="alert alert-danger">
+                <div class="alert alert-danger">
                   <b>Opps!</b> {{session('error')}}
-              </div>
+                </div>
               @endif
               <h2>
                 Memulai untuk jual beli <br />
                 dengan cara terbaru
               </h2>
-              <form action="{{ url('/action-register') }}" method="POST" class="mt-3" >
+              <form action="{{ url('/action-register') }}" method="post" class="mt-3" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                   <label>Nama</label>
@@ -75,6 +70,14 @@
                     </div>
                   </div>
                 </div>
+
+                <div class="form-group">
+                  <label for="gambar" class="form-label">Gambar</label>
+                  <input type="file" class="form-control" id="gambar" name="file" placeholder="gambar" accept=".jpg,.jpeg,.png" />
+                  <p class="text-muted">
+                    silahkan input foto profil anda
+                  </p>
+                </div>
                 
                 <div class="form-group">
                   <label>Store</label>
@@ -89,7 +92,7 @@
                       id="openStoreTrue"
                       v-model="is_store_open"
                       value="penjual"
-                      onclick="onLoad('hide', 'show')"
+                      onclick="onLoad('hide', 'show'),boleh()"
                       required 
                     />
                     <label for="openStoreTrue" class="custom-control-label"
@@ -106,7 +109,7 @@
                       id="openStoreFalse"
                       v-model="is_store_open"
                       value="pembeli"
-                      onclick="onLoad('show', 'hide')"
+                      onclick="onLoad('show', 'hide'),enggak()"
                       required
                     />
                     <label for="openStoreFalse" class="custom-control-label"
@@ -116,7 +119,7 @@
                 </div>
                 <div class="form-group hide" v-if="is_store_open" id="tokoDiv">
                   <label>Nama Toko</label>
-                  <input type="text" class="form-control" placeholder="masukkan nama toko" id="namaToko"/>
+                  <input type="text" class="form-control" placeholder="masukkan nama toko" name="nama_toko" id="namaToko"/>
                 </div>
                 
                 <div class="form-group">

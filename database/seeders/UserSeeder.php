@@ -22,6 +22,8 @@ class UserSeeder extends Seeder
                 'name' => 'Rausyanfikr Karmayoga',
                 'address' => 'Jl. Abdul W. Syahranie Gg 555',
                 'number' => '081351580524',
+                'image' => 'nama-panjang-w41g.jpg',
+                'is_store' => 'Shian Store',
                 'email' => 'rausyanfikrkarmayoga@gmail.com',
                 'password' => '123'
             ],
@@ -30,6 +32,8 @@ class UserSeeder extends Seeder
                 'name' => 'Asep Harahap',
                 'address' => 'Jl. Juanda 7 No 5',
                 'number' => '0824561727383',
+                'image' => 'nama-panjang-w41g.jpg',
+                'is_store' => 'Listrik Biru',
                 'email' => 'asep@gmail.com',
                 'password' => '123'
             ],
@@ -38,6 +42,8 @@ class UserSeeder extends Seeder
                 'name' => 'Vanny Putri',
                 'address' => 'Jl. Juanda 7 No 5',
                 'number' => '0824561727383',
+                'image' => 'nama-panjang-w41g.jpg',
+                'is_store' => 'false',
                 'email' => 'vannyputriandrini@gmail.com',
                 'password' => '123'
             ],
@@ -46,6 +52,8 @@ class UserSeeder extends Seeder
                 'name' => 'Rosyan Xone',
                 'address' => 'Jl. Abdul W. Syahranie Gg 555',
                 'number' => '081351580524',
+                'image' => 'nama-panjang-w41g.jpg',
+                'is_store' => 'false',
                 'email' => 'rosyanxone@student.unmul.ac.id',
                 'password' => '123'
             ],
@@ -57,6 +65,8 @@ class UserSeeder extends Seeder
                 'name' => $user["name"],
                 'address' => $user["address"],
                 'number' => $user["number"],
+                'image' => $user["image"],
+                'is_store' => $user["is_store"],
                 'email' => $user["email"],
                 'password' => Hash::make($user["password"])
             ]);
