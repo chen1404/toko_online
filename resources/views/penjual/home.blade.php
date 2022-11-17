@@ -117,7 +117,7 @@
                             </div>
                             <div class="row mt-3">
                                 <div class="col-12 mt-2">
-                                    <h5 class="mb-3">Riwayat Transaksi yang Terjual</h5>
+                                    <h5 class="mb-3">Riwayat transaksi dari Produk yang terjual</h5>
                                     @if (count($transactions) > 0)
                                         @foreach ($transactions as $transaction)
                                             <div href="/dashboard-transactions-details.html"
@@ -143,8 +143,8 @@
                                                         <div class="col-md-2">Rp.{{ $transaction->total_harga }}</div>
                                                         <div class="col-md-3">{{ $transaction->user->name }}</div>
                                                         <div class="col-md-2">
-                                                            {{ $transaction->created_at->format('D, d M Y') }}</div>
-
+                                                            {{ $transaction->created_at->format('D, d M Y') }}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -152,7 +152,12 @@
                                     @endif
                                 </div>
                             </div>
-                            <nav aria-label="Page navigation example">
+                            @if($transactions->hasPages())
+                                <div class="">
+                                    {{ $transactions->links() }}
+                                </div>
+                            @endif
+                            {{-- <nav aria-label="Page navigation example">
                                 <ul class="pagination justify-content-end">
                                     <li class="page-item disabled">
                                         <a class="page-link">Previous</a>
@@ -164,7 +169,7 @@
                                         <a class="page-link" href="#">Next</a>
                                     </li>
                                 </ul>
-                            </nav>
+                            </nav> --}}
                         </div>
                     </div>
                 </div>

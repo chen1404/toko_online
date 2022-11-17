@@ -152,7 +152,7 @@
                                                         <div class="col-12 col-md-6">
                                                             <button data-toggle="modal" data-target="#modaleditpass"
                                                                 class="btn btn-secondary btn mt-4">
-                                                                Lupa Password
+                                                                Ubah Password
                                                             </button>
                                                         </div>
 

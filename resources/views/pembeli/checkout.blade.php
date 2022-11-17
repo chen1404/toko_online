@@ -146,7 +146,7 @@
                                             <div class="col-12 col-md-6">
                                                 <button data-toggle="modal" data-target="#modaleditpass"
                                                     class="btn btn-secondary btn mt-4">
-                                                    Lupa Password
+                                                    Ubah Password
                                                 </button>
                                             </div>
 
@@ -301,9 +301,8 @@
                                             </tbody>
                                         </table>
                                     </div>
-
                                 </div>
-                                <nav aria-label="Page navigation example">
+                                {{-- <nav aria-label="Page navigation example">
                                     <ul class="pagination justify-content-end">
                                         <li class="page-item disabled">
                                             <a class="page-link">Previous</a>
@@ -315,7 +314,12 @@
                                             <a class="page-link" href="#">Next</a>
                                         </li>
                                     </ul>
-                                </nav>
+                                </nav> --}}
+                                @if($transactions->hasPages())
+                                    <div class="">
+                                        {{ $transactions->links() }}
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>

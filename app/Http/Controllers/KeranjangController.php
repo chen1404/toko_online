@@ -7,6 +7,7 @@ use App\Models\Produk;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class KeranjangController extends Controller
 {
@@ -51,7 +52,8 @@ class KeranjangController extends Controller
             $result = Keranjang::all()->where('pembeli_id', Auth::user()->id)->count();
         }
 
-        $query = Produk::all();
+        // $query = Produk::all();
+		$query = DB::table('products')->paginate(8);
         if(strlen($kategori) > 0) {
             $query = Produk::all()->where('kategori', $kategori);
         }

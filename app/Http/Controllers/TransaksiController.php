@@ -8,6 +8,7 @@ use App\Models\Transaksi;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TransaksiController extends Controller
 {
@@ -72,7 +73,8 @@ class TransaksiController extends Controller
     public function daftarTransaksi()
     {
         $id = Auth::user()->id;
-        $transaksi = Transaksi::all()->where('pembeli_id', $id);
+		// $transaksi = DB::table('transactions')->where('pembeli_id', $id)->paginate(5);
+        $transaksi = Transaksi::where('pembeli_id', $id)->paginate(5);
         $user = User::all()->where('id', $id)->first();
         $totalBarang = Transaksi::all()->where('pembeli_id', $id)->sum('jumlah_barang');
 
@@ -91,7 +93,8 @@ class TransaksiController extends Controller
 
     public function penjual()
     {
-        $transactions = Transaksi::all()->where('penjual_id', Auth::user()->id);
+        // $transactions = Transaksi::all()->where('penjual_id', Auth::user()->id);
+        $transactions = Transaksi::where('penjual_id', Auth::user()->id)->paginate(4);
         $jumlahTransaksi = Transaksi::all()->where('penjual_id', Auth::user()->id)->count();
         $totalIncome = Transaksi::where('penjual_id', Auth::user()->id)->sum('total_harga');
         $jumlahCustomer = Transaksi::select('pembeli_id')->where('penjual_id', Auth::user()->id)->distinct()->get()->count();

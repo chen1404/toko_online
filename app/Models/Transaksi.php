@@ -17,6 +17,7 @@ class Transaksi extends Model
         $role = Auth::user()->role == 'penjual' ? 'pembeli_id' : 'penjual_id';
         return $this->belongsTo(User::class, $role);
     }
+
     protected $table = 'transactions';
     protected $fillable = ['total_harga', 'jumlah_barang', 'alamat', 'pembeli_id', 'penjual_id', 'produk_id'];
 }
