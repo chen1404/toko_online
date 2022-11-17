@@ -90,7 +90,7 @@ class TransaksiController extends Controller
         $transactions = Transaksi::all()->where('penjual_id', Auth::user()->id);
         $jumlahTransaksi = Transaksi::all()->where('penjual_id', Auth::user()->id)->count();
         $totalIncome = Transaksi::where('penjual_id', Auth::user()->id)->sum('total_harga');
-        $jumlahCustomer = Transaksi::select('pembeli_id')->distinct()->get()->count();
+        $jumlahCustomer = Transaksi::select('pembeli_id')->where('penjual_id', Auth::user()->id)->distinct()->get()->count();
         
         return view('penjual.home', [
             "transactions" => $transactions,

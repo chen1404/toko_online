@@ -103,6 +103,7 @@
                                 <div class="col-12">
                                     <div class="card">
                                         <div class="card-body">
+                                            <h1 class="mb-4">Profil Saya</h1>
                                             <div class="row">
                                                 <div class="col-12 col-md-4">
                                                     <img src="{{ asset('img/profile/' . $user->image) }}"
@@ -137,12 +138,12 @@
                                                         </div>
                                                         <div class="col-12 col-md-6">
                                                             <div class="product-title">Total Pemasukkan</div>
-                                                            {{-- <div class="product-subtitle">Rp.{{ number_format($total_pengeluaran) }}</div> --}}
+                                                            <div class="product-subtitle">Rp.{{ number_format($total_income) }}</div>
                                                         </div>
                                                         <div class="col-12 col-md-6">
                                                             <div class="product-title">Total Produk</div>
                                                             <div class="product-subtitle">
-                                                                {{-- {{ $total_barang }} barang --}}
+                                                                {{ $total_produk }} barang
                                                             </div>
                                                         </div>
 

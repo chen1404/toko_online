@@ -73,7 +73,8 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
                                     <a
-                                        href="{{ route(Auth::user() == 'penjual' ? 'penjual.home' : 'pembeli.home') }}">Home</a>
+                                    href="{{ route(Auth::user() == 'penjual' ? 'penjual.home' : 'pembeli.home') }}">
+                                    Home</a>
                                 </li>
                                 <li class="breadcrumb-item active">Profil</li>
                             </ol>
@@ -85,6 +86,16 @@
 
         <section class="store-cart">
             <div class="container mt-1 pt-1">
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{session('success')}}
+                    </div>
+                @endif
+                @if(session('error'))
+                    <div class="alert alert-danger">
+                        {{session('error')}}
+                    </div>
+                @endif
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
