@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Produk;
+use App\Models\Transaksi;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -12,8 +14,13 @@ use Illuminate\Testing\Fluent\Concerns\Has;
 class AuthController extends Controller
 {
     public function penjualProfile() {
+        $totalIncome = Transaksi::where('penjual_id', Auth::user()->id)->sum('total_harga');
+        $totalProduk = Produk::distinct()->get()->where('penjual_id', Auth::user()->id)->count();
+
         return view('penjual.user', [
             "user" => User::all()->where('id', Auth::user()->id)->first(),
+            "total_income" => $totalIncome,
+            "total_produk" => $totalProduk
         ]);
     }
     public function actionRegister(Request $request)
