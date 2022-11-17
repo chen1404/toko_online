@@ -189,6 +189,7 @@
                                                         <input type="password" class="form-control" name="password_confirm">
                                                     </div>
                                                 </div>
+                                                <input type="text" value="/user" name="role_route" hidden>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                         data-dismiss="modal">Tutup</button>
@@ -247,6 +248,7 @@
                                                     </div>
                                                 </div>
                                                 <input type="text" name="store" value="false" hidden>
+                                                <input type="text" value="/user" name="role_route" hidden>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                         data-dismiss="modal">Tutup</button>
@@ -294,7 +296,6 @@
                                                 @endforeach
                                             </tbody>
                                         </table>
-                                        {{-- <a href="{{ route('user.transaksi', Auth::user()->id) }}" class="btn btn-warning">Checkout</a> --}}
                                     </div>
                                 </div>
                             </div>

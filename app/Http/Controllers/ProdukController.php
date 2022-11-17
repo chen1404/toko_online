@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Keranjang;
 use App\Models\Produk;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -49,6 +50,7 @@ class ProdukController extends Controller
     public function show(Produk $id) {
         return view('pembeli.show', [
             'product' => $id,
+            'keranjang' => Keranjang::all()->where('pembeli_id', Auth::user()->id)->count(),
         ]);
     }
     
@@ -56,6 +58,11 @@ class ProdukController extends Controller
         return view('penjual.update', [
             'product' => $produk,
         ]);
+    }
+
+    public function success() {
+        return view('pembeli.success');
+        // "products" => Produk::all()
     }
     
     public function update(Request $request, $id) {

@@ -12,18 +12,23 @@ class KeranjangController extends Controller
 {
     public function keranjang(Produk $product, Request $request)
     {
+        $cart = Keranjang::all()->where('pembeli_id', Auth::user()->id)->where('produk_id', $product->id)->first();
         $jumlBrg = $request->get('barang');
-        if ($jumlBrg > 0) {
-            $cart = Keranjang::all()->where('pembeli_id', Auth::user()->id)->where('produk_id', $product->id)->first();
 
+        if($jumlBrg > 0) {
             if ($cart) {
-                $totlHrg = $cart->total_harga + $product->harga * $jumlBrg;
-                $jumlBrg += $cart->jumlah_barang;
-
-                $cart->update([
-                    'total_harga' => $totlHrg,
-                    'jumlah_barang' => $jumlBrg
-                ]);
+                if($cart->jumlah_barang + $jumlBrg > $product->stok) {
+                    session()->flash('error', 'Produk Gagal Ditambah ke Keranjang!');
+                    return redirect("/show/$product->id");
+                } else {
+                    $totlHrg = $cart->total_harga + $product->harga * $jumlBrg;
+                    $jumlBrg += $cart->jumlah_barang;
+    
+                    $cart->update([
+                        'total_harga' => $totlHrg,
+                        'jumlah_barang' => $jumlBrg
+                    ]);
+                }
             } else {
                 Keranjang::create([
                     'total_harga' => $product->harga*$jumlBrg,
@@ -34,10 +39,27 @@ class KeranjangController extends Controller
             }
 
             session()->flash('success', 'Berhasil Ditambah ke Keranjang!');
-            return redirect("/show/$product->id");
         } else {
-            return redirect("/show/$product->id");
+            session()->flash('error', 'Produk Gagal Ditambah ke Keranjang!');
         }
+        return redirect("/show/$product->id");
+    }
+
+    public function keranjangCount($kategori = '') {
+        $result = 0;
+        if(Auth::user()) {
+            $result = Keranjang::all()->where('pembeli_id', Auth::user()->id)->count();
+        }
+
+        $query = Produk::all();
+        if(strlen($kategori) > 0) {
+            $query = Produk::all()->where('kategori', $kategori);
+        }
+
+        return view('pembeli.home', [
+            "products" => $query,
+            "keranjang" => $result,
+        ]);
     }
 
     public function pembeli()

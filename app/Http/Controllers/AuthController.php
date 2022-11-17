@@ -9,7 +9,6 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Testing\Fluent\Concerns\Has;
 
 class AuthController extends Controller
 {
@@ -77,7 +76,7 @@ class AuthController extends Controller
         ]);
 
         session()->flash('success', 'Berhasil Merubah Data Akun!');
-        return redirect('/user');
+        return redirect("$request->role_route");
     }
 
     public function updatePassword(Request $request) {
@@ -87,15 +86,13 @@ class AuthController extends Controller
                 $user->update(['password' => Hash::make($request->password_new)]);
                 
                 session()->flash('success', 'Berhasil merubah password!');
-                return redirect('/user');
             } else {
                 session()->flash('error', 'Konfirmasi password anda berbeda!');
-                return redirect('/user');
             }
         } else {
             session()->flash('error', 'Password lama anda salah!');
-            return redirect('/user');
         }
+        return redirect("$request->role_route");
     }
 
     public function actionLogin(Request $request)

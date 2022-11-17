@@ -55,7 +55,7 @@
                                     <a href="#" class="nav-link" id="navbarDropdown" role="button"
                                         data-toggle="dropdown">
                                         Hi, {{ Auth::user()->name }}
-                                        <img src="/images/icon-user.png" alt=""
+                                        <img src="/img/profile/{{ Auth::user()->image }}" alt=""
                                             class="rounded-circle mr-2 profile-picture" />
                                     </a>
                                     <div class="dropdown-menu">
@@ -69,7 +69,7 @@
 
                             <ul class="navbar-nav d-block d-lg-none">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link"> Hi, Rai </a>
+                                    <a href="#" class="nav-link">{{ Auth::user()->name }}</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#" class="nav-link d-inline-block"> Cart </a>

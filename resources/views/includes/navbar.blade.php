@@ -15,8 +15,6 @@
                     <a href="{{ route(Auth::user() == 'penjual' ? 'penjual.home' : 'pembeli.home') }}"
                         class="nav-link">Home</a>
                 </li>
-
-
                 @if (Auth::user())
                     @if (Auth::user()->role == 'pembeli')
                         <li class="nav-item">
@@ -26,10 +24,8 @@
                             <a href="{{ route('pembeli.keranjang') }}" class="nav-link" aria-current="page">Keranjang
                                 &nbsp;&nbsp;
                                 <img src="/images/icon-cart-filled.svg" alt="" />
-                                <div class="card-badge">1</div>
+                                <div class="card-badge">{{ $keranjang }}</div>
                             </a>
-
-
                         </li>
                     @endif
                 @else

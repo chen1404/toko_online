@@ -106,9 +106,7 @@
                             <a href="/show/{{ $product->id }}" class="component-products d-block">
                                 <div class="products-thumbnail">
                                     <div class="products-image"
-                                        style="
-                      background-image: url('/img/products/{{ $product->gambar }}');
-                    ">
+                                        style="background-image: url('/img/products/{{ $product->gambar }}');">
                                     </div>
                                 </div>
                                 <div class="products-text">{{ $product->nama }}</div>

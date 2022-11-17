@@ -30,7 +30,6 @@
                             class="nav-link">Home</a>
                     </li>
 
-
                     @if (Auth::user())
                         @if (Auth::user()->role == 'pembeli')
                             <li class="nav-item">
@@ -43,8 +42,6 @@
                                     <img src="/images/icon-cart-filled.svg" alt="" />
                                     <div class="card-badge">{{ $total_produk }}</div>
                                 </a>
-
-
                             </li>
                         @endif
                     @else
@@ -85,14 +82,15 @@
 
         <section class="store-cart">
             <div class="container">
+
                 @if (session('success'))
                     <div class="alert alert-success">
-                        <p>{{ session('success') }}</p>
+                        {{ session('success') }}
                     </div>
                 @endif
                 @if (session('del-success'))
                     <div class="alert alert-danger">
-                        <p>{{ session('del-success') }}</p>
+                        {{ session('del-success') }}
                     </div>
                 @endif
 
