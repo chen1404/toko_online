@@ -38,7 +38,13 @@
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('pembeli.keranjang') }}" class="nav-link"
-                                    aria-current="page">Keranjang</a>
+                                    aria-current="page">Keranjang
+                                    &nbsp;&nbsp;
+                                    <img src="/images/icon-cart-filled.svg" alt="" />
+                                    <div class="card-badge">1</div>
+                                </a>
+
+
                             </li>
                         @endif
                     @else
@@ -58,36 +64,32 @@
     </nav>
     <!-- Page Content -->
     <div class="page-content page-details">
-      <section
-        class="store-breadcrumbs"
-        data-aos="fade-down"
-        data-aos-delay="100"
-      >
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <nav>
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item">
-                    <a href="/">Home</a>
-                  </li>
-                  <li class="breadcrumb-item active">Detail Produk</li>
-                </ol>
-              </nav>
+        <section class="store-breadcrumbs" data-aos="fade-down" data-aos-delay="100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="/">Home</a>
+                                </li>
+                                <li class="breadcrumb-item active">Detail Produk</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {{-- <section class="store-gallery" id="gallery" style="margin-top: 20px">
+        {{-- <section class="store-gallery" id="gallery" style="margin-top: 20px">
         <div class="container">
-          @if(session('success'))
+          @if (session('success'))
             <div class="col-lg-8 alert alert-success">
               {{session('success')}}
             </div>
           @endif
           @php $stock = $product->stok == 0 ? '<span class="text-danger">Habis</span>' : $product->stok; @endphp
-          @if($product->stok == 0)
+          @if ($product->stok == 0)
             <div class="col-lg-8 alert alert-danger">
               Stok Produk Habis!
             </div>
@@ -150,10 +152,10 @@
                     </div>
                 @endif
                 @php $stock = $product->stok == 0 ? '<span class="text-danger">Habis</span>' : $product->stok; @endphp
-                @if($product->stok == 0)
-                  <div class="col-lg-8 alert alert-danger">
-                    Stok Produk Habis!
-                  </div>
+                @if ($product->stok == 0)
+                    <div class="col-lg-8 alert alert-danger">
+                        Stok Produk Habis!
+                    </div>
                 @endif
                 <div class="row">
                     <div class="col-lg-8" data-aos="zoom-in">
@@ -172,7 +174,7 @@
                         <div class="col-lg-8">
                             <h1>{{ $product->nama }}</h1>
                             <div class="owner">By {{ $product->user->name }}</div>
-                            <div class="price">Rp.{{ $product->harga }}</div>
+                            <div class="price">Rp.{{ number_format($product->harga) }}</div>
                             <div class="owner">Stok {!! $stock !!}</div>
                         </div>
 
