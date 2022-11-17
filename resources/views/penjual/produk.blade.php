@@ -92,6 +92,11 @@
                                 <b>Yeah!</b> {{ session('success') }}
                             </div>
                         @endif
+                        @if (session('error'))
+                            <div class="alert alert-danger">
+                                <b>Gagal!</b> {{ session('error') }}
+                            </div>
+                        @endif
                         <div class="dashboard-content">
                             <div class="row">
                                 <div class="col-12">

@@ -40,10 +40,8 @@
                                     aria-current="page">Keranjang
                                     &nbsp;&nbsp;
                                     <img src="/images/icon-cart-filled.svg" alt="" />
-                                    <div class="card-badge">1</div>
+                                    <div class="card-badge">{{ $keranjang }}</div>
                                 </a>
-
-
                             </li>
                         @endif
                     @else
@@ -268,7 +266,7 @@
                                     <div class="col-12 mt-4">
                                         <h5>Riwayat Pesanan</h5>
                                     </div>
-                                    <div class="container  ">
+                                    <div class="container">
                                         <table class="table">
                                             <thead>
                                                 <tr class="text-center">
@@ -277,7 +275,7 @@
                                                     <th scope="col">Nama</th>
                                                     <th scope="col">Total Harga</th>
                                                     <th scope="col">Jumlah Barang</th>
-                                                    <th scope="col">Penjual</th>
+                                                    <th scope="col">Toko</th>
                                                     <th scope="col">Alamat tujuan</th>
                                                 </tr>
                                             </thead>
@@ -286,15 +284,16 @@
                                                 @foreach ($transactions as $transaction)
                                                     <tr>
                                                         <th scope="row">{{ $no++ }}</th>
-                                                        <td>
+                                                        <td colspan="1">
                                                             <img src="/img/products/{{ $transaction->produk->gambar }}"
                                                                 alt="" class="cart-image "
-                                                                style="width: 75%" />
+                                                                style="width: 50%" 
+                                                            />
                                                         </td>
                                                         <td>{{ $transaction->produk->nama }}</td>
-                                                        <td>Rp.{{ number_format($transaction->total_harga) }}</td>
+                                                        <td>Rp.{{ number_format($transaction->total_harga + ($transaction->total_harga * $pajak)) }}</td>
                                                         <td><b>{{ $transaction->jumlah_barang }}x</b></td>
-                                                        <td>{{ $transaction->user->name }}</td>
+                                                        <td>{{ $transaction->user->is_store }}</td>
                                                         <td>{{ $transaction->alamat }}</td>
                                                     </tr>
                                                 @endforeach

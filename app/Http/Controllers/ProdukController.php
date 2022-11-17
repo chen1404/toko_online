@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Keranjang;
 use App\Models\Produk;
+use App\Models\Transaksi;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -88,14 +89,18 @@ class ProdukController extends Controller
         ]);
         $produk->update($validateData);
 
-        return redirect("/produk")->with('success', 'Rental berhasil diubah');
+        return redirect("/produk")->with('success', 'Produk berhasil diubah');
     }
     
     public function destroy($id) {
         $produk = Produk::findOrFail($id);
-        $produk->delete();
-
-        return redirect('/produk')->with('success', 'Rental berhasil dihapus');
+        $transaksi = Transaksi::where('produk_id', $produk->id)->first();
+        if($produk->stok == 0 || $transaksi) {
+            return redirect('/produk')->with('error', 'Produk tidak dapat dihapus');
+        } else {
+            $produk->delete();
+            return redirect('/produk')->with('success', 'Produk berhasil dihapus');
+        }
     }
 }
 

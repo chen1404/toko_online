@@ -41,7 +41,7 @@ class KeranjangController extends Controller
 
             session()->flash('success', 'Berhasil Ditambah ke Keranjang!');
         } else {
-            session()->flash('error', 'Produk Gagal Ditambah ke Keranjang!');
+            session()->flash('error', 'Gagal Ditambah ke Keranjang!');
         }
         return redirect("/show/$product->id");
     }

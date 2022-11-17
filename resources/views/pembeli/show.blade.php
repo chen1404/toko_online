@@ -82,12 +82,12 @@
             <div class="container">
                 @if (session('success'))
                     <div class="alert alert-success col-8">
-                        {{ session('success') }}
+                        <b>Produk</b> {{ session('success') }}
                     </div>
                 @endif
                 @if (session('error'))
                     <div class="alert alert-danger col-8">
-                        {{ session('error') }}
+                        <b>Produk</b> {{ session('error') }}
                     </div>
                 @endif
                 @php $stock = $product->stok == 0 ? '<span class="text-danger">Habis</span>' : $product->stok; @endphp
@@ -112,7 +112,7 @@
                     <div class="row">
                         <div class="col-lg-8">
                             <h1>{{ $product->nama }}</h1>
-                            <div class="owner">By {{ $product->user->name }}</div>
+                            <div class="owner">By {{ $product->user->is_store }}</div>
                             <div class="price">Rp.{{ number_format($product->harga) }}</div>
                             <div class="owner">Stok {!! $stock !!}</div>
                         </div>

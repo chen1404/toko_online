@@ -61,17 +61,17 @@ Route::get('/success', function() {
 
 // PENJUAL
 Route::get('/penjual', [TransaksiController::class, 'penjual'])->name('penjual.home')->middleware('auth');
-
-Route::get('/produk/create', [ProdukController::class, 'create'])->name('penjual.create')->middleware('auth');
-Route::post('/produk/store', [ProdukController::class, 'store'])->name('penjual.store')->middleware('auth');
+Route::get('/penjual/user', [AuthController::class, 'penjualProfile'])->name('penjual.user')->middleware('auth');
 
 Route::get('/produk', function () {
     return view('penjual.produk', ["products" => Produk::all()->where('penjual_id', Auth::user()->id)]);
 })->name('produk');
 
+Route::get('/produk/create', [ProdukController::class, 'create'])->name('penjual.create')->middleware('auth');
+Route::post('/produk/store', [ProdukController::class, 'store'])->name('penjual.store')->middleware('auth');
+
 Route::get('/update/{produk}', [ProdukController::class, 'edit'])->name('edit')->middleware('auth');
 Route::put('/{id}', [ProdukController::class, 'update'])->name('update')->middleware('auth');
 Route::delete('/{id}', [ProdukController::class, 'destroy'])->name('delete')->middleware('auth');
 
-Route::get('/penjual/user', [AuthController::class, 'penjualProfile'])->name('penjual.user')->middleware('auth');
 // END PENJUAL

@@ -19,7 +19,7 @@
             <!-- Sidebar -->
             <div class="border-right" id="sidebar-wrapper">
                 <div class="sidebar-heading text-center">
-                    <img src="/images/dashboard-store-logo.svg" alt="" class="my-4" />
+                    <img src="/images/logo.svg" alt="" class="my-4" width="180px" />
                 </div>
                 <div class="list-group list-group-flush">
                     <a href="{{ route('penjual.home') }}" class="list-group-item list-group-item-action">

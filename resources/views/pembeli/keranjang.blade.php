@@ -116,7 +116,7 @@
                                         </td>
                                         <td td style="width: 25%">
                                             <div class="product-title">{{ $keranjang->produk->nama }}</div>
-                                            <div class="product-subtitle">{{ $keranjang->produk->user->name }}</div>
+                                            <div class="product-subtitle">{{ $keranjang->produk->user->is_store }}</div>
                                         </td>
                                         <td td style="width: 20%">
                                             <div class="product-title">{{ $keranjang->jumlah_barang }}x</div>

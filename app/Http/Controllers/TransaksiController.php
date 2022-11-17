@@ -64,7 +64,7 @@ class TransaksiController extends Controller
             ]);
             $transaksi->save();
 
-            return redirect("/show/$product->id")->with('success', 'Produk berhasil di Checkout!');
+            return redirect("/show/$product->id")->with('success', ' berhasil di Checkout!');
         } else {
             return redirect("/show/$product->id");
         }
@@ -77,16 +77,20 @@ class TransaksiController extends Controller
         $transaksi = Transaksi::where('pembeli_id', $id)->paginate(5);
         $user = User::all()->where('id', $id)->first();
         $totalBarang = Transaksi::all()->where('pembeli_id', $id)->sum('jumlah_barang');
+        $result = Keranjang::all()->where('pembeli_id', Auth::user()->id)->count();
 
         $totalPengeluaran = 0;
+        $pajak = 1 / 100;
         foreach ($transaksi as $trans) {
-            $totalPengeluaran += $trans->total_harga;
+            $totalPengeluaran += $trans->total_harga + ($trans->total_harga * $pajak);
         }
 
         return view('pembeli.checkout', [
             "total_pengeluaran" => $totalPengeluaran,
             "total_barang" => $totalBarang,
             "transactions" => $transaksi,
+            "keranjang" => $result,
+            "pajak" => $pajak,
             "user" => $user,
         ]);
     }

@@ -19,7 +19,7 @@
             <!-- Sidebar -->
             <div class="border-right" id="sidebar-wrapper">
                 <div class="sidebar-heading text-center">
-                    <img src="/images/dashboard-store-logo.svg" alt="" class="my-4" />
+                    <img src="/images/logo.svg" alt="" class="my-4" width="180px" />
                 </div>
                 <div class="list-group list-group-flush">
                     <a href="{{ route('penjual.home') }}" class="list-group-item list-group-item-action">
@@ -224,22 +224,24 @@
                                             <div class="row">
                                                 <div class="col text-right">
                                                     <form action="{{ route('delete', $product->id) }}" method="post"
-                                                        onsubmit="return confirm('Apakah Anda yakin ingin menghapus mahasiswa ini?')">
+                                                        onsubmit="return confirm('Apakah anda yakin ingin menghapus Produk ini?')">
                                                         @csrf
                                                         @method('delete')
                                                         <button type="submit"
                                                             class="btn btn-danger mb-3 px-5 w-100"><i
                                                                 class="fa-solid fa-trash"></i>
-                                                            Delete Product</button>
+                                                            Delete Product
+                                                        </button>
                                                     </form>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col text-right">
                                                     <a class=" btn btn-warning text-white"
-                                                        href="{{ route('produk') }}"><i
-                                                            class="fa-sharp fa-solid fa-arrow-left"></i>
-                                                        Back</a>
+                                                        href="{{ route('produk') }}">
+                                                        <i class="fa-sharp fa-solid fa-arrow-left"></i>
+                                                        Back
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
