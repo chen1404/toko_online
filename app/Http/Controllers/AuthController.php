@@ -7,9 +7,15 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Testing\Fluent\Concerns\Has;
 
 class AuthController extends Controller
 {
+    public function penjualProfile() {
+        return view('penjual.user', [
+            "user" => User::all()->where('id', Auth::user()->id)->first(),
+        ]);
+    }
     public function actionRegister(Request $request)
     {
         if ($request->password == $request->confirm_password) {
@@ -33,12 +39,55 @@ class AuthController extends Controller
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
             ]);
-            session()->flash('success', 'Berhasil Membuat Akun!');
 
+            session()->flash('success', 'Berhasil Membuat Akun!');
             return redirect('/login');
         } else {
             session()->flash('error', 'Konfirmasi password anda berbeda!');
             return redirect('/register');
+        }
+    }
+
+    public function updateData(Request $request) {
+        $user = User::all()->where('id', Auth::user()->id)->first();
+        
+        $filename = $user->image;
+        if ($request->hasFile('file')) {
+            $slug = Str::slug($request->get('name'), '-');
+            $randstr = Str::lower(Str::random(5));
+            $file = $request->file('file');
+            $filename = $slug . '-' . $randstr . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('img/profile'), $filename);
+        }
+
+        $user->update([
+            'name' => $request->name,
+            'address' => $request->address,
+            'number' => $request->mobile,
+            'image' => $filename,
+            'is_store' => $request->store,
+            'email' => $request->email,
+        ]);
+
+        session()->flash('success', 'Berhasil Merubah Data Akun!');
+        return redirect('/user');
+    }
+
+    public function updatePassword(Request $request) {
+        if (Hash::check($request->password_old, auth()->user()->password)) {
+            if ($request->password_new == $request->password_confirm) {
+                $user = User::all()->where('id', Auth::user()->id)->first();
+                $user->update(['password' => Hash::make($request->password_new)]);
+                
+                session()->flash('success', 'Berhasil merubah password!');
+                return redirect('/user');
+            } else {
+                session()->flash('error', 'Konfirmasi password anda berbeda!');
+                return redirect('/user');
+            }
+        } else {
+            session()->flash('error', 'Password lama anda salah!');
+            return redirect('/user');
         }
     }
 
