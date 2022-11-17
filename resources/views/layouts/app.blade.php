@@ -11,6 +11,7 @@
     <meta name="author" content="" />
 
     <title>@yield('title')</title>
+    <link rel="shortcut icon" href="/img/logo/shian-logo.png">
     
 
     {{-- Style --}}

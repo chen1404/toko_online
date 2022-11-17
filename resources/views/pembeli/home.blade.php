@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Store Homepage
+    Weesia Homepage
 @endsection
 
 @section('content')

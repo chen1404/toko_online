@@ -63,7 +63,6 @@ class ProdukController extends Controller
 
     public function success() {
         return view('pembeli.success');
-        // "products" => Produk::all()
     }
     
     public function update(Request $request, $id) {

@@ -7,6 +7,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
+    <link rel="shortcut icon" href="/img/logo/shian-logo.png">
     <title>Weesia Dashboard Penjual</title>
 
     <link href="{{ asset('style/main.css') }}" rel="stylesheet" />

@@ -52,10 +52,9 @@ class KeranjangController extends Controller
             $result = Keranjang::all()->where('pembeli_id', Auth::user()->id)->count();
         }
 
-        // $query = Produk::all();
 		$query = DB::table('products')->paginate(8);
         if(strlen($kategori) > 0) {
-            $query = Produk::all()->where('kategori', $kategori);
+            $query = DB::table('products')->where('kategori', $kategori)->paginate(8);
         }
 
         return view('pembeli.home', [
