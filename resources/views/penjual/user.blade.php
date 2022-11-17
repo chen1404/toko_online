@@ -9,9 +9,12 @@
 
     <title>Store - Your Best Marketplace</title>
 
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
     <link href="{{ asset('style/main.css') }}" rel="stylesheet" />
     <link href="{{ asset('stylesheet/style.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 </head>
 
 <body>
@@ -65,12 +68,6 @@
                                         <div class="dropdown-divider"></div>
                                         <a href="/logout" class="dropdown-item">Logout</a>
                                     </div>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link d-inline-block mt-2">
-                                        <img src="/images/icon-cart-filled.svg" alt="" />
-                                        <div class="card-badge">3</div>
-                                    </a>
                                 </li>
                             </ul>
 
@@ -138,7 +135,8 @@
                                                         </div>
                                                         <div class="col-12 col-md-6">
                                                             <div class="product-title">Total Pemasukkan</div>
-                                                            <div class="product-subtitle">Rp.{{ number_format($total_income) }}</div>
+                                                            <div class="product-subtitle">
+                                                                Rp.{{ number_format($total_income) }}</div>
                                                         </div>
                                                         <div class="col-12 col-md-6">
                                                             <div class="product-title">Total Produk</div>
@@ -288,6 +286,7 @@
                             </div>
                         </div>
                     </div>
+
                 </footer>
             </div>
         </div>
@@ -297,10 +296,30 @@
             crossorigin="anonymous"></script>
         <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+            integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous">
+        </script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+            integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous">
+        </script>
+
         <script>
             AOS.init();
         </script>
         <script src="/script/navbar-scroll.js"></script>
+        <script>
+            $(function() {
+                $('#myModal').modal({
+                    show: true,
+                    backdrop: 'static'
+                });
+                //now on button click
+                $('#myModal').modal('show');
+            });
+        </script>
 </body>
 
 </html>
