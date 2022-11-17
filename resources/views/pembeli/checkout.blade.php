@@ -72,9 +72,8 @@
                         <nav>
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a
-                                    href="{{ route(Auth::user() == 'penjual' ? 'penjual.home' : 'pembeli.home') }}">
-                                    Home</a>
+                                    <a href="{{ route(Auth::user() == 'penjual' ? 'penjual.home' : 'pembeli.home') }}">
+                                        Home</a>
                                 </li>
                                 <li class="breadcrumb-item active">Profil</li>
                             </ol>
@@ -86,14 +85,14 @@
 
         <section class="store-cart">
             <div class="container mt-1 pt-1">
-                @if(session('success'))
+                @if (session('success'))
                     <div class="alert alert-success">
-                        {{session('success')}}
+                        {{ session('success') }}
                     </div>
                 @endif
-                @if(session('error'))
+                @if (session('error'))
                     <div class="alert alert-danger">
-                        {{session('error')}}
+                        {{ session('error') }}
                     </div>
                 @endif
                 <div class="row">
@@ -103,8 +102,8 @@
                                 <h1 class="mb-4">Profil Saya</h1>
                                 <div class="row">
                                     <div class="col-12 col-md-4">
-                                        <img src="{{ asset('img/profile/'.$user->image) }}" class="rounded-4 w-100 mb-3"
-                                            alt="" />
+                                        <img src="{{ asset('img/profile/' . $user->image) }}"
+                                            class="rounded-4 w-100 mb-3" alt="" />
                                     </div>
                                     <div class="col-12 col-md-8">
                                         <div class="row">
@@ -134,7 +133,8 @@
                                             </div>
                                             <div class="col-12 col-md-6">
                                                 <div class="product-title">Total Pengeluaran</div>
-                                                <div class="product-subtitle">Rp.{{ number_format($total_pengeluaran) }}</div>
+                                                <div class="product-subtitle">
+                                                    Rp.{{ number_format($total_pengeluaran) }}</div>
                                             </div>
                                             <div class="col-12 col-md-6">
                                                 <div class="product-title">Total Barang</div>
@@ -162,7 +162,7 @@
 
                                 <!-- Modal Ubah Password -->
                                 <div class="modal fade" id="modaleditpass" tabindex="-1" role="dialog"
-                                aria-labelledby="modaleditpassLabel" aria-hidden="true">
+                                    aria-labelledby="modaleditpassLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -178,15 +178,18 @@
                                                 <div class="modal-body">
                                                     <div class="mb-3">
                                                         <label class="form-label">Password Sebelumnya</label>
-                                                        <input type="password" class="form-control" name="password_old">
+                                                        <input type="password" class="form-control"
+                                                            name="password_old">
                                                     </div>
                                                     <div class="mb-3">
                                                         <label class="form-label">Password Baru</label>
-                                                        <input type="password" class="form-control" name="password_new">
+                                                        <input type="password" class="form-control"
+                                                            name="password_new">
                                                     </div>
                                                     <div class="mb-3">
                                                         <label class="form-label">Konfirmasi Password Baru</label>
-                                                        <input type="password" class="form-control" name="password_confirm">
+                                                        <input type="password" class="form-control"
+                                                            name="password_confirm">
                                                     </div>
                                                 </div>
                                                 <input type="text" value="/user" name="role_route" hidden>
@@ -203,7 +206,7 @@
 
                                 <!-- Modal Ubah -->
                                 <div class="modal fade" id="modaledit" tabindex="-1" role="dialog"
-                                aria-labelledby="modaleditLabel" aria-hidden="true">
+                                    aria-labelledby="modaleditLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -213,7 +216,8 @@
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <form method="post" action="{{ url('/user/action-data') }}" enctype="multipart/form-data">
+                                            <form method="post" action="{{ url('/user/action-data') }}"
+                                                enctype="multipart/form-data">
                                                 @csrf
                                                 @method('put')
                                                 <div class="modal-body">
@@ -242,9 +246,9 @@
                                                     <div class="mb-3">
                                                         <label class="form-label">Foto Profil</label>
                                                         <input type="file" class="form-control" name="file"
-                                                            value="{{ $user->image }}"
-                                                        >
-                                                        <p style="font-size: 10px;"><span style="color: red;">*</span> abaikan jika tidak ingin merubah data</p>
+                                                            value="{{ $user->image }}">
+                                                        <p style="font-size: 10px;"><span style="color: red;">*</span>
+                                                            abaikan jika tidak ingin merubah data</p>
                                                     </div>
                                                 </div>
                                                 <input type="text" name="store" value="false" hidden>
@@ -297,7 +301,21 @@
                                             </tbody>
                                         </table>
                                     </div>
+
                                 </div>
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination justify-content-end">
+                                        <li class="page-item disabled">
+                                            <a class="page-link">Previous</a>
+                                        </li>
+                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#">Next</a>
+                                        </li>
+                                    </ul>
+                                </nav>
                             </div>
                         </div>
                     </div>

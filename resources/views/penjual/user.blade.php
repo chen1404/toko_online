@@ -139,7 +139,8 @@
                                                         </div>
                                                         <div class="col-12 col-md-6">
                                                             <div class="product-title">Total Pemasukkan</div>
-                                                            <div class="product-subtitle">Rp.{{ number_format($total_income) }}</div>
+                                                            <div class="product-subtitle">
+                                                                Rp.{{ number_format($total_income) }}</div>
                                                         </div>
                                                         <div class="col-12 col-md-6">
                                                             <div class="product-title">Total Produk</div>
@@ -300,6 +301,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
         integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous">
     </script>
+
     <script>
         AOS.init();
     </script>
