@@ -190,20 +190,20 @@
                             <div class="" data-aos="zoom-in">
                                 <form action="{{ route('show.add', $product) }}" method="post">
                                     @csrf
-                                    {{-- Yg Bagian ini sat --}}
                                     <div class="row">
-                                        <div class="col-3">
-                                            <input type="number" class="form-control" id="barang" name="barang"
-                                                value="0" max="{{ $product->stok }}" min="0" required />
-                                        </div>
+                                      <div class="col-3">
+                                        <input type="number" class="form-control" id="barang" name="barang"
+                                          value="0" max="{{ $product->stok }}" min="0" required 
+                                        />
+                                      </div>
 
-
-                                        <div class="col">
-                                            <button type="submit"
-                                                class="btn btn-secondary px-4 text-white btn-block mb-3 col-12">Tambah
-                                                di
-                                                keranjang</button>
-                                        </div>
+                                      <div class="col">
+                                        <button type="submit"
+                                          class="btn btn-secondary px-4 text-white btn-block mb-3 col-12">Tambah
+                                          di
+                                          keranjang
+                                        </button>
+                                      </div>
                                     </div>
                                 </form>
                             </div>
