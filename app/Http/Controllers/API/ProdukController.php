@@ -21,12 +21,12 @@ class ProdukController extends Controller
     }
     
     public function produk($id){
-        $mahasiswa = Produk::where('id', $id)->get();
+        $product = Produk::where('id', $id)->get();
 
         $respon = [
             'status' => 'success',
             'msg' => 'Berhasil Mengambil data Produk',
-            'data' => $mahasiswa,
+            'data' => $product,
         ];
 
         return response()->json($respon);
@@ -34,7 +34,7 @@ class ProdukController extends Controller
     
     public function createProduk(Request $request){
 
-        $produk = Produk::create([
+        $product = Produk::create([
             "nama" => $request->nama,
             "harga" => $request->harga,
             "kategori" => $request->kategori,
@@ -47,7 +47,7 @@ class ProdukController extends Controller
         $respon = [
             'status' => 'success',
             'msg' => 'Berhasil Membuat data produk',
-            'data' => $produk,
+            'data' => $product,
         ];
         return response()->json($respon);
     }
