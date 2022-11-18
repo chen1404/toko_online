@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Register
+    Weesia Register
 @endsection
 
 @section('content')

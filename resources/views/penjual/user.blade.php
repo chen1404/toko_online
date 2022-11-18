@@ -7,14 +7,13 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Store - Your Best Marketplace</title>
-
+    <link rel="shortcut icon" href="/img/logo/shian-logo.png">
+    <title>Weesia - Your Best Marketplace</title>
 
     <link href="{{ asset('style/main.css') }}" rel="stylesheet" />
     <link href="{{ asset('stylesheet/style.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
 </head>
 
 <body>
@@ -59,7 +58,7 @@
                                     <a href="#" class="nav-link" id="navbarDropdown" role="button"
                                         data-toggle="dropdown">
                                         Hi, {{ Auth::user()->name }}
-                                        <img src="/images/icon-user.png" alt=""
+                                        <img src="/img/profile/{{ Auth::user()->image }}" alt=""
                                             class="rounded-circle mr-2 profile-picture" />
                                     </a>
                                     <div class="dropdown-menu">
@@ -73,7 +72,7 @@
 
                             <ul class="navbar-nav d-block d-lg-none">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link"> Hi, Rai </a>
+                                    <a href="#" class="nav-link">{{ Auth::user()->name }}</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#" class="nav-link d-inline-block"> Cart </a>
@@ -109,6 +108,12 @@
                                                 </div>
                                                 <div class="col-12 col-md-8">
                                                     <div class="row">
+                                                        <div class="col-12 col-md-6">
+                                                            <div class="product-title">Nama Toko</div>
+                                                            <div class="product-subtitle"><b>{{ $user->is_store }}</b></div>
+                                                        </div>
+                                                        <div class="col-12 col-md-6">
+                                                        </div>
                                                         <div class="col-12 col-md-6">
                                                             <div class="product-title">Nama</div>
                                                             <div class="product-subtitle">{{ $user->name }}</div>
@@ -148,7 +153,7 @@
                                                         <div class="col-12 col-md-6">
                                                             <button data-toggle="modal" data-target="#modaleditpass"
                                                                 class="btn btn-secondary btn mt-4">
-                                                                Lupa Password
+                                                                Ubah Password
                                                             </button>
                                                         </div>
 
@@ -164,14 +169,13 @@
 
                                             <!-- Modal Ubah Password -->
                                             <div class="modal fade" id="modaleditpass" tabindex="-1" role="dialog"
-                                                aria-labelledby="modaleditpassLabel" aria-hidden="true">
+                                            aria-labelledby="modaleditpassLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Edit Akun
-                                                            </h5>
-                                                            <button type="button" class="close"
-                                                                data-dismiss="modal" aria-label="Close">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Edit Akun</h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
@@ -180,28 +184,23 @@
                                                             @csrf
                                                             <div class="modal-body">
                                                                 <div class="mb-3">
-                                                                    <label class="form-label">Password
-                                                                        Sebelumnya</label>
-                                                                    <input type="password" class="form-control"
-                                                                        name="password_old">
+                                                                    <label class="form-label">Password Sebelumnya</label>
+                                                                    <input type="password" class="form-control" name="password_old">
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label class="form-label">Password Baru</label>
-                                                                    <input type="password" class="form-control"
-                                                                        name="password_new">
+                                                                    <input type="password" class="form-control" name="password_new">
                                                                 </div>
                                                                 <div class="mb-3">
-                                                                    <label class="form-label">Konfirmasi Password
-                                                                        Baru</label>
-                                                                    <input type="password" class="form-control"
-                                                                        name="password_confirm">
+                                                                    <label class="form-label">Konfirmasi Password Baru</label>
+                                                                    <input type="password" class="form-control" name="password_confirm">
                                                                 </div>
                                                             </div>
+                                                            <input type="text" value="/penjual/user" name="role_route" hidden>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary"
                                                                     data-dismiss="modal">Tutup</button>
-                                                                <button type="submit"
-                                                                    class="btn btn-primary">Simpan</button>
+                                                                <button type="submit" class="btn btn-primary">Simpan</button>
                                                             </div>
                                                         </form>
                                                     </div>
@@ -228,6 +227,12 @@
                                                             @csrf
                                                             @method('put')
                                                             <div class="modal-body">
+
+                                                                <div class="mb-3">
+                                                                    <label class="form-label">Nama Toko</label>
+                                                                    <input type="text" class="form-control" name="store" value="{{ $user->is_store }}">
+                                                                </div>
+
                                                                 <div class="mb-3">
                                                                     <label class="form-label">Nama </label>
                                                                     <input type="text" class="form-control"
@@ -250,17 +255,18 @@
                                                                     <input type="text" class="form-control"
                                                                         name="mobile" value="{{ $user->number }}">
                                                                 </div>
+
                                                                 <div class="mb-3">
                                                                     <label class="form-label">Foto Profil</label>
                                                                     <input type="file" class="form-control"
                                                                         name="file" value="{{ $user->image }}">
                                                                     <p style="font-size: 10px;"><span
                                                                             style="color: red;">*</span> abaikan jika
-                                                                        tidak ingin merubah data</p>
+                                                                        tidak ingin merubah data
+                                                                    </p>
                                                                 </div>
                                                             </div>
-                                                            <input type="text" name="store" value="false"
-                                                                hidden>
+                                                            <input type="text" value="/penjual/user" name="role_route" hidden>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary"
                                                                     data-dismiss="modal">Tutup</button>
@@ -275,51 +281,42 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
                     </section>
                 </div>
-
-                <footer>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 text-center">
-                                <p class="pt-4 pb-2">2022 Copyright Weesia. All Rights Reserved</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </footer>
             </div>
         </div>
+    </div>
 
-        <!-- Bootstrap core JavaScript -->
-        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-            crossorigin="anonymous"></script>
-        <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
-            integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous">
-        </script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
-            integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous">
-        </script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous">
+    </script>
 
-        <script>
-            AOS.init();
-        </script>
-        <script src="/script/navbar-scroll.js"></script>
-        <script>
-            $(function() {
-                $('#myModal').modal({
-                    show: true,
-                    backdrop: 'static'
-                });
-                //now on button click
-                $('#myModal').modal('show');
+    <script>
+        AOS.init();
+    </script>
+    <script src="/script/navbar-scroll.js"></script>
+    <script>
+        $(function() {
+            $('#myModal').modal({
+                show: true,
+                backdrop: 'static'
             });
-        </script>
+            //now on button click
+            $('#myModal').modal('show');
+        });
+    </script>
 </body>
 
 </html>

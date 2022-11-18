@@ -7,6 +7,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
+    <link rel="shortcut icon" href="/img/logo/shian-logo.png">
     <title>Weesia - Your Best Marketplace</title>
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
@@ -30,7 +31,6 @@
                             class="nav-link">Home</a>
                     </li>
 
-
                     @if (Auth::user())
                         @if (Auth::user()->role == 'pembeli')
                             <li class="nav-item">
@@ -43,8 +43,6 @@
                                     <img src="/images/icon-cart-filled.svg" alt="" />
                                     <div class="card-badge">{{ $total_produk }}</div>
                                 </a>
-
-
                             </li>
                         @endif
                     @else
@@ -85,14 +83,15 @@
 
         <section class="store-cart">
             <div class="container">
+
                 @if (session('success'))
                     <div class="alert alert-success">
-                        <p>{{ session('success') }}</p>
+                        {{ session('success') }}
                     </div>
                 @endif
                 @if (session('del-success'))
                     <div class="alert alert-danger">
-                        <p>{{ session('del-success') }}</p>
+                        {{ session('del-success') }}
                     </div>
                 @endif
 
@@ -118,7 +117,7 @@
                                         </td>
                                         <td td style="width: 25%">
                                             <div class="product-title">{{ $keranjang->produk->nama }}</div>
-                                            <div class="product-subtitle">{{ $keranjang->produk->user->name }}</div>
+                                            <div class="product-subtitle">{{ $keranjang->produk->user->is_store }}</div>
                                         </td>
                                         <td td style="width: 20%">
                                             <div class="product-title">{{ $keranjang->jumlah_barang }}x</div>

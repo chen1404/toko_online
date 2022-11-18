@@ -7,6 +7,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
+    <link rel="shortcut icon" href="/img/logo/shian-logo.png">
     <title>Weesia - Your Best Marketplace</title>
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
@@ -55,7 +56,7 @@
                                     <a href="#" class="nav-link" id="navbarDropdown" role="button"
                                         data-toggle="dropdown">
                                         Hi, {{ Auth::user()->name }}
-                                        <img src="/images/icon-user.png" alt=""
+                                        <img src="/img/profile/{{ Auth::user()->image }}" alt=""
                                             class="rounded-circle mr-2 profile-picture" />
                                     </a>
                                     <div class="dropdown-menu">
@@ -70,7 +71,7 @@
 
                             <ul class="navbar-nav d-block d-lg-none">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link"> Hi, Rai </a>
+                                    <a href="#" class="nav-link">{{ Auth::user()->name }}</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#" class="nav-link d-inline-block"> Cart </a>
@@ -90,6 +91,11 @@
                         @if (session('success'))
                             <div class="alert alert-success">
                                 <b>Yeah!</b> {{ session('success') }}
+                            </div>
+                        @endif
+                        @if (session('error'))
+                            <div class="alert alert-danger">
+                                <b>Gagal!</b> {{ session('error') }}
                             </div>
                         @endif
                         <div class="dashboard-content">
@@ -119,7 +125,7 @@
                                 @endif
                             </div>
                         </div>
-                        <nav aria-label="Page navigation example">
+                        {{-- <nav aria-label="Page navigation example">
                             <ul class="pagination justify-content-end">
                                 <li class="page-item disabled">
                                     <a class="page-link">Previous</a>
@@ -131,7 +137,7 @@
                                     <a class="page-link" href="#">Next</a>
                                 </li>
                             </ul>
-                        </nav>
+                        </nav> --}}
                     </div>
                 </div>
             </div>

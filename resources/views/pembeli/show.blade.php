@@ -7,6 +7,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
+    <link rel="shortcut icon" href="/img/logo/shian-logo.png">
     <title>Weesia - Your Best Marketplace</title>
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
@@ -30,7 +31,6 @@
                             class="nav-link">Home</a>
                     </li>
 
-
                     @if (Auth::user())
                         @if (Auth::user()->role == 'pembeli')
                             <li class="nav-item">
@@ -41,7 +41,7 @@
                                     aria-current="page">Keranjang
                                     &nbsp;&nbsp;
                                     <img src="/images/icon-cart-filled.svg" alt="" />
-                                    <div class="card-badge">1</div>
+                                    <div class="card-badge">{{ $keranjang }}</div>
                                 </a>
                             </li>
                         @endif
@@ -82,13 +82,18 @@
         <section class="store-gallery" id="gallery" style="margin-top: 20px">
             <div class="container">
                 @if (session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
+                    <div class="alert alert-success col-8">
+                        <b>Produk</b> {{ session('success') }}
+                    </div>
+                @endif
+                @if (session('error'))
+                    <div class="alert alert-danger col-8">
+                        <b>Produk</b> {{ session('error') }}
                     </div>
                 @endif
                 @php $stock = $product->stok == 0 ? '<span class="text-danger">Habis</span>' : $product->stok; @endphp
                 @if ($product->stok == 0)
-                    <div class="col-lg-8 alert alert-danger">
+                    <div class="col-lg-8 alert alert-danger col-8">
                         Stok Produk Habis!
                     </div>
                 @endif
@@ -108,7 +113,7 @@
                     <div class="row">
                         <div class="col-lg-8">
                             <h1>{{ $product->nama }}</h1>
-                            <div class="owner">By {{ $product->user->name }}</div>
+                            <div class="owner">By {{ $product->user->is_store }}</div>
                             <div class="price">Rp.{{ number_format($product->harga) }}</div>
                             <div class="owner">Stok {!! $stock !!}</div>
                         </div>

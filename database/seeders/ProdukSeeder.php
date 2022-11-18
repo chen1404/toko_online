@@ -32,7 +32,7 @@ class ProdukSeeder extends Seeder
                 'nama' => 'Orange Bogotta',
                 'harga' => '94509',
                 'kategori' => 'kecantikan',
-                'stok' => '5',
+                'stok' => '0',
                 'gambar' => 'products-orange-bogotta.jpg',
                 'deskripsi' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor amet quisquam quaerat sequi saepe doloremque, at accusantium quasi.',
                 'penjual_id' => '1'

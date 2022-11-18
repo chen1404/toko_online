@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Store Homepage
+    Weesia Homepage
 @endsection
 
 @section('content')
@@ -106,9 +106,7 @@
                             <a href="/show/{{ $product->id }}" class="component-products d-block">
                                 <div class="products-thumbnail">
                                     <div class="products-image"
-                                        style="
-                      background-image: url('/img/products/{{ $product->gambar }}');
-                    ">
+                                        style="background-image: url('/img/products/{{ $product->gambar }}');">
                                     </div>
                                 </div>
                                 <div class="products-text">{{ $product->nama }}</div>
@@ -116,9 +114,9 @@
                             </a>
                         </div>
                     @endforeach
-
                 </div>
-                <nav aria-label="Page navigation example">
+
+                {{-- <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-end">
                         <li class="page-item disabled">
                             <a class="page-link">Previous</a>
@@ -127,10 +125,15 @@
                         <li class="page-item"><a class="page-link" href="#">2</a></li>
                         <li class="page-item"><a class="page-link" href="#">3</a></li>
                         <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
+                            <a class="page-link" href="{{ $products->links() }}">Next</a>
                         </li>
                     </ul>
-                </nav>
+                </nav> --}}
+                @if($products->hasPages())
+                    <div class="">
+                        {{ $products->links() }}
+                    </div>
+                @endif
             </div>
         </section>
     </div>

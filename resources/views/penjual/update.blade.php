@@ -7,6 +7,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
+    <link rel="shortcut icon" href="/img/logo/shian-logo.png">
     <title>Weesia Dashboard Penjual</title>
 
     <link href="{{ asset('style/main.css') }}" rel="stylesheet" />
@@ -19,7 +20,7 @@
             <!-- Sidebar -->
             <div class="border-right" id="sidebar-wrapper">
                 <div class="sidebar-heading text-center">
-                    <img src="/images/dashboard-store-logo.svg" alt="" class="my-4" />
+                    <img src="/images/logo.svg" alt="" class="my-4" width="180px" />
                 </div>
                 <div class="list-group list-group-flush">
                     <a href="{{ route('penjual.home') }}" class="list-group-item list-group-item-action">
@@ -55,7 +56,7 @@
                                     <a href="#" class="nav-link" id="navbarDropdown" role="button"
                                         data-toggle="dropdown">
                                         Hi, {{ Auth::user()->name }}
-                                        <img src="/images/icon-user.png" alt=""
+                                        <img src="/img/profile/{{ Auth::user()->image }}" alt=""
                                             class="rounded-circle mr-2 profile-picture" />
                                     </a>
                                     <div class="dropdown-menu">
@@ -65,17 +66,11 @@
                                         <a href="/" class="dropdown-item">Logout</a>
                                     </div>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link d-inline-block mt-2">
-                                        <img src="/images/icon-cart-filled.svg" alt="" />
-                                        <div class="card-badge">3</div>
-                                    </a>
-                                </li>
                             </ul>
 
                             <ul class="navbar-nav d-block d-lg-none">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link"> Hi, Rai </a>
+                                    <a href="#" class="nav-link"> Hi, {{ Auth::user()->name }}</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#" class="nav-link d-inline-block">
@@ -230,22 +225,24 @@
                                             <div class="row">
                                                 <div class="col text-right">
                                                     <form action="{{ route('delete', $product->id) }}" method="post"
-                                                        onsubmit="return confirm('Apakah Anda yakin ingin menghapus mahasiswa ini?')">
+                                                        onsubmit="return confirm('Apakah anda yakin ingin menghapus Produk ini?')">
                                                         @csrf
                                                         @method('delete')
                                                         <button type="submit"
                                                             class="btn btn-danger mb-3 px-5 w-100"><i
                                                                 class="fa-solid fa-trash"></i>
-                                                            Delete Product</button>
+                                                            Delete Product
+                                                        </button>
                                                     </form>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col text-right">
                                                     <a class=" btn btn-warning text-white"
-                                                        href="{{ route('produk') }}"><i
-                                                            class="fa-sharp fa-solid fa-arrow-left"></i>
-                                                        Back</a>
+                                                        href="{{ route('produk') }}">
+                                                        <i class="fa-sharp fa-solid fa-arrow-left"></i>
+                                                        Back
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>

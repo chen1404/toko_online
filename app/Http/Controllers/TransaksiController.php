@@ -8,6 +8,7 @@ use App\Models\Transaksi;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TransaksiController extends Controller
 {
@@ -63,7 +64,7 @@ class TransaksiController extends Controller
             ]);
             $transaksi->save();
 
-            return redirect("/show/$product->id")->with('success', 'Produk berhasil di Checkout!');
+            return redirect("/show/$product->id")->with('success', ' berhasil di Checkout!');
         } else {
             return redirect("/show/$product->id");
         }
@@ -72,26 +73,32 @@ class TransaksiController extends Controller
     public function daftarTransaksi()
     {
         $id = Auth::user()->id;
-        $transaksi = Transaksi::all()->where('pembeli_id', $id);
+		// $transaksi = DB::table('transactions')->where('pembeli_id', $id)->paginate(5);
+        $transaksi = Transaksi::where('pembeli_id', $id)->paginate(5);
         $user = User::all()->where('id', $id)->first();
         $totalBarang = Transaksi::all()->where('pembeli_id', $id)->sum('jumlah_barang');
+        $result = Keranjang::all()->where('pembeli_id', Auth::user()->id)->count();
 
         $totalPengeluaran = 0;
+        $pajak = 1 / 100;
         foreach ($transaksi as $trans) {
-            $totalPengeluaran += $trans->total_harga;
+            $totalPengeluaran += $trans->total_harga + ($trans->total_harga * $pajak);
         }
 
         return view('pembeli.checkout', [
             "total_pengeluaran" => $totalPengeluaran,
             "total_barang" => $totalBarang,
             "transactions" => $transaksi,
+            "keranjang" => $result,
+            "pajak" => $pajak,
             "user" => $user,
         ]);
     }
 
     public function penjual()
     {
-        $transactions = Transaksi::all()->where('penjual_id', Auth::user()->id);
+        // $transactions = Transaksi::all()->where('penjual_id', Auth::user()->id);
+        $transactions = Transaksi::where('penjual_id', Auth::user()->id)->paginate(4);
         $jumlahTransaksi = Transaksi::all()->where('penjual_id', Auth::user()->id)->count();
         $totalIncome = Transaksi::where('penjual_id', Auth::user()->id)->sum('total_harga');
         $jumlahCustomer = Transaksi::select('pembeli_id')->where('penjual_id', Auth::user()->id)->distinct()->get()->count();
