@@ -73,7 +73,7 @@ class TransaksiController extends Controller
     public function daftarTransaksi()
     {
         $id = Auth::user()->id;
-		// $transaksi = DB::table('transactions')->where('pembeli_id', $id)->paginate(5);
+        // $transaksi = DB::table('transactions')->where('pembeli_id', $id)->paginate(5);
         $transaksi = Transaksi::where('pembeli_id', $id)->paginate(5);
         $user = User::all()->where('id', $id)->first();
         $totalBarang = Transaksi::all()->where('pembeli_id', $id)->sum('jumlah_barang');
