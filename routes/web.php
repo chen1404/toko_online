@@ -23,6 +23,7 @@ Route::get('/welcome', function () {
     return view('welcome');
 })->name('welcome');
 
+
 // AUTHENTICATION
 Route::get('/register', function () {
     return view('auth.register');
@@ -36,6 +37,7 @@ Route::post('/action-login', [AuthController::class, 'actionLogin']);
 
 Route::get('/logout', [AuthController::class, 'logout']);
 // END AUTHENTICATION
+
 
 // PEMBELI
 Route::get('/', [KeranjangController::class, 'keranjangCount'])->name('pembeli.home');
@@ -73,5 +75,4 @@ Route::post('/produk/store', [ProdukController::class, 'store'])->name('penjual.
 Route::get('/update/{produk}', [ProdukController::class, 'edit'])->name('edit')->middleware('auth');
 Route::put('/{id}', [ProdukController::class, 'update'])->name('update')->middleware('auth');
 Route::delete('/{id}', [ProdukController::class, 'destroy'])->name('delete')->middleware('auth');
-
 // END PENJUAL

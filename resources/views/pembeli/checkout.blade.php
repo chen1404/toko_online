@@ -101,7 +101,9 @@
                                 <div class="row">
                                     <div class="col-12 col-md-4">
                                         <img src="{{ asset('img/profile/' . $user->image) }}"
-                                            class="rounded-4 w-100 mb-3" alt="" />
+                                            class="w-100 mb-3" alt=""
+                                            style="border-radius: 26px;"
+                                        >
                                     </div>
                                     <div class="col-12 col-md-8">
                                         <div class="row">
@@ -279,7 +281,7 @@
                                                     <th scope="col">Alamat tujuan</th>
                                                 </tr>
                                             </thead>
-                                            <tbody class="table-group-divider">
+                                            <tbody class="table-group-divider text-center">
                                                 @php $no = 1 @endphp
                                                 @foreach ($transactions as $transaction)
                                                     <tr>
@@ -301,19 +303,6 @@
                                         </table>
                                     </div>
                                 </div>
-                                {{-- <nav aria-label="Page navigation example">
-                                    <ul class="pagination justify-content-end">
-                                        <li class="page-item disabled">
-                                            <a class="page-link">Previous</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">Next</a>
-                                        </li>
-                                    </ul>
-                                </nav> --}}
                                 @if($transactions->hasPages())
                                     <div class="">
                                         {{ $transactions->links() }}
